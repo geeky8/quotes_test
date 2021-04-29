@@ -1,19 +1,24 @@
 import 'dart:convert';
 import 'package:country_state_city_picker/model/select_status_model.dart' as StatusModel;
+import 'package:dropdownfield/dropdownfield.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class Country extends StatefulWidget {
 
-  final ValueChanged<String> onCountryChanged;
+  final Function onCountryChanged;
+  final Function countryChange;
   final TextStyle style;
   final Color dropdownColor;
+  final String country;
 
   const Country(
       {Key key,
         this.onCountryChanged,
         this.style,
-        this.dropdownColor})
+        this.dropdownColor,
+        this.countryChange,
+        this.country})
       : super(key: key);
 
   @override
@@ -67,31 +72,38 @@ class _CountryState extends State<Country> {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
-        DropdownButton<String>(
-          onTap: (){
-            setState(() {
-              color = true;
-            });
-          },
-          dropdownColor: Colors.white,
-          isExpanded: true,
-          items: _country.map((String dropDownStringItem) {
-            return DropdownMenuItem<String>(
-              value: dropDownStringItem,
-              child: Row(
-                children: [
-                  Text(
-                    dropDownStringItem,
-                    style: TextStyle(color: color?Colors.black:Colors.black26,fontWeight: FontWeight.bold,fontSize: 14),
-                  )
-                ],
-              ),
-            );
-          }).toList(),
-          onChanged: (value) => _onSelectedCountry(value),
-          value: _selectedCountry,
+        // DropdownButton<String>(
+        //   onTap: (){
+        //     setState(() {
+        //       color = true;
+        //     });
+        //   },
+        //   dropdownColor: Colors.white,
+        //   isExpanded: true,
+        //   items: _country.map((String dropDownStringItem) {
+        //     return DropdownMenuItem<String>(
+        //       value: dropDownStringItem,
+        //       child: Row(
+        //         children: [
+        //           Text(
+        //             dropDownStringItem,
+        //             style: TextStyle(color: color?Colors.black:Colors.black26,fontWeight: FontWeight.bold,fontSize: 14),
+        //           )
+        //         ],
+        //       ),
+        //     );
+        //   }).toList(),
+        //   onChanged: (value) => _onSelectedCountry(value),
+        //   value: _selectedCountry,
+        // ),
+        DropDownField(
+          onValueChanged: widget.countryChange,
+          value: widget.country,
+          required: false,
+          hintText: 'Choose a country',
+          hintStyle: TextStyle(color: Colors.black26,fontSize: 15,fontWeight: FontWeight.bold),
+          items: _country,
         ),
-
       ],
     );
   }

@@ -175,7 +175,7 @@ class _SignupState extends State<Signup> {
             GestureDetector(
               onTap: (){
                 Navigator.push(context, MaterialPageRoute(builder: (context)=>Login()));
-                print(country.length);
+                print(country);
               },
               child: Text(
                 'Login',
@@ -231,18 +231,23 @@ class _SignupState extends State<Signup> {
         Padding(
           padding: EdgeInsets.only(left: 10),
           child: Container(
-            padding: EdgeInsets.only(left: 5),
             width: 280,
             decoration: BoxDecoration(
               color: Colors.grey[200],
             ),
             child: Country(
-              onCountryChanged: (value){
+              countryChange: (dynamic value){
                 setState(() {
                   country = value;
                 });
               },
-              style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 14),
+              country: country,
+              // onCountryChanged: (value){
+              //   setState(() {
+              //     country = value;
+              //   });
+              // },
+              // style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 14),
             ),
           ),
         ),
