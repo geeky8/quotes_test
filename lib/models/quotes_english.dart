@@ -7,8 +7,8 @@ class QuotesEnglish{
   QuotesEnglish(this.id,this.quote,this.date,this.genre);
 
   QuotesEnglish.fromJSON(Map<String,dynamic> json):
-        id = json["ID"],
-        quote = json["QuoteEn"],
+        id = json["Id"],
+        quote = json["Quote_en"],
         date = json["QuoteDate"],
         genre = "en";
 }

@@ -3,6 +3,7 @@ import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:quotes/elements/quotes.dart';
 import 'package:quotes/screens/home_screen.dart';
 import 'package:quotes/screens/search_screen.dart';
@@ -108,8 +109,10 @@ class _QuotesOnePageState extends State<QuotesOnePage> with SingleTickerProvider
                         },
                         child: Text(
                           quoteHin,
-                          style: TextStyle(
+                          style: GoogleFonts.portLligatSans(
+                            textStyle: Theme.of(context).textTheme.display1,
                             fontSize: 22,
+                            fontWeight: FontWeight.w700,
                             color: Colors.white,
                           ),
                         ),
@@ -142,8 +145,10 @@ class _QuotesOnePageState extends State<QuotesOnePage> with SingleTickerProvider
                         },
                         child: Text(
                           quoteEn,
-                          style: TextStyle(
+                          style: GoogleFonts.portLligatSans(
+                            textStyle: Theme.of(context).textTheme.display1,
                             fontSize: 22,
+                            fontWeight: FontWeight.w700,
                             color: Colors.white,
                           ),
                         ),

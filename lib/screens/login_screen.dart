@@ -1,5 +1,4 @@
 import 'dart:ui';
-import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -7,33 +6,22 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:intl_phone_number_input/intl_phone_number_input.dart';
 import 'package:quotes/screens/home_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:quotes/screens/login_screen.dart';
+import 'package:country_state_city_picker/country_state_city_picker.dart';
 import 'dart:math';
 import 'package:quotes/widgets/clipPainter.dart';
 import 'package:quotes/widgets/country_dropdown.dart';
 
-class Signup extends StatefulWidget {
-  Signup({Key key, this.title}) : super(key: key);
+class Login extends StatefulWidget {
+  Login({Key key, this.title}) : super(key: key);
 
   final String title;
 
   @override
-  _SignupState createState() => _SignupState();
+  _LoginState createState() => _LoginState();
 }
 
-class _SignupState extends State<Signup> {
+class _LoginState extends State<Login> {
   TextEditingController email;
-  TextEditingController name;
-  TextEditingController phone;
-  String initCountry = "IN";
-  PhoneNumber number = PhoneNumber(isoCode: "IN");
-  // TextEditingController password;
-  TextEditingController state;
-  TextEditingController city;
-  String country;
-  Dio _dio = Dio();
-  // String state;
-  // String city;
 
   Widget _backButton() {
     return InkWell(
@@ -60,7 +48,7 @@ class _SignupState extends State<Signup> {
       {bool isPassword = false}) {
     return Container(
       margin: EdgeInsets.symmetric(vertical: 10,horizontal: 10),
-      width: 280,
+      width: 300,
       height: 76,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -126,7 +114,7 @@ class _SignupState extends State<Signup> {
           height: MediaQuery.of(context).size.width / 10.7,
           padding: EdgeInsets.fromLTRB(10.0, 15.0, 10.0, 15.0),
           child: Text(
-            "Register Now",
+            "Login",
             textAlign: TextAlign.center,
             style: TextStyle(
               fontSize: 17.0,
@@ -140,13 +128,12 @@ class _SignupState extends State<Signup> {
               prefs.setString("user", email.text);
               Navigator.push(context,
                   MaterialPageRoute(builder: (context) => HomeScreen()));
-              saveUser(name.text, email.text, country, city.text, number.phoneNumber);
             } catch (e) {
               print(e);
             }
             // print(email.text);
             // print(name.text);
-            print(country);
+            // print(country);
             // print(city.text);
             // print(number.phoneNumber);
           },
@@ -155,41 +142,6 @@ class _SignupState extends State<Signup> {
     );
   }
 
-  Widget _loginAccountLabel() {
-    return InkWell(
-      onTap: () {},
-      child: Container(
-        margin: EdgeInsets.symmetric(vertical: 5),
-        padding: EdgeInsets.all(10),
-        alignment: Alignment.bottomCenter,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'Already have an account ?',
-              style: TextStyle(fontSize: 13, fontWeight: FontWeight.w600),
-            ),
-            SizedBox(
-              width: 10,
-            ),
-            GestureDetector(
-              onTap: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context)=>Login()));
-                print(country.length);
-              },
-              child: Text(
-                'Login',
-                style: TextStyle(
-                    color: Color(0xfff79c4f),
-                    fontSize: 13,
-                    fontWeight: FontWeight.w600),
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
 
   Widget _title() {
     return RichText(
@@ -220,64 +172,7 @@ class _SignupState extends State<Signup> {
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        _entryField("Name", name,"Name"),
         _entryField("Email id", email,"E-mail"),
-        // _entryField("Password",password, isPassword: true),
-        Padding(
-          padding: EdgeInsets.only(left: 10),
-          child: Text('Country',style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold),),
-        ),
-        SizedBox(height: 10,),
-        Padding(
-          padding: EdgeInsets.only(left: 10),
-          child: Container(
-            padding: EdgeInsets.only(left: 5),
-            width: 280,
-            decoration: BoxDecoration(
-              color: Colors.grey[200],
-            ),
-            child: Country(
-              onCountryChanged: (value){
-                setState(() {
-                  country = value;
-                });
-              },
-              style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 14),
-            ),
-          ),
-        ),
-        _entryField("City", city,"City"),
-        // _entryField("City", city),
-        SizedBox(height: 10,),
-        InternationalPhoneNumberInput(
-          onInputChanged: (PhoneNumber value) {
-            setState(() {
-              number = value;
-            });
-          },
-          onFieldSubmitted: (String value){
-            print(number.phoneNumber);
-          },
-          // onSubmit: (){print(phone.text);},
-          initialValue: number,
-          textFieldController: phone,
-          keyboardType:
-              TextInputType.numberWithOptions(signed: true, decimal: true),
-          selectorConfig: SelectorConfig(
-            selectorType: PhoneInputSelectorType.BOTTOM_SHEET,
-          ),
-          selectorTextStyle: TextStyle(color: Colors.black),
-          autoValidateMode: AutovalidateMode.disabled,
-          inputBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.all(Radius.circular(12)),
-            borderSide: BorderSide(color: Colors.black,width: 1.1,style: BorderStyle.solid),
-          ),
-          spaceBetweenSelectorAndTextField: 16,
-          searchBoxDecoration: InputDecoration(
-            focusColor: Color(0xffe46b10),
-          ),
-          inputDecoration: InputDecoration(focusColor:Color(0xffe46b10) ),
-        )
       ],
     );
   }
@@ -285,12 +180,6 @@ class _SignupState extends State<Signup> {
   @override
   void initState() {
     email = new TextEditingController();
-    name = new TextEditingController();
-    phone = new TextEditingController();
-    city = new TextEditingController();
-    // password = new TextEditingController();
-    // country = new TextEditingController();
-    // city = new TextEditingController();
     super.initState();
   }
 
@@ -304,16 +193,6 @@ class _SignupState extends State<Signup> {
     await SystemNavigator.pop();
   }
 
-  Future<void> saveUser(String name,String email,String country,String city, String number) async{
-    var params = {
-      "name": name,
-      "emailID" : email,
-      "country" : country,
-      "city" : city,
-      "phone": number
-    };
-    await _dio.post("http://swiftinit.net:813/RegisterUser",queryParameters: params);
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -328,20 +207,20 @@ class _SignupState extends State<Signup> {
               right: -MediaQuery.of(context).size.width * .4,
               child: Container(
                   child: Transform.rotate(
-                angle: -pi / 3.5,
-                child: ClipPath(
-                  clipper: ClipPainter(),
-                  child: Container(
-                    height: MediaQuery.of(context).size.height * .5,
-                    width: MediaQuery.of(context).size.width,
-                    decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                            begin: Alignment.topCenter,
-                            end: Alignment.bottomCenter,
-                            colors: [Color(0xfffbb448), Color(0xffe46b10)])),
-                  ),
-                ),
-              )),
+                    angle: -pi / 3.5,
+                    child: ClipPath(
+                      clipper: ClipPainter(),
+                      child: Container(
+                        height: MediaQuery.of(context).size.height * .5,
+                        width: MediaQuery.of(context).size.width,
+                        decoration: BoxDecoration(
+                            gradient: LinearGradient(
+                                begin: Alignment.topCenter,
+                                end: Alignment.bottomCenter,
+                                colors: [Color(0xfffbb448), Color(0xffe46b10)])),
+                      ),
+                    ),
+                  )),
             ),
             Container(
               padding: EdgeInsets.symmetric(horizontal: 20),
@@ -350,17 +229,16 @@ class _SignupState extends State<Signup> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    SizedBox(height: height * 0.15),
+                    SizedBox(height: 230),
                     _title(),
                     SizedBox(
-                      height: 30,
+                      height: 60,
                     ),
                     _emailPasswordWidget(),
                     SizedBox(
                       height: 20,
                     ),
                     _submitButton(),
-                    _loginAccountLabel(),
                   ],
                 ),
               ),

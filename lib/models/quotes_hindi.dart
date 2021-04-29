@@ -7,8 +7,8 @@ class QuotesHindi{
   QuotesHindi(this.id,this.quote,this.date,this.genre);
 
   QuotesHindi.fromJSON( json):
-      id = json["ID"],
-      quote = json["QuoteHindi"],
+      id = json["Id"],
+      quote = json["Quote_hi"],
       date = json["QuoteDate"],
       genre =  "hi";
 }

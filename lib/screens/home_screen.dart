@@ -1,5 +1,7 @@
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:quotes/bloc/get_english_quotes_bloc.dart';
 import 'package:quotes/bloc/get_hindi_english_quotes_bloc.dart';
 import 'package:quotes/bloc/get_hindi_quotes_bloc.dart';
@@ -44,7 +46,12 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
   @override
   void dispose() {
     _controller.dispose();
+    exit();
     super.dispose();
+  }
+
+  Future<void> exit() async{
+    await SystemNavigator.pop();
   }
 
   @override
@@ -54,7 +61,12 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(40),
         child: AppBar(
-          title: Center(child: Text('Quotes',style: TextStyle(color: Colors.white,fontSize: 18,fontWeight: FontWeight.bold),)),
+          title: Center(child: Text('Quotes',style: GoogleFonts.portLligatSans(
+            textStyle: Theme.of(context).textTheme.display1,
+            fontSize: 18,
+            fontWeight: FontWeight.w700,
+            color: Colors.white,
+          ))),
           leading: IconButton(icon: Icon(EvaIcons.calendar,color: Colors.white,), onPressed: (){
             Navigator.push(context, MaterialPageRoute(builder: (context)=>CalendarScreen(lang)));
           }),
@@ -95,9 +107,11 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
                           children: [
                             Text(
                               "Hindi",
-                              style: TextStyle(
-                                color: Colors.white,
+                              style: GoogleFonts.portLligatSans(
+                                textStyle: Theme.of(context).textTheme.display1,
                                 fontSize: 14,
+                                fontWeight: FontWeight.w700,
+                                color: Colors.white,
                               ),
                             ),
                           ],
@@ -113,9 +127,11 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
                           children: [
                             Text(
                               "English",
-                              style: TextStyle(
-                                color: Colors.white,
+                              style: GoogleFonts.portLligatSans(
+                                textStyle: Theme.of(context).textTheme.display1,
                                 fontSize: 14,
+                                fontWeight: FontWeight.w700,
+                                color: Colors.white,
                               ),
                             ),
                           ],
@@ -131,10 +147,12 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
                           children: [
                             Text(
                               "Both",
-                              style: TextStyle(
-                                color: Colors.white,
+                              style: GoogleFonts.portLligatSans(
+                                textStyle: Theme.of(context).textTheme.display1,
                                 fontSize: 14,
-                              ),
+                                fontWeight: FontWeight.w700,
+                                color: Colors.white,
+                              )
                             ),
                           ],
                         ),
@@ -175,9 +193,11 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
                             padding: EdgeInsets.only(top: 10,bottom: 15,left: 15,right: 7),
                             child: Text(
                               item['title1'],
-                              style: TextStyle(
+                              style: GoogleFonts.portLligatSans(
+                                textStyle: Theme.of(context).textTheme.display1,
                                 fontSize: 14,
-                                fontWeight: FontWeight.bold,
+                                fontWeight: FontWeight.w700,
+                                color: Colors.white,
                               ),
                             ),
                           );

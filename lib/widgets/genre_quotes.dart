@@ -2,6 +2,7 @@ import 'package:animator/animator.dart';
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:quotes/bloc/get_english_quotes_bloc.dart';
 import 'package:quotes/bloc/get_hindi_english_quotes_bloc.dart';
 import 'package:quotes/bloc/get_hindi_quotes_bloc.dart';
@@ -217,9 +218,12 @@ class _GenreQuotesState extends State<GenreQuotes> {
                           child: Text(
                             quotes[index].quote,
                             maxLines: 2,
-                            style: TextStyle(
-                              //color: primary,
-                                fontSize: 18),
+                            style: GoogleFonts.portLligatSans(
+                              textStyle: Theme.of(context).textTheme.display1,
+                              fontSize: 18,
+                              fontWeight: FontWeight.w500,
+                              color: Colors.black,
+                            )
                           ),
                         ),
                       ),
@@ -336,9 +340,12 @@ class _GenreQuotesState extends State<GenreQuotes> {
                           child: Text(
                             quotes[index].quote,
                             maxLines: 2,
-                            style: TextStyle(
-                              //color: primary,
-                                fontSize: 18),
+                            style: GoogleFonts.portLligatSans(
+                              textStyle: Theme.of(context).textTheme.display1,
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black,
+                            ),
                           ),
                         ),
                       ),
@@ -475,10 +482,12 @@ class _GenreQuotesState extends State<GenreQuotes> {
                     },
                     child: Text(
                       quotes[0].quote,
-                      style: TextStyle(
+                      style: GoogleFonts.portLligatSans(
+                        textStyle: Theme.of(context).textTheme.display1,
                         fontSize: 22,
+                        fontWeight: FontWeight.w500,
                         color: Colors.white,
-                      ),
+                      )
                     ),
                   ),
                 ],
@@ -559,10 +568,12 @@ class _GenreQuotesState extends State<GenreQuotes> {
                     },
                     child: Text(
                       quotes[0].quote,
-                      style: TextStyle(
+                      style: GoogleFonts.portLligatSans(
+                        textStyle: Theme.of(context).textTheme.display1,
                         fontSize: 22,
+                        fontWeight: FontWeight.bold,
                         color: Colors.white,
-                      ),
+                      )
                     ),
                   ),
                 ],
@@ -623,9 +634,12 @@ class _GenreQuotesState extends State<GenreQuotes> {
                           child: Text(
                             quotes[index].quoteHin,
                             maxLines: 2,
-                            style: TextStyle(
-                              //color: primary,
-                                fontSize: 18),
+                            style: GoogleFonts.portLligatSans(
+                              textStyle: Theme.of(context).textTheme.display1,
+                              fontSize: 18,
+                              fontWeight: FontWeight.w500,
+                              color: Colors.black,
+                            ),
                           ),
                         ),
                       ),
@@ -636,9 +650,12 @@ class _GenreQuotesState extends State<GenreQuotes> {
                             child: Text(
                               quotes[index].quoteEng,
                               maxLines: 2,
-                              style: TextStyle(
-                                //color: primary,
-                                  fontSize: 18),
+                              style: GoogleFonts.portLligatSans(
+                                textStyle: Theme.of(context).textTheme.display1,
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black,
+                              ),
                             ),
                           ),
                       ),
@@ -778,8 +795,10 @@ class _GenreQuotesState extends State<GenreQuotes> {
                         },
                         child: Text(
                           quotes[0].quoteHin,
-                          style: TextStyle(
+                          style: GoogleFonts.portLligatSans(
+                            textStyle: Theme.of(context).textTheme.display1,
                             fontSize: 22,
+                            fontWeight: FontWeight.bold,
                             color: Colors.white,
                           ),
                         ),
@@ -812,8 +831,10 @@ class _GenreQuotesState extends State<GenreQuotes> {
                         },
                         child: Text(
                           quotes[0].quoteEng,
-                          style: TextStyle(
+                          style: GoogleFonts.portLligatSans(
+                            textStyle: Theme.of(context).textTheme.display1,
                             fontSize: 22,
+                            fontWeight: FontWeight.bold,
                             color: Colors.white,
                           ),
                         ),

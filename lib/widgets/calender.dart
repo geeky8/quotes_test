@@ -85,7 +85,12 @@ class _CalendarScreenState extends State<CalendarScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Quotes'),
+        title: Text('Quotes',style: GoogleFonts.portLligatSans(
+          textStyle: Theme.of(context).textTheme.display1,
+          fontSize: 18,
+          fontWeight: FontWeight.w700,
+          color: Colors.white,
+        ),),
         centerTitle: true,
         backgroundColor: Style.Colors.secondColor,
       ),
@@ -268,9 +273,12 @@ class _CalendarScreenState extends State<CalendarScreen> {
                         child: Text(
                           quotes[i].quote,
                           maxLines: 2,
-                          style: TextStyle(
-                            //color: primary,
-                              fontSize: 18),
+                          style: GoogleFonts.portLligatSans(
+                            textStyle: Theme.of(context).textTheme.display1,
+                            fontSize: 18,
+                            fontWeight: FontWeight.w500,
+                            color: Colors.black,
+                          ),
                         ),
                       ),
                     ),
@@ -391,9 +399,12 @@ class _CalendarScreenState extends State<CalendarScreen> {
                         child: Text(
                           quotes[i].quote,
                           maxLines: 2,
-                          style: TextStyle(
-                            //color: primary,
-                              fontSize: 18),
+                          style: GoogleFonts.portLligatSans(
+                            textStyle: Theme.of(context).textTheme.display1,
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black,
+                          ),
                         ),
                       ),
                     ),
@@ -517,9 +528,12 @@ class _CalendarScreenState extends State<CalendarScreen> {
                         child: Text(
                           quotes[i].quoteHin,
                           maxLines: 2,
-                          style: TextStyle(
-                            //color: primary,
-                              fontSize: 18),
+                          style: GoogleFonts.portLligatSans(
+                            textStyle: Theme.of(context).textTheme.display1,
+                            fontSize: 18,
+                            fontWeight: FontWeight.w500,
+                            color: Colors.black,
+                          ),
                         ),
                       ),
                     ),
@@ -530,9 +544,12 @@ class _CalendarScreenState extends State<CalendarScreen> {
                         child: Text(
                           quotes[i].quoteEng,
                           maxLines: 2,
-                          style: TextStyle(
-                            //color: primary,
-                              fontSize: 18),
+                          style: GoogleFonts.portLligatSans(
+                            textStyle: Theme.of(context).textTheme.display1,
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black,
+                          ),
                         ),
                       ),
                     ),

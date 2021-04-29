@@ -9,8 +9,8 @@ class QuotesBoth{
 
   QuotesBoth.fromJSON(Map<String,dynamic> json):
       id = json["Id"],
-      quoteHin = json["QuoteHindi"],
-      quoteEng = json["QuoteEn"],
+      quoteHin = json["Quote_hi"],
+      quoteEng = json["Quote_en"],
       date = json["QuoteDate"],
       genre = "both";
 }
