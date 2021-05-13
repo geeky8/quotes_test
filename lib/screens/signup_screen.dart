@@ -1,16 +1,17 @@
 import 'dart:ui';
+import 'package:country_code_picker/country_code_picker.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:intl_phone_number_input/intl_phone_number_input.dart';
 import 'package:quotes/screens/home_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:quotes/screens/login_screen.dart';
 import 'dart:math';
 import 'package:quotes/widgets/clipPainter.dart';
 import 'package:quotes/widgets/country_dropdown.dart';
+
+import '../main.dart';
 
 class Signup extends StatefulWidget {
   Signup({Key key, this.title}) : super(key: key);
@@ -26,14 +27,10 @@ class _SignupState extends State<Signup> {
   TextEditingController name;
   TextEditingController phone;
   String initCountry = "IN";
-  PhoneNumber number = PhoneNumber(isoCode: "IN");
-  // TextEditingController password;
   TextEditingController state;
   TextEditingController city;
   String country;
   Dio _dio = Dio();
-  // String state;
-  // String city;
 
   Widget _backButton() {
     return InkWell(
@@ -41,15 +38,15 @@ class _SignupState extends State<Signup> {
         Navigator.pop(context);
       },
       child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 10),
+        padding: EdgeInsets.symmetric(horizontal: 0.0277*width),
         child: Row(
           children: <Widget>[
             Container(
-              padding: EdgeInsets.only(left: 0, top: 10, bottom: 10),
+              padding: EdgeInsets.only(left: 0, top: 0.0135*height, bottom: 0.0135*height),
               child: Icon(Icons.keyboard_arrow_left, color: Colors.black),
             ),
             Text('Back',
-                style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500))
+                style: TextStyle(fontSize: 0.0333*width, fontWeight: FontWeight.w500))
           ],
         ),
       ),
@@ -59,18 +56,18 @@ class _SignupState extends State<Signup> {
   Widget _entryField(String title, TextEditingController control,String hint,
       {bool isPassword = false}) {
     return Container(
-      margin: EdgeInsets.symmetric(vertical: 10,horizontal: 10),
-      width: 280,
-      height: 76,
+      margin: EdgeInsets.symmetric(vertical: 0.0135*height,horizontal: 0.0277*width),
+      width: 0.777*width,
+      height: 0.1032*height,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Text(
             title,
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 0.0416*width),
           ),
           SizedBox(
-            height: 10,
+            height: 0.0135*height,
           ),
           TextField(
             obscureText: isPassword,
@@ -78,12 +75,11 @@ class _SignupState extends State<Signup> {
               border: InputBorder.none,
               fillColor: Color(0xfff3f3f4),
               filled: true,
-              hintText: hint,
-              hintStyle: TextStyle(color: Colors.black26,fontSize: 15,fontWeight: FontWeight.bold),
+              hintText: validate?"Please fill the details":hint,
+              hintStyle: validate?TextStyle(color: Colors.red,fontSize: 0.0286*width,fontWeight: FontWeight.bold):TextStyle(color: Colors.black26,fontSize: 0.0416*width,fontWeight: FontWeight.bold),
             ),
-            scrollPadding: EdgeInsets.all(10),
+            scrollPadding: EdgeInsets.all(0.0277*width),
             controller: control,
-
           ),
         ],
       ),
@@ -91,64 +87,42 @@ class _SignupState extends State<Signup> {
   }
 
   Widget _submitButton() {
-    // return GestureDetector(
-    //   child: Container(
-    //     width: MediaQuery.of(context).size.width,
-    //     padding: EdgeInsets.symmetric(vertical: 15),
-    //     alignment: Alignment.center,
-    //     decoration: BoxDecoration(
-    //         borderRadius: BorderRadius.all(Radius.circular(5)),
-    //         boxShadow: <BoxShadow>[
-    //           BoxShadow(
-    //               color: Colors.grey.shade200,
-    //               offset: Offset(2, 4),
-    //               blurRadius: 5,
-    //               spreadRadius: 2)
-    //         ],
-    //         gradient: LinearGradient(
-    //             begin: Alignment.centerLeft,
-    //             end: Alignment.centerRight,
-    //             colors: [Color(0xfffbb448), Color(0xfff7892b)])),
-    //     child: Text(
-    //       'Register Now',
-    //       style: TextStyle(fontSize: 20, color: Colors.white),
-    //     ),
-    //   ),
-    // );
     return Padding(
-      padding: EdgeInsets.all(15),
+      padding: EdgeInsets.all(0.04166*width),
       child: Material(
-        elevation: 5.0,
+        elevation: 0.0067*height,
         borderRadius: BorderRadius.circular(25.0),
         color: Color(0xffe46b10),
         child: MaterialButton(
           minWidth: MediaQuery.of(context).size.width / 2.7,
           height: MediaQuery.of(context).size.width / 10.7,
-          padding: EdgeInsets.fromLTRB(10.0, 15.0, 10.0, 15.0),
+          padding: EdgeInsets.fromLTRB(0.0416*width, 0.0203*height, 0.0277*width, 0.0203*height),
           child: Text(
             "Register Now",
             textAlign: TextAlign.center,
             style: TextStyle(
-              fontSize: 17.0,
+              fontSize: 0.0472*width,
               color: Colors.white,
               fontWeight: FontWeight.bold,
             ),
           ),
           onPressed: () async {
-            try {
-              SharedPreferences prefs = await SharedPreferences.getInstance();
-              prefs.setString("user", email.text);
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => HomeScreen()));
-              saveUser(name.text, email.text, country, city.text, number.phoneNumber);
-            } catch (e) {
-              print(e);
+            if(name.text=="" ||email.text==""||phone.text==""||city.text==""){
+              setState(() {
+                validate = true;
+              });
             }
-            // print(email.text);
-            // print(name.text);
-            print(country);
-            // print(city.text);
-            // print(number.phoneNumber);
+            else{
+              try {
+                SharedPreferences prefs = await SharedPreferences.getInstance();
+                prefs.setString("user", email.text);
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => HomeScreen()));
+                saveUser(name.text, email.text, country, city.text, "${number}${phone.text}");
+              } catch (e) {
+                print(e);
+              }
+            }
           },
         ),
       ),
@@ -159,29 +133,29 @@ class _SignupState extends State<Signup> {
     return InkWell(
       onTap: () {},
       child: Container(
-        margin: EdgeInsets.symmetric(vertical: 5),
-        padding: EdgeInsets.all(10),
+        margin: EdgeInsets.symmetric(vertical: 0.0067*height),
+        padding: EdgeInsets.all(0.0055*width),
         alignment: Alignment.bottomCenter,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
               'Already have an account ?',
-              style: TextStyle(fontSize: 13, fontWeight: FontWeight.w600),
+              style: TextStyle(fontSize: 0.0361*width, fontWeight: FontWeight.w600),
             ),
             SizedBox(
-              width: 10,
+              width: 0.0277*width,
             ),
             GestureDetector(
               onTap: (){
                 Navigator.push(context, MaterialPageRoute(builder: (context)=>Login()));
-                print(country);
+                print("${number}${phone.text}");
               },
               child: Text(
                 'Login',
                 style: TextStyle(
                     color: Color(0xfff79c4f),
-                    fontSize: 13,
+                    fontSize: 0.0361*width,
                     fontWeight: FontWeight.w600),
               ),
             ),
@@ -192,27 +166,12 @@ class _SignupState extends State<Signup> {
   }
 
   Widget _title() {
-    return RichText(
-      textAlign: TextAlign.center,
-      text: TextSpan(
-          text: 'Q',
-          style: GoogleFonts.portLligatSans(
-            textStyle: Theme.of(context).textTheme.display1,
-            fontSize: 30,
-            fontWeight: FontWeight.w700,
-            color: Color(0xffe46b10),
-          ),
-          children: [
-            TextSpan(
-              text: 'uo',
-              style: TextStyle(color: Colors.black, fontSize: 30),
-            ),
-            TextSpan(
-              text: 'tes',
-              style: TextStyle(color: Color(0xffe46b10), fontSize: 30),
-            ),
-          ]),
+    return Container(
+      width: 0.333*width,
+      height: 0.163*height,
+      child: Image(image: AssetImage("images/saidattavikas-foundation.png"),),
     );
+
   }
 
   Widget _emailPasswordWidget() {
@@ -222,16 +181,15 @@ class _SignupState extends State<Signup> {
       children: <Widget>[
         _entryField("Name", name,"Name"),
         _entryField("Email id", email,"E-mail"),
-        // _entryField("Password",password, isPassword: true),
         Padding(
-          padding: EdgeInsets.only(left: 10),
-          child: Text('Country',style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold),),
+          padding: EdgeInsets.only(left: 0.0277*width),
+          child: Text('Country',style: TextStyle(fontSize: 0.04166*width,fontWeight: FontWeight.bold),),
         ),
-        SizedBox(height: 10,),
+        SizedBox(height: 0.0135*height,),
         Padding(
-          padding: EdgeInsets.only(left: 10),
+          padding: EdgeInsets.only(left: 0.0277*width),
           child: Container(
-            width: 280,
+            width: 0.777*width,
             decoration: BoxDecoration(
               color: Colors.grey[200],
             ),
@@ -242,47 +200,89 @@ class _SignupState extends State<Signup> {
                 });
               },
               country: country,
-              // onCountryChanged: (value){
-              //   setState(() {
-              //     country = value;
-              //   });
-              // },
-              // style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 14),
             ),
           ),
         ),
         _entryField("City", city,"City"),
-        // _entryField("City", city),
-        SizedBox(height: 10,),
-        InternationalPhoneNumberInput(
-          onInputChanged: (PhoneNumber value) {
-            setState(() {
-              number = value;
-            });
-          },
-          onFieldSubmitted: (String value){
-            print(number.phoneNumber);
-          },
-          // onSubmit: (){print(phone.text);},
-          initialValue: number,
-          textFieldController: phone,
-          keyboardType:
-              TextInputType.numberWithOptions(signed: true, decimal: true),
-          selectorConfig: SelectorConfig(
-            selectorType: PhoneInputSelectorType.BOTTOM_SHEET,
+        SizedBox(height: 0.0135*height,),
+        Container(
+          margin: EdgeInsets.symmetric(vertical: 0.0135*height,horizontal: 0.0277*width),
+          width: 0.777*width,
+          height: 0.1032*height,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Text(
+                "Phone",
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 0.0416*width),
+              ),
+              SizedBox(
+                height: 0.0135*height,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Container(
+                    width:0.250*width,
+                    child: CountryCodePicker(
+                      initialSelection: 'IN',
+                      onChanged: (value){
+                        setState(() {
+                          number = value.toString();
+                        });
+                      },
+                    ),
+                  ),
+                  Container(
+                    width: 0.526*width,
+                    child: TextField(
+                      decoration: InputDecoration(
+                        border: InputBorder.none,
+                        fillColor: Color(0xfff3f3f4),
+                        filled: true,
+                        hintText: validate?"Please fill the details":"Enter Number",
+                        hintStyle: validate?TextStyle(color: Colors.red,fontSize: 0.0286*width,fontWeight: FontWeight.bold):TextStyle(color: Colors.black26,fontSize: 0.0416*width,fontWeight: FontWeight.bold),
+                      ),
+                      scrollPadding: EdgeInsets.all(0.0277*width),
+                      controller: phone,
+                      keyboardType: TextInputType.number,
+                    ),
+                  ),
+                ],
+              ),
+            ],
           ),
-          selectorTextStyle: TextStyle(color: Colors.black),
-          autoValidateMode: AutovalidateMode.disabled,
-          inputBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.all(Radius.circular(12)),
-            borderSide: BorderSide(color: Colors.black,width: 1.1,style: BorderStyle.solid),
-          ),
-          spaceBetweenSelectorAndTextField: 16,
-          searchBoxDecoration: InputDecoration(
-            focusColor: Color(0xffe46b10),
-          ),
-          inputDecoration: InputDecoration(focusColor:Color(0xffe46b10) ),
-        )
+        ),
+        // InternationalPhoneNumberInput(
+        //   onInputChanged: (PhoneNumber value) {
+        //     setState(() {
+        //       number = value;
+        //     });
+        //   },
+        //   initialValue: number,
+        //   textFieldController: phone,
+        //   keyboardType:
+        //       TextInputType.number,
+        //   hintText: "Enter Number",
+        //   selectorConfig: SelectorConfig(
+        //     selectorType: PhoneInputSelectorType.BOTTOM_SHEET,
+        //   ),
+        //   selectorTextStyle: TextStyle(color: Colors.black),
+        //   autoValidateMode: AutovalidateMode.always,
+        //   keyboardAction: TextInputAction.done,
+        //   o
+        //   formatInput: false,
+        //   inputBorder: OutlineInputBorder(
+        //     borderRadius: BorderRadius.all(Radius.circular(12)),
+        //     borderSide: BorderSide(color: Colors.black,width: 1.1,style: BorderStyle.solid),
+        //   ),
+        //   spaceBetweenSelectorAndTextField: 0.0444*width,
+        //   searchBoxDecoration: InputDecoration(
+        //     focusColor: Color(0xffe46b10),
+        //   ),
+        //   inputDecoration: InputDecoration(focusColor:Color(0xffe46b10) ),
+        // )
+
       ],
     );
   }
@@ -293,9 +293,6 @@ class _SignupState extends State<Signup> {
     name = new TextEditingController();
     phone = new TextEditingController();
     city = new TextEditingController();
-    // password = new TextEditingController();
-    // country = new TextEditingController();
-    // city = new TextEditingController();
     super.initState();
   }
 
@@ -322,56 +319,57 @@ class _SignupState extends State<Signup> {
 
   @override
   Widget build(BuildContext context) {
-    final height = MediaQuery.of(context).size.height;
-    return Scaffold(
-      body: Container(
-        height: height,
-        child: Stack(
-          children: <Widget>[
-            Positioned(
-              top: -MediaQuery.of(context).size.height * .15,
-              right: -MediaQuery.of(context).size.width * .4,
-              child: Container(
-                  child: Transform.rotate(
-                angle: -pi / 3.5,
-                child: ClipPath(
-                  clipper: ClipPainter(),
-                  child: Container(
-                    height: MediaQuery.of(context).size.height * .5,
-                    width: MediaQuery.of(context).size.width,
-                    decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                            begin: Alignment.topCenter,
-                            end: Alignment.bottomCenter,
-                            colors: [Color(0xfffbb448), Color(0xffe46b10)])),
+    return InteractiveViewer(
+      child: Scaffold(
+        body: Container(
+          height: height,
+          child: Stack(
+            children: <Widget>[
+              Positioned(
+                top: -MediaQuery.of(context).size.height * .15,
+                right: -MediaQuery.of(context).size.width * .4,
+                child: Container(
+                    child: Transform.rotate(
+                  angle: -pi / 3.5,
+                  child: ClipPath(
+                    clipper: ClipPainter(),
+                    child: Container(
+                      height: MediaQuery.of(context).size.height * .5,
+                      width: MediaQuery.of(context).size.width,
+                      decoration: BoxDecoration(
+                          gradient: LinearGradient(
+                              begin: Alignment.topCenter,
+                              end: Alignment.bottomCenter,
+                              colors: [Color(0xfffbb448), Color(0xffe46b10)])),
+                    ),
+                  ),
+                )),
+              ),
+              Container(
+                padding: EdgeInsets.symmetric(horizontal: 0.0271*height),
+                child: SingleChildScrollView(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      SizedBox(height: height * 0.08),
+                      _title(),
+                      SizedBox(
+                        height: 0,
+                      ),
+                      _emailPasswordWidget(),
+                      SizedBox(
+                        height: 0.0271*height,
+                      ),
+                      _submitButton(),
+                      _loginAccountLabel(),
+                    ],
                   ),
                 ),
-              )),
-            ),
-            Container(
-              padding: EdgeInsets.symmetric(horizontal: 20),
-              child: SingleChildScrollView(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    SizedBox(height: height * 0.15),
-                    _title(),
-                    SizedBox(
-                      height: 30,
-                    ),
-                    _emailPasswordWidget(),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    _submitButton(),
-                    _loginAccountLabel(),
-                  ],
-                ),
               ),
-            ),
-            Positioned(top: 40, left: 0, child: _backButton()),
-          ],
+              Positioned(top: 0.0543*height, left: 0, child: _backButton()),
+            ],
+          ),
         ),
       ),
     );

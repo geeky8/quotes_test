@@ -1,23 +1,3 @@
-import 'package:flutter/material.dart';
-
-final List<Map> quotesList = [
-  {
-    "title":
-    "Strength does not  come from what you can do. \n Strength comes from overcoming the things you thought yyou couldn not",
-  },
-  {
-    "title":
-    "If you quit now, you will end up right back where you first began. \n And when you frist began, you were desperate to be where you are right now. Keep going.",
-  },
-  {
-    "title": "The Life you want comes when you decide to go get it. \n Just Remember Think positive, hope positive,definatly happen positive",
-  },
-  {
-    "title":
-    "Take the risk . if you win you will be happy. If you lose you will be wiser.",
-  },
-];
-
 final List<Map> quotesDay = [
   {
     "title":
@@ -35,13 +15,47 @@ final List<Map> quotesDay = [
   },
   {
     "title":
-    "ThisYear",
+    "YearQuote",
     "title1": "Year"
+  },
+  {
+    "title":"RandomsQuote",
+    "title1":"Random"
   },
 ];
 
-List<Map> genre = [
-  {"genre":"hi"},
+final List images = [
+  "baba-pic1-thumbnail.jpg",
+  "baba-pic2-thumbnail.jpg",
+  "baba-pic3-thumbnail.jpg",
+  "baba-pic4-thumbnail.jpg",
+  "baba-pic5-thumbnail.jpg",
+  "baba-pic6-thumbnail.jpg",
+  "baba-pic7-thumbnail.jpg",
+  "baba-pic8-thumbnail.jpg",
+  "baba-pic9-thumbnail.jpg",
+  "baba-pic10-thumbnail.jpg",
+  "baba-pic11-thumbnail.jpg",
+  "baba-pic12-thumbnail.jpg",
+  "baba-pic13-thumbnail.jpg",
+  "baba-pic14-thumbnail.jpg",
+  "baba-pic15-thumbnail.jpg",
+  "baba-pic16-thumbnail.jpg",
+  "baba-pic17-thumbnail.jpg"
+];
+
+final List<int> years = [
+  2011,
+  2012,
+  2013,
+  2014,
+  2015,
+  2016,
+  2017,
+  2018,
+  2019,
+  2020,
+  2021,
 ];
 
 

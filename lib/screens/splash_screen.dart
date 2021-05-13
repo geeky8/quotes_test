@@ -1,11 +1,11 @@
 import 'dart:async';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:quotes/main.dart';
 import 'package:quotes/screens/home_screen.dart';
+import 'package:quotes/screens/login_screen.dart';
 import 'package:quotes/screens/signup_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:quotes/style/theme.dart' as Style;
 
 class SplashScreen extends StatefulWidget {
   @override
@@ -22,7 +22,6 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    display();
     Timer(Duration(seconds: 4),getData);
   }
   display() async{
@@ -43,85 +42,82 @@ class _SplashScreenState extends State<SplashScreen> {
   getData() async{
     SharedPreferences preferences = await SharedPreferences.getInstance();
     if(preferences.getString("user")!=null){
-      setState(() {
-        title = "Welcome \n Back";
-      });
       Navigator.push(context, MaterialPageRoute(builder: (context)=>HomeScreen()));
     }
     else{
-      setState(() {
-        title = "Welcome";
-      });
-      print("NO");
       Navigator.push(context, MaterialPageRoute(builder: (context)=>Signup()));
     }
   }
 
   @override
   Widget build(BuildContext context) {
+    setState(() {
+      height = MediaQuery.of(context).size.height;
+      width = MediaQuery.of(context).size.width;
+    });
     return Scaffold(
       body: Stack(
         fit: StackFit.expand,
         children: <Widget>[
           Container(
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                  colors: [Color(0xfffbb448), Color(0xffe46b10)])
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height,
+            child: Image(
+              image: AssetImage("images/Welcome-Screen.jpg"),
+              fit: BoxFit.cover,
             ),
           ),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: <Widget>[
-              Expanded(
-                flex: 2,
-                child: Container(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      CircleAvatar(
-                        backgroundColor: Colors.white,
-                        radius: 55.0,
-                        child: Image(
-                          image: NetworkImage("https://image.flaticon.com/icons/png/128/84/84081.png"),
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(top: 10.0),
-                      ),
-                      Text(
-                        "Quotes",
-                        style: GoogleFonts.portLligatSans(
-                          textStyle: Theme.of(context).textTheme.display1,
-                          fontSize: 30,
-                          fontWeight: FontWeight.w700,
-                          color: Colors.white,
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-              ),
-              Expanded(
-                child: Column(
-                  children: <Widget>[
-                    Text(
-                      title,
-                      softWrap: true,
-                      textAlign: TextAlign.center,
-                      style: GoogleFonts.portLligatSans(
-                        textStyle: Theme.of(context).textTheme.display1,
-                        fontSize: 30,
-                        fontWeight: FontWeight.w700,
-                        color: Colors.white,
-                      ),
-                    )
-                  ],
-                ),
-              )
-            ],
-          )
+          // Container(
+          //   decoration: BoxDecoration(
+          //     gradient: LinearGradient(
+          //         begin: Alignment.topCenter,
+          //         end: Alignment.bottomCenter,
+          //         colors: [Color(0xfffbb448), Color(0xffe46b10)])
+          //   ),
+          // ),
+          // Column(
+          //   mainAxisAlignment: MainAxisAlignment.start,
+          //   children: <Widget>[
+          //     Expanded(
+          //       flex: 2,
+          //       child: Container(
+          //         child: Column(
+          //           mainAxisAlignment: MainAxisAlignment.center,
+          //           children: <Widget>[
+          //             CircleAvatar(
+          //               backgroundColor: Colors.white,
+          //               radius: 70.0,
+          //               child: Image(
+          //                 image: AssetImage("images/saidattavikas-foundation.png"),
+          //                 fit: BoxFit.cover,
+          //               ),
+          //             ),
+          //             Padding(
+          //               padding: EdgeInsets.only(top: 10.0),
+          //             ),
+          //           ],
+          //         ),
+          //       ),
+          //     ),
+          //     Expanded(
+          //       child: Column(
+          //         children: <Widget>[
+          //           Text(
+          //             title,
+          //             softWrap: true,
+          //             textAlign: TextAlign.center,
+          //             style: GoogleFonts.portLligatSans(
+          //               textStyle: Theme.of(context).textTheme.display1,
+          //               fontSize: 30,
+          //               fontWeight: FontWeight.w700,
+          //               color: Colors.white,
+          //             ),
+          //           )
+          //         ],
+          //       ),
+          //     )
+          //   ],
+          // )
         ],
       ),
     );

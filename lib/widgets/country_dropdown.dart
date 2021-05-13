@@ -6,17 +6,11 @@ import 'package:flutter/services.dart';
 
 class Country extends StatefulWidget {
 
-  final Function onCountryChanged;
   final Function countryChange;
-  final TextStyle style;
-  final Color dropdownColor;
   final String country;
 
   const Country(
       {Key key,
-        this.onCountryChanged,
-        this.style,
-        this.dropdownColor,
         this.countryChange,
         this.country})
       : super(key: key);
@@ -27,7 +21,6 @@ class Country extends StatefulWidget {
 
 class _CountryState extends State<Country> {
 
-  String _selectedCountry = "Choose Country";
   List<String> _country = ["Choose Country"];
   var responses;
   bool color = false;
@@ -53,13 +46,6 @@ class _CountryState extends State<Country> {
     return _country;
   }
 
-  void _onSelectedCountry(String value) {
-    if (!mounted) return;
-    setState(() {
-      _selectedCountry = value;
-      this.widget.onCountryChanged(value);
-    });
-  }
 
   @override
   void initState() {
@@ -72,30 +58,6 @@ class _CountryState extends State<Country> {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
-        // DropdownButton<String>(
-        //   onTap: (){
-        //     setState(() {
-        //       color = true;
-        //     });
-        //   },
-        //   dropdownColor: Colors.white,
-        //   isExpanded: true,
-        //   items: _country.map((String dropDownStringItem) {
-        //     return DropdownMenuItem<String>(
-        //       value: dropDownStringItem,
-        //       child: Row(
-        //         children: [
-        //           Text(
-        //             dropDownStringItem,
-        //             style: TextStyle(color: color?Colors.black:Colors.black26,fontWeight: FontWeight.bold,fontSize: 14),
-        //           )
-        //         ],
-        //       ),
-        //     );
-        //   }).toList(),
-        //   onChanged: (value) => _onSelectedCountry(value),
-        //   value: _selectedCountry,
-        // ),
         DropDownField(
           onValueChanged: widget.countryChange,
           value: widget.country,
