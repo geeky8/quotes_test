@@ -7,6 +7,7 @@ import 'package:quotes/models/quotes_english_response.dart';
 
 class QuoteRepository{
   static String mainUrl = "http://swiftinit.net:813";
+  final String apikey  =  "asQwe89Example@345TokenKey14587";
   final Dio _dio = Dio();
 
   Future<QuoteHindiResponse> getHindiQuotes(String lang,String genre) async {
@@ -20,7 +21,9 @@ class QuoteRepository{
         };
     try {
       Response response =
-      await _dio.get("$mainUrl/$genre", queryParameters: params);
+      await _dio.get("$mainUrl/$genre", queryParameters: params,options: Options(headers: {
+        "X-API-Key": "asQwe89Example@345TokenKey14587"
+      },));
       // print(response.extra);
       List map1 = json.decode(response.data);
       return QuoteHindiResponse.fromJSON(map1);
@@ -40,7 +43,9 @@ class QuoteRepository{
     };
     try {
       Response response =
-      await _dio.get("$mainUrl/$genre", queryParameters: params);
+      await _dio.get("$mainUrl/$genre", queryParameters: params,options:Options(headers: {
+        "X-API-Key": "asQwe89Example@345TokenKey14587"
+      },));
       // print(response.extra);
       List map1 = json.decode(response.data);
       return QuoteEnglishResponse.fromJSON(map1);
@@ -61,7 +66,9 @@ class QuoteRepository{
     };
     try {
       Response response =
-      await _dio.get("$mainUrl/$genre", queryParameters: params);
+      await _dio.get("$mainUrl/$genre", queryParameters: params,options: Options(headers: {
+        "X-API-Key": "asQwe89Example@345TokenKey14587"
+      },));
       // print(response.extra);
       List map1 = json.decode(response.data);
       return QuoteBothResponse.fromJSON(map1);
@@ -79,7 +86,9 @@ class QuoteRepository{
     };
     try {
       Response response =
-      await _dio.get("$mainUrl/$genre", queryParameters: params);
+      await _dio.get("$mainUrl/$genre", queryParameters: params,options: Options(headers: {
+        "X-API-Key": "asQwe89Example@345TokenKey14587"
+      },));
       // print(response.extra);
       List map1 = json.decode(response.data);
       return QuoteHindiResponse.fromJSON(map1);
@@ -97,7 +106,9 @@ class QuoteRepository{
     };
     try {
       Response response =
-      await _dio.get("$mainUrl/$genre", queryParameters: params);
+      await _dio.get("$mainUrl/$genre", queryParameters: params,options: Options(headers: {
+        "X-API-Key": "asQwe89Example@345TokenKey14587"
+      },));
       // print(response.extra);
       List map1 = json.decode(response.data);
       return QuoteEnglishResponse.fromJSON(map1);
@@ -115,7 +126,9 @@ class QuoteRepository{
     };
     try {
       Response response =
-      await _dio.get("$mainUrl/$genre", queryParameters: params);
+      await _dio.get("$mainUrl/$genre", queryParameters: params,options: Options(headers: {
+        "X-API-Key": "asQwe89Example@345TokenKey14587"
+      },));
       // print(response.extra);
       List map1 = json.decode(response.data);
       return QuoteBothResponse.fromJSON(map1);

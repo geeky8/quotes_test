@@ -6,11 +6,12 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:quotes/elements/quotes.dart';
 import 'package:quotes/main.dart';
+import 'package:quotes/screens/contact_screen.dart';
 import 'package:quotes/screens/search_screen.dart';
 import 'package:quotes/style/theme.dart' as Style;
 import 'package:quotes/widgets/calender.dart';
 import 'package:quotes/widgets/genre_quotes.dart';
-import 'package:quotes/screens/contact_screen.dart';
+import 'package:quotes/screens/about_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -153,65 +154,67 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
                   elevation: 5,
                 ),
               ),
-              body: SafeArea(
-                child: Column(
-                  children: [
-                    Container(
-                      height: MediaQuery.of(context).size.height/1.293,
-                      child: DefaultTabController(
-                        length: quotesDay.length,
-                        child: Scaffold(
-                          backgroundColor: Colors.transparent,
-                          appBar: PreferredSize(
-                            preferredSize: Size.fromHeight(0.067*height),
-                            child: AppBar(
-                              backgroundColor: Style.Colors.secondary,
-                              elevation: 0,
-                              bottom: TabBar(
-                                controller: _controller,
-                                indicatorColor: Colors.white,
-                                indicatorSize: TabBarIndicatorSize.tab,
-                                indicatorWeight: 3,
-                                unselectedLabelColor: Colors.white.withOpacity(0.7),
-                                labelColor: Colors.white,
-                                isScrollable: true,
-                                tabs: quotesDay.map((item){
-                                  return Container(
-                                    padding: EdgeInsets.only(top: 0.0135*height,bottom: 0.020*height,left: 0.0416*width,right: 0.0194*width),
-                                    child: Text(
-                                      item['title1'],
-                                      style: TextStyle(
-                                        fontSize: 0.038*width,
-                                        color: Colors.white,
-                                        fontFamily: "Lexend",
+              body: InteractiveViewer(
+                child: SafeArea(
+                  child: Column(
+                    children: [
+                      Container(
+                        height: MediaQuery.of(context).size.height/1.293,
+                        child: DefaultTabController(
+                          length: quotesDay.length,
+                          child: Scaffold(
+                            backgroundColor: Colors.transparent,
+                            appBar: PreferredSize(
+                              preferredSize: Size.fromHeight(0.067*height),
+                              child: AppBar(
+                                backgroundColor: Style.Colors.secondary,
+                                elevation: 0,
+                                bottom: TabBar(
+                                  controller: _controller,
+                                  indicatorColor: Color(0xff9D8A53),
+                                  indicatorSize: TabBarIndicatorSize.tab,
+                                  indicatorWeight: 3,
+                                  unselectedLabelColor: Colors.white,
+                                  labelColor: Color(0xff9D8A53),
+                                  isScrollable: true,
+                                  tabs: quotesDay.map((item){
+                                    return Container(
+                                      padding: EdgeInsets.only(top: 0.0135*height,bottom: 0.020*height,left: 0.0416*width,right: 0.0194*width),
+                                      child: Text(
+                                        item['title1'],
+                                        style: TextStyle(
+                                          fontSize: 0.038*width,
+                                          // color: Colors.white,
+                                          fontFamily: "Lexend",
+                                        ),
                                       ),
-                                    ),
-                                  );
-                                }).toList(),
-                                onTap: (int){
-                                  setState(() {
-                                    genre = quotesDay[int]["title"];
-                                    ind = int;
-                                  });
-                                  setQuote();
-                                },
+                                    );
+                                  }).toList(),
+                                  onTap: (int){
+                                    setState(() {
+                                      genre = quotesDay[int]["title"];
+                                      ind = int;
+                                    });
+                                    setQuote();
+                                  },
+                                ),
                               ),
                             ),
-                          ),
-                          body: TabBarView(
-                            controller: _controller,
-                            physics: NeverScrollableScrollPhysics(),
-                            children: quotesDay.map((item){
-                                return Padding(
-                                  padding: EdgeInsets.only(top: 0.0054*height),
-                                  child: GenreQuotes(),
-                                );
-                            }).toList(),
+                            body: TabBarView(
+                              controller: _controller,
+                              physics: NeverScrollableScrollPhysics(),
+                              children: quotesDay.map((item){
+                                  return Padding(
+                                    padding: EdgeInsets.only(top: 0.0054*height),
+                                    child: GenreQuotes(),
+                                  );
+                              }).toList(),
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
               // bottomNavigationBar: Container(
@@ -279,27 +282,48 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
                   color: Style.Colors.secondary,
                 ),
                 child: Padding(
-                  padding: EdgeInsets.symmetric(vertical: 0.0067*height,horizontal:0.027*width),
+                  padding: EdgeInsets.symmetric(vertical: 0.0067*height),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      GestureDetector(
-                        onTap: (){
-                          Navigator.push(context, MaterialPageRoute(builder: (context)=>Contact()));
-                        },
-                        child: Row(
-                          children: [
-                            Icon(FontAwesomeIcons.infoCircle,color: Colors.white,size: 0.0674*width,),
-                            SizedBox(width: 0.0085*width,),
-                            Padding(
-                              padding: EdgeInsets.only(top: 2),
-                              child: Text("CONTACT US",style: TextStyle(color: Colors.white,fontWeight: FontWeight.w500,fontSize: 0.0355*width),),
-                            )
-                          ],
+                      Padding(
+                        padding: EdgeInsets.only(left: 0.02166*width),
+                        child: GestureDetector(
+                          onTap: (){
+                            Navigator.push(context, MaterialPageRoute(builder: (context)=>About()));
+                          },
+                          child: Row(
+                            children: [
+                              Icon(FontAwesomeIcons.infoCircle,color: Colors.white,size: 0.0674*width,),
+                              SizedBox(width: 0.0085*width,),
+                              Padding(
+                                padding: EdgeInsets.only(top: 2),
+                                child: Text("ABOUT",style: TextStyle(color: Colors.white,fontWeight: FontWeight.w500,fontSize: 0.0355*width),),
+                              )
+                            ],
+                          ),
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsets.only(right: 0.04166*width),
+                        padding: EdgeInsets.only(left: 0.01566*width),
+                        child: GestureDetector(
+                          onTap: (){
+                            Navigator.push(context, MaterialPageRoute(builder: (context)=>Contact()));
+                          },
+                          child: Row(
+                            children: [
+                              Icon(FontAwesomeIcons.phoneSquareAlt,color: Colors.white,size: 0.0674*width,),
+                              SizedBox(width: 0.0085*width,),
+                              Padding(
+                                padding: EdgeInsets.only(top: 2),
+                                child: Text("CONTACT",style: TextStyle(color: Colors.white,fontWeight: FontWeight.w500,fontSize: 0.0355*width),),
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(right: 0),
                         child: GestureDetector(
                           onTap: (){
                             setState(() {
@@ -320,24 +344,27 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
                           ),
                         ),
                       ),
-                      GestureDetector(
-                        onTap: (){
-                          setState(() {
-                            genre = "KeywordQuote";
-                          });
-                          Navigator.push(context, MaterialPageRoute(builder: (context)=>SearchScreen()));
-                        },
-                        child: Padding(
-                          padding: EdgeInsets.only(right: 0.0222*width),
-                          child: Row(
-                            children: [
-                              Icon(EvaIcons.search,color: Colors.white,size: 0.0674*width,),
-                              SizedBox(width: 0.0085*width,),
-                              Padding(
-                                padding: EdgeInsets.only(top: 2),
-                                child: Text("SEARCH",style: TextStyle(color: Colors.white,fontWeight: FontWeight.w500,fontSize:  0.0355*width),),
-                              )
-                            ],
+                      Padding(
+                        padding: EdgeInsets.only(left: 0.02166*width),
+                        child: GestureDetector(
+                          onTap: (){
+                            setState(() {
+                              genre = "KeywordQuote";
+                            });
+                            Navigator.push(context, MaterialPageRoute(builder: (context)=>SearchScreen()));
+                          },
+                          child: Padding(
+                            padding: EdgeInsets.only(right: 0.0222*width),
+                            child: Row(
+                              children: [
+                                Icon(EvaIcons.search,color: Colors.white,size: 0.0674*width,),
+                                SizedBox(width: 0.0085*width,),
+                                Padding(
+                                  padding: EdgeInsets.only(top: 2),
+                                  child: Text("SEARCH",style: TextStyle(color: Colors.white,fontWeight: FontWeight.w500,fontSize:  0.0355*width),),
+                                )
+                              ],
+                            ),
                           ),
                         ),
                       ),

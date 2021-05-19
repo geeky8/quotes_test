@@ -64,138 +64,109 @@ class _SearchScreenState extends State<SearchScreen> {
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: _onwillPop,
-      child: Scaffold(
-        resizeToAvoidBottomInset: false,
-        backgroundColor: Color(0xFFF3EFDE),
-        appBar: PreferredSize(
-          preferredSize: Size.fromHeight(0.1086*height),
-          child: AppBar(
-            title: Padding(padding:EdgeInsets.only(top: 0.020*height,left: 0.083*width),child: Image(image: AssetImage('images/vikasrunwalquotes.png'),)),
-            backgroundColor: Style.Colors.primary,
-            elevation: 0,
-            leading: Padding(
-              padding:EdgeInsets.only(top: 0.020*height,left: 0),
-              child: IconButton(
-                icon: Icon(EvaIcons.arrowBack,color: Colors.white,),
-                iconSize: 0.077*width,
-                onPressed: (){
-                  setState(() {
-                    genre = "TodaysQuote";
-                    ind = 0;
-                  });
-                  setQuote();
-                  Navigator.of(context).pop(true);
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=>HomeScreen()));
-                },
+      child: InteractiveViewer(
+        child: Scaffold(
+          resizeToAvoidBottomInset: false,
+          backgroundColor: Color(0xFFF3EFDE),
+          appBar: PreferredSize(
+            preferredSize: Size.fromHeight(0.1086*height),
+            child: AppBar(
+              title: Padding(padding:EdgeInsets.only(top: 0.020*height,left: 0.083*width),child: Image(image: AssetImage('images/vikasrunwalquotes.png'),)),
+              backgroundColor: Style.Colors.primary,
+              elevation: 0,
+              leading: Padding(
+                padding:EdgeInsets.only(top: 0.020*height,left: 0),
+                child: IconButton(
+                  icon: Icon(EvaIcons.arrowBack,color: Colors.white,),
+                  iconSize: 0.077*width,
+                  onPressed: (){
+                    setState(() {
+                      genre = "TodaysQuote";
+                      ind = 0;
+                    });
+                    setQuote();
+                    Navigator.of(context).pop(true);
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>HomeScreen()));
+                  },
+                ),
               ),
             ),
           ),
-        ),
-        body: Column(
-          children: [
-            SizedBox(height: 0.0135*height,),
-            TextFormField(
-              style: TextStyle(
-                fontSize: 0.0388*width,
-                color: Colors.black,
-              ),
-              controller: _searchController,
-              onChanged: (String value){
-                searchQuote(value);
-                if(_searchController.text==null){
-                  searchQuote("vikas");
-                }
-              },
-              decoration: InputDecoration(
-                floatingLabelBehavior: FloatingLabelBehavior.never,
-                filled: true,
-                fillColor: Colors.grey[100],
-                suffixIcon: _searchController.text.length > 0? IconButton(icon: Icon(EvaIcons.backspaceOutline), onPressed: (){
-                  setState(() {
-                    FocusScope.of(context).requestFocus(FocusNode());
-                    _searchController.clear();
-                    searchQuote(_searchController.text);
-                  });
-                },) :
-                Icon(EvaIcons.searchOutline,color: Colors.grey[500],size: 0.0444*width,),
-                enabledBorder: OutlineInputBorder(
-                  borderSide: BorderSide(
-                    color: Colors.grey[100].withOpacity(0.3),
+          body: Column(
+            children: [
+              SizedBox(height: 0.0135*height,),
+              TextFormField(
+                style: TextStyle(
+                  fontSize: 0.0388*width,
+                  color: Colors.black,
+                ),
+                controller: _searchController,
+                onChanged: (String value){
+                  searchQuote(value);
+                  if(_searchController.text==null){
+                    searchQuote("vikas");
+                  }
+                },
+                decoration: InputDecoration(
+                  floatingLabelBehavior: FloatingLabelBehavior.never,
+                  filled: true,
+                  fillColor: Colors.grey[100],
+                  suffixIcon: _searchController.text.length > 0? IconButton(icon: Icon(EvaIcons.backspaceOutline), onPressed: (){
+                    setState(() {
+                      FocusScope.of(context).requestFocus(FocusNode());
+                      _searchController.clear();
+                      searchQuote(_searchController.text);
+                    });
+                  },) :
+                  Icon(EvaIcons.searchOutline,color: Colors.grey[500],size: 0.0444*width,),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Colors.grey[100].withOpacity(0.3),
+                    ),
+                    borderRadius: BorderRadius.circular(30),
                   ),
-                  borderRadius: BorderRadius.circular(30),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(
-                    color: Colors.grey[100].withOpacity(0.3),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Colors.grey[100].withOpacity(0.3),
+                    ),
+                    borderRadius: BorderRadius.circular(30),
                   ),
-                  borderRadius: BorderRadius.circular(30),
+                  contentPadding: EdgeInsets.only(left: 0.0416*width,right: 0.0277*width),
+                  labelText: "Search...",
+                  hintStyle: TextStyle(
+                    fontSize: 0.038*width,
+                    color: Colors.grey,
+                    fontWeight: FontWeight.w500,
+                  ),
+                  labelStyle: TextStyle(
+                    color: Colors.grey,
+                    fontSize: 0.038*width,
+                    fontWeight: FontWeight.w500,
+                  ),
                 ),
-                contentPadding: EdgeInsets.only(left: 0.0416*width,right: 0.0277*width),
-                labelText: "Search...",
-                hintStyle: TextStyle(
-                  fontSize: 0.038*width,
-                  color: Colors.grey,
-                  fontWeight: FontWeight.w500,
-                ),
-                labelStyle: TextStyle(
-                  color: Colors.grey,
-                  fontSize: 0.038*width,
-                  fontWeight: FontWeight.w500,
-                ),
+                autocorrect: false,
+                autovalidate: true,
               ),
-              autocorrect: false,
-              autovalidate: true,
-            ),
-            SizedBox(height: 0.0271*height,),
-            Container(
-              height: MediaQuery.of(context).size.height/1.402,
-              width: width,
-              child: SingleChildScrollView(
-                child: Column(
-                  children: [
-                    if (lang == "hi")
-                      Container(
-                        height: MediaQuery.of(context).size.height/1.402,
-                        width: MediaQuery.of(context).size.width,
-                        child: StreamBuilder<QuoteHindiResponse>(
-                            stream: searchHindiBloc.subject.stream,
-                            builder: (context,
-                                AsyncSnapshot<QuoteHindiResponse> snapshot) {
-                              if (snapshot.hasData) {
-                                // if(snapshot.data.error!=0 && snapshot.data.error.length>0){
-                                //   return buildError(snapshot.data.error);
-                                // }
-                                if (_QuoteBoxHindi(snapshot.data) == null || _searchController.text==null) {
-                                  return Center(
-                                    child: Container(
-                                      width: 0.1388*width,
-                                      height: 0.0679*height,
-                                      child: Text("NO QUOTES"),
-                                    ),
-                                  );
-                                } else {
-                                  return _QuoteBoxHindi(snapshot.data);
-                                }
-                              } else if (snapshot.hasError) {
-                                return buildError(snapshot.error);
-                              } else {
-                                return buildLoading();
-                              }
-                            }),
-                      )
-                    else if (lang == "en")
-                      Container(
+              SizedBox(height: 0.0271*height,),
+              Container(
+                height: MediaQuery.of(context).size.height/1.402,
+                width: width,
+                child: SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      if (lang == "hi")
+                        Container(
                           height: MediaQuery.of(context).size.height/1.402,
                           width: MediaQuery.of(context).size.width,
-                          child: StreamBuilder<QuoteEnglishResponse>(
-                              stream: searchEnglishBloc.subject.stream,
+                          child: StreamBuilder<QuoteHindiResponse>(
+                              stream: searchHindiBloc.subject.stream,
                               builder: (context,
-                                  AsyncSnapshot<QuoteEnglishResponse> snapshot) {
+                                  AsyncSnapshot<QuoteHindiResponse> snapshot) {
                                 if (snapshot.hasData) {
                                   // if(snapshot.data.error!=0 && snapshot.data.error.length>0){
                                   //   return buildError(snapshot.data.error);
                                   // }
-                                  if (_QuoteBoxEnglish(snapshot.data) == null || _searchController.text==null) {
+                                  if (_QuoteBoxHindi(snapshot.data) == null || _searchController.text==null) {
                                     return Center(
                                       child: Container(
                                         width: 0.1388*width,
@@ -204,47 +175,78 @@ class _SearchScreenState extends State<SearchScreen> {
                                       ),
                                     );
                                   } else {
-                                    return _QuoteBoxEnglish(snapshot.data);
+                                    return _QuoteBoxHindi(snapshot.data);
                                   }
                                 } else if (snapshot.hasError) {
                                   return buildError(snapshot.error);
                                 } else {
                                   return buildLoading();
                                 }
-                              }))
-                    else
-                      Container(
-                        height: MediaQuery.of(context).size.height/1.402,
-                        width: MediaQuery.of(context).size.width,
-                        child: StreamBuilder<QuoteBothResponse>(
-                            stream: searchBothBloc.subject.stream,
-                            builder: (context,
-                                AsyncSnapshot<QuoteBothResponse> snapshot) {
-                              if (snapshot.hasData) {
-                                // if(snapshot.data.error!=0 && snapshot.data.error.length>0){
-                                //   return buildError(snapshot.data.error);
-                                // }
-                                if (_QuoteBoxBoth(snapshot.data) == null || _searchController.text==null) {
-                                  return Container(
-                                    width: 0.1388*width,
-                                    height: 0.0679*height,
-                                    child: Text("NO QUOTES"),
-                                  );
+                              }),
+                        )
+                      else if (lang == "en")
+                        Container(
+                            height: MediaQuery.of(context).size.height/1.402,
+                            width: MediaQuery.of(context).size.width,
+                            child: StreamBuilder<QuoteEnglishResponse>(
+                                stream: searchEnglishBloc.subject.stream,
+                                builder: (context,
+                                    AsyncSnapshot<QuoteEnglishResponse> snapshot) {
+                                  if (snapshot.hasData) {
+                                    // if(snapshot.data.error!=0 && snapshot.data.error.length>0){
+                                    //   return buildError(snapshot.data.error);
+                                    // }
+                                    if (_QuoteBoxEnglish(snapshot.data) == null || _searchController.text==null) {
+                                      return Center(
+                                        child: Container(
+                                          width: 0.1388*width,
+                                          height: 0.0679*height,
+                                          child: Text("NO QUOTES"),
+                                        ),
+                                      );
+                                    } else {
+                                      return _QuoteBoxEnglish(snapshot.data);
+                                    }
+                                  } else if (snapshot.hasError) {
+                                    return buildError(snapshot.error);
+                                  } else {
+                                    return buildLoading();
+                                  }
+                                }))
+                      else
+                        Container(
+                          height: MediaQuery.of(context).size.height/1.402,
+                          width: MediaQuery.of(context).size.width,
+                          child: StreamBuilder<QuoteBothResponse>(
+                              stream: searchBothBloc.subject.stream,
+                              builder: (context,
+                                  AsyncSnapshot<QuoteBothResponse> snapshot) {
+                                if (snapshot.hasData) {
+                                  // if(snapshot.data.error!=0 && snapshot.data.error.length>0){
+                                  //   return buildError(snapshot.data.error);
+                                  // }
+                                  if (_QuoteBoxBoth(snapshot.data) == null || _searchController.text==null) {
+                                    return Container(
+                                      width: 0.1388*width,
+                                      height: 0.0679*height,
+                                      child: Text("NO QUOTES"),
+                                    );
+                                  } else {
+                                    return _QuoteBoxBoth(snapshot.data);
+                                  }
+                                } else if (snapshot.hasError) {
+                                  return buildError(snapshot.error);
                                 } else {
-                                  return _QuoteBoxBoth(snapshot.data);
+                                  return buildLoading();
                                 }
-                              } else if (snapshot.hasError) {
-                                return buildError(snapshot.error);
-                              } else {
-                                return buildLoading();
-                              }
-                            }),
-                      ),
-                  ],
+                              }),
+                        ),
+                    ],
+                  ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

@@ -20,6 +20,7 @@ import 'package:quotes/models/quotes_both_response.dart';
 import 'package:quotes/models/quotes_english.dart';
 import 'package:quotes/models/quotes_english_response.dart';
 import 'package:quotes/models/quotes_hindi.dart';
+import 'package:quotes/screens/about_screen.dart';
 import 'package:quotes/screens/contact_screen.dart';
 import 'package:quotes/screens/home_screen.dart';
 import 'package:quotes/screens/search_screen.dart';
@@ -97,6 +98,7 @@ class _QuotesOnePageState extends State<QuotesOnePage>
         children: [
           Container(
             height: MediaQuery.of(context).size.height,
+            padding: EdgeInsets.only(bottom: 30),
             child: Scaffold(
               backgroundColor: Color(0xFFF3EFDE),
               appBar: PreferredSize(
@@ -174,114 +176,102 @@ class _QuotesOnePageState extends State<QuotesOnePage>
                       },
                       child: Container(
                         width: double.infinity,
-                        height: MediaQuery.of(context).size.height / 1.402,
+                        height: MediaQuery.of(context).size.height / 1.312,
                         child: ListView(
                           children: [
                             Column(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                  children: [
-                                    // Padding(
-                                    //   padding: EdgeInsets.only(left: 0.0277*width,top: 0.0135*height),
-                                    //   child: IconButton(
-                                    //     onPressed: (){
-                                    //       var dt = formatter.format(DateTime.parse(date).subtract(Duration(days: 1)));
-                                    //       String next = "$dt$time";
-                                    //       Random random = new Random();
-                                    //       Navigator.push(context, MaterialPageRoute(builder: (context)=>QuotesOnePage(next,random.nextInt(images.length))));
-                                    //     },
-                                    //     icon: Icon(FontAwesomeIcons.backward,color: Style.Colors.secondary,),
-                                    //     iconSize: 0.0722*width,
-                                    //   )
-                                    // ),
-                                    Padding(
-                                      padding: EdgeInsets.only(top: 0.0271 * height),
-                                      child: Container(
-                                        child: IconButton(
-                                          icon: Icon(EvaIcons.clipboard,
-                                            color: Colors.deepOrange,),
-                                          iconSize: 0.0611 * width,
-                                          onPressed: () {
-                                            FlutterClipboard.copy("${quote}\n\n~${footer1}\n${footer2}");
-                                            final snackbar = SnackBar(
-                                              padding: EdgeInsets.only(
-                                                  bottom: 0.0679 * height),
-                                              elevation: 0.0067 * height,
-                                              content: Text('Message Copied'),
-                                              duration: Duration(seconds: 3),
-                                              action: SnackBarAction(
-                                                label: 'Undo',
-                                                onPressed: () {
-                                                  FlutterClipboard.paste().then((
-                                                      value) {});
-                                                },
-                                              ),
-                                            );
-                                            ScaffoldMessenger.of(context).showSnackBar(
-                                                snackbar);
-                                          },
-                                          // onPressed: (){
-                                          //   FlutterClipboard.copy("${quotes[index].quoteHin}\n\n${quotes[index].quoteEng}");
-                                          // },
-                                        ),
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding:
-                                          EdgeInsets.only(right: 0.034 * width),
-                                      child: Container(
-                                        padding: EdgeInsets.only(
-                                            top: 0.0271 * height),
-                                        child: Text(
-                                          getDate(date),
-                                          style: GoogleFonts.libreBaskerville(
-                                            fontSize: 0.0472 * width,
-                                            color: Style.Colors.secondary,
-                                            fontWeight: FontWeight.w400,
+                                Container(
+                                  height: 0.067*height,
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                    children: [
+                                      Padding(
+                                        padding: EdgeInsets.only(top: 0),
+                                        child: Container(
+                                          child: IconButton(
+                                            icon: Icon(EvaIcons.clipboard,
+                                              color: Colors.deepOrange,),
+                                            iconSize: 0.0611 * width,
+                                            onPressed: () {
+                                              FlutterClipboard.copy("${quote}\n\n~${footer1}\n${footer2}");
+                                              final snackbar = SnackBar(
+                                                padding: EdgeInsets.only(
+                                                    bottom: 0.0679 * height),
+                                                elevation: 0.0067 * height,
+                                                content: Text('Message Copied'),
+                                                duration: Duration(seconds: 3),
+                                                action: SnackBarAction(
+                                                  label: 'Undo',
+                                                  onPressed: () {
+                                                    FlutterClipboard.paste().then((
+                                                        value) {});
+                                                  },
+                                                ),
+                                              );
+                                              ScaffoldMessenger.of(context).showSnackBar(
+                                                  snackbar);
+                                            },
+                                            // onPressed: (){
+                                            //   FlutterClipboard.copy("${quotes[index].quoteHin}\n\n${quotes[index].quoteEng}");
+                                            // },
                                           ),
                                         ),
                                       ),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsets.only(top: 0.0271 * height),
-                                      child: Container(
-                                        child: InkWell(
-                                          child: Padding(
-                                            padding: EdgeInsets.all(0.0416 * width),
-                                            child: GestureDetector(
-                                              onTap: () {
-                                                share(context, "${quote}\n\n~${footer1}\n${footer2}");
-                                              },
-                                              child: Image(image: AssetImage(
-                                                  'images/share-icon.png'),),
+                                      Padding(
+                                        padding:
+                                            EdgeInsets.only(right: 0),
+                                        child: Container(
+                                          child: Text(
+                                            getDate(date),
+                                            style: GoogleFonts.libreBaskerville(
+                                              fontSize: 0.0472 * width,
+                                              color: Style.Colors.secondary,
+                                              fontWeight: FontWeight.w400,
                                             ),
                                           ),
                                         ),
                                       ),
-                                    ),
-                                    // Padding(
-                                    //   padding: EdgeInsets.only(right: 0.027*width,top: 0.0135*height),
-                                    //   child: IconButton(
-                                    //     onPressed: (){
-                                    //       var dt = formatter.format(DateTime.parse(date).add(Duration(days: 1)));
-                                    //       String next = "$dt$time";
-                                    //       Random random = new Random();
-                                    //       Navigator.push(context, MaterialPageRoute(builder: (context)=>QuotesOnePage(next,random.nextInt(images.length))));
-                                    //     },
-                                    //     icon: Icon(FontAwesomeIcons.forward,color: Style.Colors.secondary,),
-                                    //     iconSize: 0.0722*width,
-                                    //   ),
-                                    // ),
-                                  ],
+                                      Padding(
+                                        padding: EdgeInsets.only(top: 0),
+                                        child: Container(
+                                          child: InkWell(
+                                            child: Padding(
+                                              padding: EdgeInsets.all(0.0216 * width),
+                                              child: GestureDetector(
+                                                onTap: () {
+                                                  share(context, "${quote}\n\n~${footer1}\n${footer2}");
+                                                },
+                                                child: Image(image: AssetImage(
+                                                    'images/share-icon.png'),),
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                      // Padding(
+                                      //   padding: EdgeInsets.only(right: 0.027*width,top: 0.0135*height),
+                                      //   child: IconButton(
+                                      //     onPressed: (){
+                                      //       var dt = formatter.format(DateTime.parse(date).add(Duration(days: 1)));
+                                      //       String next = "$dt$time";
+                                      //       Random random = new Random();
+                                      //       Navigator.push(context, MaterialPageRoute(builder: (context)=>QuotesOnePage(next,random.nextInt(images.length))));
+                                      //     },
+                                      //     icon: Icon(FontAwesomeIcons.forward,color: Style.Colors.secondary,),
+                                      //     iconSize: 0.0722*width,
+                                      //   ),
+                                      // ),
+                                    ],
+                                  ),
                                 ),
                                 SizedBox(
-                                  height: 0.0407 * height,
+                                  height: 0.0107 * height,
                                 ),
                                 Container(
                                   width: double.infinity,
-                                  height: 0.339 * height,
+                                  height: 0.269 * height,
                                   child: Image(
                                     image: AssetImage(
                                         "images/baba-pic${imgno + 1}-big.jpg"),
@@ -289,32 +279,34 @@ class _QuotesOnePageState extends State<QuotesOnePage>
                                   ),
                                 ),
                                 SizedBox(
-                                  height: 0.0135 * height,
+                                  height: 0.0035 * height,
                                 ),
                                 Column(
                                   children: [
                                     Container(
                                       width: 0.138 * width,
-                                      height: 0.0679 * height,
+                                      height: 0.0479 * height,
                                       child: Image(
                                         image:
                                             AssetImage('images/quotation.png'),
                                         fit: BoxFit.cover,
                                       ),
                                     ),
-                                    SizedBox(
-                                      height: 0.0135 * height,
-                                    ),
+                                    // SizedBox(
+                                    //   height: 0.0135 * height,
+                                    // ),
                                     Container(
-                                      height: 0.4076 * height,
-                                      width: 0.7777*width,
+                                      // height: 0.4076 * height,
+                                      width: width,
                                       child: Scrollbar(
                                         isAlwaysShown: true,
+                                        thickness: 7,
+                                        radius: Radius.circular(8),
                                         controller: scrollController,
                                         child: SingleChildScrollView(
                                           controller: scrollController,
                                           child: Padding(
-                                            padding: EdgeInsets.all(0.0194*width),
+                                            padding: EdgeInsets.all(0.0114*width),
                                             child: Column(
                                               children: [
                                                 if (lang == "hi")
@@ -394,7 +386,7 @@ class _QuotesOnePageState extends State<QuotesOnePage>
                                                     width: MediaQuery.of(context)
                                                         .size
                                                         .width,
-                                                    height: 300,
+                                                    // height: 300,
                                                     child: StreamBuilder<
                                                             QuoteBothResponse>(
                                                         stream: quoteBothBloc
@@ -436,7 +428,7 @@ class _QuotesOnePageState extends State<QuotesOnePage>
                                     ),
                                     Container(
                                       width: 0.777 * width,
-                                      height: 0.2717 * height,
+                                      height: 0.2117 * height,
                                       // decoration: BoxDecoration(color: Colors.black),
                                       child: formatter.format(DateTime.parse(date))==formatter.format(DateTime.now())
                                           ?Stack(
@@ -457,7 +449,8 @@ class _QuotesOnePageState extends State<QuotesOnePage>
                                             ),
                                           ),
                                           Positioned(
-                                            left: 0.27 * width,
+                                            left: 100,
+                                            right: 0,
                                             bottom: 0.0107 * height,
                                             child: GestureDetector(
                                               onTap: () {
@@ -479,9 +472,10 @@ class _QuotesOnePageState extends State<QuotesOnePage>
                                               },
                                               child: Text(
                                                 "Previous",
-                                                style: GoogleFonts.lobster(
-                                                  fontSize: 0.066 * width,
-                                                  fontWeight: FontWeight.bold,
+                                                style: GoogleFonts.libreBaskerville(
+                                                  fontSize: 0.056 * width,
+                                                  fontWeight: FontWeight.w600,
+                                                  fontStyle: FontStyle.italic,
                                                   color: Style.Colors.secondary,
                                                 ),
                                               ),
@@ -528,7 +522,7 @@ class _QuotesOnePageState extends State<QuotesOnePage>
                                             left: 0,
                                             right: 0,
                                             top: 0,
-                                            bottom: 0.0271 * height,
+                                            bottom: 0.0571 * height,
                                             child: Container(
                                               // decoration: BoxDecoration(color: Colors.white),
                                               width: 0.277 * width,
@@ -540,8 +534,10 @@ class _QuotesOnePageState extends State<QuotesOnePage>
                                             ),
                                           ),
                                           Positioned(
-                                            left: 0.0138 * width,
-                                            bottom: 0.0407 * height,
+                                            // left: 0.0138 * width,
+                                            // bottom: 0.0407 * height,
+                                            left:10,
+                                            bottom: 15,
                                             child: GestureDetector(
                                               onTap: () {
                                                 var dt = formatter.format(
@@ -562,17 +558,20 @@ class _QuotesOnePageState extends State<QuotesOnePage>
                                               },
                                               child: Text(
                                                 "Previous",
-                                                style: GoogleFonts.lobster(
-                                                  fontSize: 0.066 * width,
-                                                  fontWeight: FontWeight.bold,
+                                                style: GoogleFonts.libreBaskerville(
+                                                  fontSize: 0.056 * width,
+                                                  fontWeight: FontWeight.w600,
+                                                  fontStyle: FontStyle.italic,
                                                   color: Style.Colors.secondary,
                                                 ),
                                               ),
                                             ),
                                           ),
                                           Positioned(
-                                            right: 0.102 * width,
-                                            bottom: 0.0407 * height,
+                                            // right: 0.102 * width,
+                                            // bottom: 0.0407 * height,
+                                            right: 40,
+                                            bottom: 15,
                                             child: GestureDetector(
                                               onTap: () {
                                                 var dt = formatter.format(
@@ -595,9 +594,10 @@ class _QuotesOnePageState extends State<QuotesOnePage>
                                               },
                                               child: Text(
                                                 "Next",
-                                                style: GoogleFonts.lobster(
-                                                  fontSize: 0.066 * width,
-                                                  fontWeight: FontWeight.bold,
+                                                style: GoogleFonts.libreBaskerville(
+                                                  fontSize: 0.056 * width,
+                                                  fontWeight: FontWeight.w600,
+                                                  fontStyle: FontStyle.italic,
                                                   color: Style.Colors.secondary,
                                                 ),
                                               ),
@@ -629,27 +629,48 @@ class _QuotesOnePageState extends State<QuotesOnePage>
                   color: Style.Colors.secondary,
                 ),
                 child: Padding(
-                  padding: EdgeInsets.symmetric(vertical: 0.0067*height,horizontal:0.027*width),
+                  padding: EdgeInsets.symmetric(vertical: 0.0067*height),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      GestureDetector(
-                        onTap: (){
-                          Navigator.push(context, MaterialPageRoute(builder: (context)=>Contact()));
-                        },
-                        child: Row(
-                          children: [
-                            Icon(FontAwesomeIcons.infoCircle,color: Colors.white,size: 0.0674*width,),
-                            SizedBox(width: 0.0085*width,),
-                            Padding(
-                              padding: EdgeInsets.only(top: 2),
-                              child: Text("CONTACT US",style: TextStyle(color: Colors.white,fontWeight: FontWeight.w500,fontSize: 0.0355*width),),
-                            )
-                          ],
+                      Padding(
+                        padding: EdgeInsets.only(left: 0.02166*width),
+                        child: GestureDetector(
+                          onTap: (){
+                            Navigator.push(context, MaterialPageRoute(builder: (context)=>About()));
+                          },
+                          child: Row(
+                            children: [
+                              Icon(FontAwesomeIcons.infoCircle,color: Colors.white,size: 0.0674*width,),
+                              SizedBox(width: 0.0085*width,),
+                              Padding(
+                                padding: EdgeInsets.only(top: 2),
+                                child: Text("ABOUT",style: TextStyle(color: Colors.white,fontWeight: FontWeight.w500,fontSize: 0.0355*width),),
+                              )
+                            ],
+                          ),
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsets.only(right: 0.04166*width),
+                        padding: EdgeInsets.only(left: 0.01566*width),
+                        child: GestureDetector(
+                          onTap: (){
+                            Navigator.push(context, MaterialPageRoute(builder: (context)=>Contact()));
+                          },
+                          child: Row(
+                            children: [
+                              Icon(FontAwesomeIcons.phoneSquareAlt,color: Colors.white,size: 0.0674*width,),
+                              SizedBox(width: 0.0085*width,),
+                              Padding(
+                                padding: EdgeInsets.only(top: 2),
+                                child: Text("CONTACT",style: TextStyle(color: Colors.white,fontWeight: FontWeight.w500,fontSize: 0.0355*width),),
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(right: 0),
                         child: GestureDetector(
                           onTap: (){
                             setState(() {
@@ -670,24 +691,27 @@ class _QuotesOnePageState extends State<QuotesOnePage>
                           ),
                         ),
                       ),
-                      GestureDetector(
-                        onTap: (){
-                          setState(() {
-                            genre = "KeywordQuote";
-                          });
-                          Navigator.push(context, MaterialPageRoute(builder: (context)=>SearchScreen()));
-                        },
-                        child: Padding(
-                          padding: EdgeInsets.only(right: 0.0222*width),
-                          child: Row(
-                            children: [
-                              Icon(EvaIcons.search,color: Colors.white,size: 0.0674*width,),
-                              SizedBox(width: 0.0085*width,),
-                              Padding(
-                                padding: EdgeInsets.only(top: 2),
-                                child: Text("SEARCH",style: TextStyle(color: Colors.white,fontWeight: FontWeight.w500,fontSize:  0.0355*width),),
-                              )
-                            ],
+                      Padding(
+                        padding: EdgeInsets.only(left: 0.02166*width),
+                        child: GestureDetector(
+                          onTap: (){
+                            setState(() {
+                              genre = "KeywordQuote";
+                            });
+                            Navigator.push(context, MaterialPageRoute(builder: (context)=>SearchScreen()));
+                          },
+                          child: Padding(
+                            padding: EdgeInsets.only(right: 0.0222*width),
+                            child: Row(
+                              children: [
+                                Icon(EvaIcons.search,color: Colors.white,size: 0.0674*width,),
+                                SizedBox(width: 0.0085*width,),
+                                Padding(
+                                  padding: EdgeInsets.only(top: 2),
+                                  child: Text("SEARCH",style: TextStyle(color: Colors.white,fontWeight: FontWeight.w500,fontSize:  0.0355*width),),
+                                )
+                              ],
+                            ),
                           ),
                         ),
                       ),
@@ -721,25 +745,20 @@ class _QuotesOnePageState extends State<QuotesOnePage>
             formatter.format(DateTime.parse(date))) {
           quote= quotes[i].quote;
           return Padding(
-            padding: EdgeInsets.only(top: 0.0135 * height),
+            padding: EdgeInsets.only(top: 0),
             child: Container(
               width: double.infinity,
-              margin: EdgeInsets.symmetric(
-                  vertical: 0.0135 * height, horizontal: 0.0277 * width),
               padding: EdgeInsets.symmetric(
                   vertical: 0.0135 * height, horizontal: 0.0277 * width),
               child: Column(
                 children: <Widget>[
-                  Container(
-                    // width: 300,
-                    child: Text(
-                      quotes[i].quote,
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: 0.05 * width,
-                        color: Style.Colors.secondary,
-                        fontFamily: "Lexend",
-                      ),
+                  Text(
+                    quotes[i].quote,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 0.05 * width,
+                      color: Style.Colors.secondary,
+                      fontFamily: "Lexend",
                     ),
                   ),
                 ],
@@ -779,13 +798,12 @@ class _QuotesOnePageState extends State<QuotesOnePage>
             child: Container(
               width: double.infinity,
               margin: EdgeInsets.symmetric(
-                  vertical: 0.0135 * height, horizontal: 0.0277 * width),
+                  vertical: 0.0135 * height),
               padding: EdgeInsets.symmetric(
                   vertical: 0.0135 * height, horizontal: 0.0277 * width),
               child: Column(
                 children: <Widget>[
                   Container(
-                    width: 0.833 * width,
                     child: Text(
                       quotes[i].quote,
                       textAlign: TextAlign.center,
@@ -834,12 +852,12 @@ class _QuotesOnePageState extends State<QuotesOnePage>
               child: Column(
                 children: <Widget>[
                   Container(
-                    width: 0.833 * width,
+                    width: 0.903 * width,
                     child: Text(
                       quotes[i].quoteHin,
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                        fontSize: 0.05 * width,
+                        fontSize: 0.048 * width,
                         color: Style.Colors.secondary,
                         fontFamily: "Lexend",
                       ),
@@ -849,12 +867,12 @@ class _QuotesOnePageState extends State<QuotesOnePage>
                     height: 0.0081 * height,
                   ),
                   Container(
-                    width: 0.833 * width,
+                    width: 0.903 * width,
                     child: Text(
                       quotes[i].quoteEng,
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                        fontSize: 0.0472 * width,
+                        fontSize: 0.0442 * width,
                         color: Style.Colors.secondary,
                         fontFamily: "Lexend",
                       ),

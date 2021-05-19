@@ -306,77 +306,89 @@ class _CalendarScreenState extends State<CalendarScreen> {
             padding: EdgeInsets.only(top: 0.0135*height),
             child: GestureDetector(
               onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => QuotesOnePage(quotes[i].date,imgno)));
+                Navigator.push(context, MaterialPageRoute(builder: (context) =>
+                    QuotesOnePage(quotes[i].date, imgno)));
               },
               child: Container(
-                decoration: BoxDecoration(color: Colors.white, boxShadow: [
-                  BoxShadow(
-                      color: Colors.black.withOpacity(0.5),
-                      offset: Offset(0.0055*width, 0.0055*width),
-                      blurRadius: 0.0027*width,
-                      spreadRadius: 0.0055*width),
-                ]),
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    boxShadow: [
+                      BoxShadow(color: Colors.black.withOpacity(0.5),
+                          offset: Offset(0.0055 * width, 0.0055 * width),
+                          blurRadius: 0.0027 * width,
+                          spreadRadius: 0.0055 * width),
+                    ]
+                ),
                 width: double.infinity,
-                height: 0.2717*height,
-                margin: EdgeInsets.symmetric(vertical: 0.0135*height, horizontal: 0.0277*width),
-                padding: EdgeInsets.symmetric(vertical: 0.0135*height, horizontal: 0.0277*width),
+                height: 0.2717 * height,
+                margin: EdgeInsets.symmetric(
+                    vertical: 0.0135 * height, horizontal: 0.027 * width),
+                padding: EdgeInsets.symmetric(
+                    vertical: 0.0135 * height, horizontal: 0.027 * width),
                 child: Stack(
                   children: <Widget>[
                     Positioned(
-                      top: 0.0027*height,
-                      right: 0.0138*width,
+                      top: 0.0022 * height,
+                      left: 0.031 * width,
                       child: Text(
-                        date(quotes[i].date),
+                        quotes[i].day,
                         style: GoogleFonts.libreBaskerville(
-                          fontSize: 0.0333*width,
+                          fontSize: 0.042 * width,
                           color: Color(0xFF666666),
                           fontWeight: FontWeight.w400,
                         ),
                       ),
                     ),
                     Positioned(
-                      top: 0.0271*height,
-                      left: 0.027*width,
+                      top: 0.0027 * height,
+                      right: 0.0138 * width,
+                      child: Text(
+                        date(quotes[i].date),
+                        style: GoogleFonts.libreBaskerville(
+                          fontSize: 0.033 * width,
+                          color: Color(0xFF666666),
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
+                    ),
+                    Positioned(
+                      top: 0.0371 * height,
+                      left: 0.027 * width,
                       child: Container(
-                        width: 0.333*width,
-                        height: 0.163*height,
+                        width: 0.163 * height,
+                        height: 0.333 * width,
                         decoration: BoxDecoration(
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(7),
-                            ),
+                            borderRadius: BorderRadius.all(Radius.circular(7),),
                             boxShadow: [
-                              BoxShadow(
-                                color: Colors.black.withOpacity(0.5),
-                                blurRadius: 0.0027*width,
-                                spreadRadius: 0.0055*width,
-                                offset: Offset(0.0027*width, 0.0027*width),
-                              ),
-                            ]),
+                              BoxShadow(color: Colors.black.withOpacity(0.5),
+                                blurRadius: 0.0027 * width,
+                                spreadRadius: 0.0055 * width,
+                                offset: Offset(
+                                    0.0027 * width, 0.0027 * width),),
+                            ]
+                        ),
                         child: ClipRRect(
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(7),
-                          ),
+                          borderRadius: BorderRadius.all(Radius.circular(7),),
                           child: Image(
-                            image: AssetImage(
-                                'images/${images[imgno]}'),
+                            image: AssetImage('images/${images[imgno]}'),
                             fit: BoxFit.cover,
                           ),
                         ),
                       ),
                     ),
                     Positioned(
-                      top: 0.0543*height,
-                      left: 0.4166*width,
+                      top: 0.0483 * height,
+                      left: 0.416 * width,
                       child: Container(
-                        width: MediaQuery.of(context).size.width / 2.3,
+                        width: MediaQuery
+                            .of(context)
+                            .size
+                            .width / 2.3,
                         child: Text(
                           quotes[i].quote,
                           maxLines: 4,
                           style: TextStyle(
-                            fontSize: 0.0458*width,
+                            fontSize: 0.0458 * width,
                             color: Style.Colors.secondary,
                             fontFamily: "Lexend",
                           ),
@@ -384,22 +396,39 @@ class _CalendarScreenState extends State<CalendarScreen> {
                       ),
                     ),
                     Positioned(
-                      bottom: -(0.0054*height),
-                      right: 0.0166*width,
+                        top: 0.1390 * height,
+                        left: 0.416 * width,
+                        child: Text("...", style: TextStyle(
+                          fontSize: 0.1000 * width, color: Colors.black54,),)
+                    ),
+                    Positioned(
+                      top: 0.1470 * height,
+                      left: 0.490 * width,
+                      child: Text("...", style: TextStyle(
+                        fontSize: 0.0804 * width, color: Colors.black45,),),
+                    ),
+                    Positioned(
+                      top: 0.1538 * height,
+                      left: 0.550 * width,
+                      child: Text("...", style: TextStyle(
+                        fontSize: 0.0653 * width, color: Colors.black26,),),
+                    ),
+                    Positioned(
+                      bottom: -4,
+                      right: 6,
                       child: Row(
                         children: [
                           Container(
                             child: IconButton(
                               icon: Icon(
-                                EvaIcons.clipboard,
-                                color: Colors.deepOrange,
-                              ),
-                              iconSize: 0.061*width,
+                                EvaIcons.clipboard, color: Colors.deepOrange,),
+                              iconSize: 22,
                               onPressed: () {
-                                FlutterClipboard.copy(quotes[i].quote+"\n\n~${footer1}\n${footer2}");
+                                FlutterClipboard.copy(quotes[i].quote +
+                                    "\n\n~${footer1}\n${footer2}");
                                 final snackbar = SnackBar(
-                                  // padding: EdgeInsets.only(bottom: 0.0679*height),
-                                  elevation: 0.0067*height,
+                                  padding: EdgeInsets.only(bottom: 50),
+                                  elevation: 5,
                                   content: Text('Message Copied'),
                                   duration: Duration(seconds: 3),
                                   action: SnackBarAction(
@@ -409,22 +438,22 @@ class _CalendarScreenState extends State<CalendarScreen> {
                                     },
                                   ),
                                 );
-                                ScaffoldMessenger.of(context)
-                                    .showSnackBar(snackbar);
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                    snackbar);
                               },
                             ),
                           ),
                           Container(
                             child: InkWell(
                               child: Padding(
-                                padding: EdgeInsets.all(0.0416*width),
+                                padding: const EdgeInsets.all(15.0),
                                 child: GestureDetector(
                                   onTap: () {
-                                    share(context, "${quotes[i].quote}\n\n~${footer1}\n${footer2}");
+                                    share(context, "${quotes[i]
+                                        .quote}\n\n~${footer1}\n${footer2}");
                                   },
-                                  child: Image(
-                                    image: AssetImage('images/share-icon.png'),
-                                  ),
+                                  child: Image(image: AssetImage(
+                                      'images/share-icon.png'),),
                                 ),
                               ),
                             ),
@@ -466,77 +495,89 @@ class _CalendarScreenState extends State<CalendarScreen> {
             padding: EdgeInsets.only(top: 0.0135*height),
             child: GestureDetector(
               onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => QuotesOnePage(quotes[i].date,imgno)));
+                Navigator.push(context, MaterialPageRoute(builder: (context) =>
+                    QuotesOnePage(quotes[i].date, imgno)));
               },
               child: Container(
-                decoration: BoxDecoration(color: Colors.white, boxShadow: [
-                  BoxShadow(
-                      color: Colors.black.withOpacity(0.5),
-                      offset: Offset(0.0055*width, 0.0055*width),
-                      blurRadius: 0.0027*width,
-                      spreadRadius: 0.0055*width),
-                ]),
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    boxShadow: [
+                      BoxShadow(color: Colors.black.withOpacity(0.5),
+                          offset: Offset(0.0055 * width, 0.0055 * width),
+                          blurRadius: 0.0027 * width,
+                          spreadRadius: 0.0055 * width),
+                    ]
+                ),
                 width: double.infinity,
-                height: 0.2717*height,
-                margin: EdgeInsets.symmetric(vertical: 0.0135*height, horizontal: 0.0277*width),
-                padding: EdgeInsets.symmetric(vertical: 0.0135*height, horizontal: 0.0277*width),
+                height: 0.2717 * height,
+                margin: EdgeInsets.symmetric(
+                    vertical: 0.0135 * height, horizontal: 0.0277 * width),
+                padding: EdgeInsets.symmetric(
+                    vertical: 0.0135 * height, horizontal: 0.0277 * width),
                 child: Stack(
                   children: <Widget>[
                     Positioned(
-                      top: 0.0027*height,
-                      right: 0.0138*width,
+                      top: 0.0022 * height,
+                      left: 0.031 * width,
                       child: Text(
-                        date(quotes[i].date),
+                        quotes[i].day,
                         style: GoogleFonts.libreBaskerville(
-                          fontSize: 0.0333*width,
+                          fontSize: 0.035 * width,
                           color: Color(0xFF666666),
                           fontWeight: FontWeight.w400,
                         ),
                       ),
                     ),
                     Positioned(
-                      top: 0.0271*height,
-                      left: 0.027*width,
+                      top: 0.0027 * height,
+                      right: 0.0138 * width,
+                      child: Text(
+                        date(quotes[i].date),
+                        style: GoogleFonts.libreBaskerville(
+                          fontSize: 0.033 * width,
+                          color: Color(0xFF666666),
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
+                    ),
+                    Positioned(
+                      top: 0.0371 * height,
+                      left: 0.0277 * width,
                       child: Container(
-                        width: 0.333*width,
-                        height: 0.163*height,
+                        width: 0.333 * width,
+                        height: 0.163 * height,
                         decoration: BoxDecoration(
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(7),
-                            ),
+                            borderRadius: BorderRadius.all(Radius.circular(7),),
                             boxShadow: [
-                              BoxShadow(
-                                color: Colors.black.withOpacity(0.5),
-                                blurRadius: 0.0027*width,
-                                spreadRadius: 0.0055*width,
-                                offset: Offset(0.0027*width, 0.0027*width),
-                              ),
-                            ]),
+                              BoxShadow(color: Colors.black26,
+                                blurRadius: 0.0027 * width,
+                                spreadRadius: 0.0055 * width,
+                                offset: Offset(
+                                    0.0027 * width, 0.0027 * width),),
+                            ]
+                        ),
                         child: ClipRRect(
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(7),
-                          ),
+                          borderRadius: BorderRadius.all(Radius.circular(7),),
                           child: Image(
-                            image: AssetImage(
-                                'images/${images[imgno]}'),
+                            image: AssetImage('images/${images[imgno]}'),
                             fit: BoxFit.cover,
                           ),
                         ),
                       ),
                     ),
                     Positioned(
-                      top: 0.0543*height,
-                      left: 0.4166*width,
+                      top: 0.054 * height,
+                      left: 0.416 * width,
                       child: Container(
-                        width: MediaQuery.of(context).size.width / 2.3,
+                        width: MediaQuery
+                            .of(context)
+                            .size
+                            .width / 2.3,
                         child: Text(
                           quotes[i].quote,
                           maxLines: 4,
                           style: TextStyle(
-                            fontSize: 0.0402*width,
+                            fontSize: 0.0402 * width,
                             color: Style.Colors.secondary,
                             fontFamily: "Lexend",
                           ),
@@ -544,22 +585,40 @@ class _CalendarScreenState extends State<CalendarScreen> {
                       ),
                     ),
                     Positioned(
-                      bottom: -(0.0054*height),
-                      right: 0.0166*width,
+                        top: 0.1290 * height,
+                        left: 0.416 * width,
+                        child: Text("...", style: TextStyle(
+                          fontSize: 0.1000 * width, color: Colors.black54,),)
+                    ),
+                    Positioned(
+                      top: 0.1370 * height,
+                      left: 0.490 * width,
+                      child: Text("...", style: TextStyle(
+                        fontSize: 0.0804 * width, color: Colors.black45,),),
+                    ),
+                    Positioned(
+                      top: 0.1438 * height,
+                      left: 0.550 * width,
+                      child: Text("...", style: TextStyle(
+                        fontSize: 0.0653 * width, color: Colors.black26,),),
+                    ),
+                    Positioned(
+                      bottom: -(0.0054 * height),
+                      right: 0.016 * width,
                       child: Row(
                         children: [
                           Container(
                             child: IconButton(
                               icon: Icon(
-                                EvaIcons.clipboard,
-                                color: Colors.deepOrange,
-                              ),
-                              iconSize: 0.061*width,
+                                EvaIcons.clipboard, color: Colors.deepOrange,),
+                              iconSize: 0.0611 * width,
                               onPressed: () {
-                                FlutterClipboard.copy(quotes[i].quote+"\n\n~${footer1}\n${footer2}");
+                                FlutterClipboard.copy(quotes[i].quote +
+                                    "\n\n~${footer1}\n${footer2}");
                                 final snackbar = SnackBar(
-                                  // padding: EdgeInsets.only(bottom: 0.0679*height),
-                                  elevation: 0.0067*height,
+                                  padding: EdgeInsets.only(
+                                      bottom: 0.067 * height),
+                                  elevation: 0.0067 * height,
                                   content: Text('Message Copied'),
                                   duration: Duration(seconds: 3),
                                   action: SnackBarAction(
@@ -569,22 +628,22 @@ class _CalendarScreenState extends State<CalendarScreen> {
                                     },
                                   ),
                                 );
-                                ScaffoldMessenger.of(context)
-                                    .showSnackBar(snackbar);
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                    snackbar);
                               },
                             ),
                           ),
                           Container(
                             child: InkWell(
                               child: Padding(
-                                padding: EdgeInsets.all(0.0416*width),
+                                padding: EdgeInsets.all(0.0416 * width),
                                 child: GestureDetector(
                                   onTap: () {
-                                    share(context, "${quotes[i].quote}\n\n~${footer1}\n${footer2}");
+                                    share(context, "${quotes[i]
+                                        .quote}\n\n~${footer1}\n${footer2}");
                                   },
-                                  child: Image(
-                                    image: AssetImage('images/share-icon.png'),
-                                  ),
+                                  child: Image(image: AssetImage(
+                                      'images/share-icon.png'),),
                                 ),
                               ),
                             ),
@@ -626,91 +685,103 @@ class _CalendarScreenState extends State<CalendarScreen> {
             padding: EdgeInsets.only(top: 0.0135*height),
             child: GestureDetector(
               onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => QuotesOnePage(quotes[i].date,imgno)));
+                Navigator.push(context, MaterialPageRoute(
+                    builder: (context) =>
+                        QuotesOnePage(quotes[i].date, imgno)));
               },
               child: Container(
                 width: double.infinity,
-                height: 0.02717*height,
-                decoration: BoxDecoration(color: Colors.white, boxShadow: [
-                  BoxShadow(
-                      color: Colors.black.withOpacity(0.5),
-                      offset: Offset(0.0055*width, 0.0055*width),
-                      blurRadius: 0.0027*width,
-                      spreadRadius: 0.0055*width),
-                ]),
-                margin: EdgeInsets.symmetric(vertical: 0.0135*height, horizontal: 0.0277*width),
-                padding: EdgeInsets.symmetric(vertical: 0.0135*height, horizontal: 0.0277*width),
+                height: 0.2717 * height,
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    boxShadow: [
+                      BoxShadow(color: Colors.black.withOpacity(0.5),
+                          offset: Offset(0.0055 * width, 0.0055 * width),
+                          blurRadius: 0.0027 * width,
+                          spreadRadius: 0.0055 * width),
+                    ]
+                ),
+                margin: EdgeInsets.symmetric(
+                    vertical: 0.0135 * height, horizontal: 0.027 * width),
+                padding: EdgeInsets.symmetric(
+                    vertical: 0.0135 * height, horizontal: 0.027 * width),
                 child: Stack(
                   children: <Widget>[
                     Positioned(
-                      top: 0.0027*height,
-                      right: 0.0138*width,
+                      top: 0.0022 * height,
+                      left: 0.031 * width,
                       child: Text(
-                        date(quotes[i].date),
+                        quotes[i].day,
                         style: GoogleFonts.libreBaskerville(
-                          fontSize: 0.0333*width,
+                          fontSize: 0.037 * width,
                           color: Color(0xFF666666),
                           fontWeight: FontWeight.w400,
                         ),
                       ),
                     ),
                     Positioned(
-                      top: 0.0271*height,
-                      left: 0.027*width,
+                      top: 0.0027 * height,
+                      right: 0.0138 * width,
+                      child: Text(
+                        date(quotes[i].date),
+                        style: GoogleFonts.libreBaskerville(
+                          fontSize: 0.0333 * width,
+                          color: Color(0xFF666666),
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
+                    ),
+                    Positioned(
+                      top: 0.0371 * height,
+                      left: 0.0277 * width,
                       child: Container(
-                        width: 0.333*width,
-                        height: 0.163*height,
+                        width: 0.333 * width,
+                        height: 0.163 * height,
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.all(
-                              Radius.circular(7),
-                            ),
+                              Radius.circular(7),),
                             boxShadow: [
-                              BoxShadow(
-                                color: Colors.black.withOpacity(0.5),
-                                blurRadius: 0.0027*width,
-                                spreadRadius: 0.0055*width,
-                                offset: Offset(0.0027*width, 0.0027*width),
-                              ),
-                            ]),
+                              BoxShadow(color: Colors.black26,
+                                blurRadius: 0.0027 * width,
+                                spreadRadius: 0.0055 * width,
+                                offset: Offset(
+                                    0.0027 * width, 0.0027 * width),),
+                            ]
+                        ),
                         child: ClipRRect(
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(7),
-                          ),
+                          borderRadius: BorderRadius.all(Radius.circular(7),),
                           child: Image(
-                            image: AssetImage(
-                                'images/${images[imgno]}'),
+                            image: AssetImage('images/${images[imgno]}'),
                             fit: BoxFit.cover,
                           ),
                         ),
                       ),
                     ),
                     Positioned(
-                      top: 0.054*height,
-                      left: 0.4166*width,
+                      top: 0.044 * height,
+                      left: 0.416 * width,
                       child: Container(
-                        width: MediaQuery.of(context).size.width / 2.3,
+                        width: MediaQuery
+                            .of(context)
+                            .size
+                            .width / 2.3,
                         child: Column(
                           children: [
                             Text(
                               quotes[i].quoteHin,
                               maxLines: 2,
                               style: TextStyle(
-                                fontSize: 0.0458*width,
+                                fontSize: 0.0458 * width,
                                 color: Style.Colors.secondary,
                                 fontFamily: "Lexend",
                               ),
                             ),
-                            SizedBox(
-                              height: 0.0095*height,
-                            ),
+                            SizedBox(height: 0.0095 * height,),
                             Text(
                               quotes[i].quoteEng,
                               maxLines: 2,
                               style: TextStyle(
-                                fontSize: 0.0402*width,
+                                fontSize: 0.0402 * width,
                                 color: Style.Colors.secondary,
                                 fontFamily: "Lexend",
                               ),
@@ -720,49 +791,71 @@ class _CalendarScreenState extends State<CalendarScreen> {
                       ),
                     ),
                     Positioned(
-                      bottom: -(0.0054*height),
-                      right: 0.016*width,
+                        top: 0.1470 * height,
+                        left: 0.416 * width,
+                        child: Text("...", style: TextStyle(fontSize: 0.1000 *
+                            width, color: Colors.black54,),)
+                    ),
+                    Positioned(
+                      top: 0.1550 * height,
+                      left: 0.490 * width,
+                      child: Text("...", style: TextStyle(fontSize: 0.0804 *
+                          width, color: Colors.black45,),),
+                    ),
+                    Positioned(
+                      top: 0.1615 * height,
+                      left: 0.550 * width,
+                      child: Text("...", style: TextStyle(fontSize: 0.0653 *
+                          width, color: Colors.black26,),),
+                    ),
+                    Positioned(
+                      bottom: -(0.0054 * height),
+                      right: 0.0166 * width,
                       child: Row(
                         children: [
                           Container(
                             child: IconButton(
-                              icon: Icon(
-                                EvaIcons.clipboard,
-                                color: Colors.deepOrange,
-                              ),
-                              iconSize: 0.061*width,
+                              icon: Icon(EvaIcons.clipboard,
+                                color: Colors.deepOrange,),
+                              iconSize: 0.0611 * width,
                               onPressed: () {
-                                FlutterClipboard.copy(
-                                    "${quotes[i].quoteHin}\n\n${quotes[i].quoteEng}\n\n~${footer1}\n${footer2}");
+                                FlutterClipboard.copy("${quotes[i]
+                                    .quoteHin}\n\n${quotes[i]
+                                    .quoteEng}\n\n~${footer1}\n${footer2}");
                                 final snackbar = SnackBar(
-                                  // padding: EdgeInsets.only(bottom: 0.0679*height),
-                                  elevation: 0.0067*height,
+                                  padding: EdgeInsets.only(
+                                      bottom: 0.0679 * height),
+                                  elevation: 0.0067 * height,
                                   content: Text('Message Copied'),
                                   duration: Duration(seconds: 3),
                                   action: SnackBarAction(
                                     label: 'Undo',
                                     onPressed: () {
-                                      FlutterClipboard.paste().then((value) {});
+                                      FlutterClipboard.paste().then((
+                                          value) {});
                                     },
                                   ),
                                 );
-                                ScaffoldMessenger.of(context)
-                                    .showSnackBar(snackbar);
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                    snackbar);
                               },
+                              // onPressed: (){
+                              //   FlutterClipboard.copy("${quotes[index].quoteHin}\n\n${quotes[index].quoteEng}");
+                              // },
                             ),
                           ),
                           Container(
                             child: InkWell(
                               child: Padding(
-                                padding: EdgeInsets.all(0.0416*width),
+                                padding: EdgeInsets.all(0.0416 * width),
                                 child: GestureDetector(
                                   onTap: () {
-                                    share(context,
-                                        "${quotes[i].quoteHin}\n\n${quotes[i].quoteEng}\n\n~${footer1}\n${footer2}");
+                                    share(context, "${quotes[i]
+                                        .quoteHin}\n\n${quotes[i]
+                                        .quoteEng}\n\n~${footer1}\n${footer2}");
                                   },
-                                  child: Image(
-                                    image: AssetImage('images/share-icon.png'),
-                                  ),
+                                  child: Image(image: AssetImage(
+                                      'images/share-icon.png'),),
                                 ),
                               ),
                             ),

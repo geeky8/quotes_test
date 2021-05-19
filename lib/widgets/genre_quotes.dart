@@ -22,8 +22,6 @@ import 'package:quotes/main.dart';
 import 'package:share/share.dart';
 import 'dart:math';
 
-import 'package:swipedetector/swipedetector.dart';
-
 class GenreQuotes extends StatefulWidget {
 
   @override
@@ -428,6 +426,18 @@ class _GenreQuotesState extends State<GenreQuotes> {
                 child: Stack(
                   children: <Widget>[
                     Positioned(
+                      top: 0.0022 * height,
+                      left: 0.031 * width,
+                      child: Text(
+                        quotes[index].day,
+                        style: GoogleFonts.libreBaskerville(
+                          fontSize: 0.042 * width,
+                          color: Color(0xFF666666),
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
+                    ),
+                    Positioned(
                       top: 0.0027 * height,
                       right: 0.0138 * width,
                       child: Text(
@@ -440,7 +450,7 @@ class _GenreQuotesState extends State<GenreQuotes> {
                       ),
                     ),
                     Positioned(
-                      top: 0.0271 * height,
+                      top: 0.0371 * height,
                       left: 0.027 * width,
                       child: Container(
                         width: 0.163 * height,
@@ -606,6 +616,18 @@ class _GenreQuotesState extends State<GenreQuotes> {
                 child: Stack(
                   children: <Widget>[
                     Positioned(
+                      top: 0.0022 * height,
+                      left: 0.031 * width,
+                      child: Text(
+                        quotes[index].day,
+                        style: GoogleFonts.libreBaskerville(
+                          fontSize: 0.035 * width,
+                          color: Color(0xFF666666),
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
+                    ),
+                    Positioned(
                       top: 0.0027 * height,
                       right: 0.0138 * width,
                       child: Text(
@@ -618,7 +640,7 @@ class _GenreQuotesState extends State<GenreQuotes> {
                       ),
                     ),
                     Positioned(
-                      top: 0.0271 * height,
+                      top: 0.0371 * height,
                       left: 0.0277 * width,
                       child: Container(
                         width: 0.333 * width,
@@ -785,6 +807,18 @@ class _GenreQuotesState extends State<GenreQuotes> {
                   child: Stack(
                     children: <Widget>[
                       Positioned(
+                        top: 0.0022 * height,
+                        left: 0.031 * width,
+                        child: Text(
+                          quotes[index].day,
+                          style: GoogleFonts.libreBaskerville(
+                            fontSize: 0.037 * width,
+                            color: Color(0xFF666666),
+                            fontWeight: FontWeight.w400,
+                          ),
+                        ),
+                      ),
+                      Positioned(
                         top: 0.0027 * height,
                         right: 0.0138 * width,
                         child: Text(
@@ -797,7 +831,7 @@ class _GenreQuotesState extends State<GenreQuotes> {
                         ),
                       ),
                       Positioned(
-                        top: 0.0271 * height,
+                        top: 0.0371 * height,
                         left: 0.0277 * width,
                         child: Container(
                           width: 0.333 * width,
@@ -1090,244 +1124,452 @@ class _GenreQuotesState extends State<GenreQuotes> {
       //     ),
       //   ],
       // );
-      return Padding(
-        padding: EdgeInsets.only(top: 0.0135 * height),
-        child: Container(
-          width: double.infinity,
-          height: MediaQuery
-              .of(context)
-              .size
-              .height / 1.402,
-          child: ListView(
-            children: [
-              Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      // Padding(
-                      //   padding: EdgeInsets.only(left: 0.0277*width,top: 0.0135*height),
-                      //   child: IconButton(
-                      //     onPressed: (){
-                      //       var dt = formatter.format(DateTime.parse(date).subtract(Duration(days: 1)));
-                      //       String next = "$dt$time";
-                      //       Random random = new Random();
-                      //       Navigator.push(context, MaterialPageRoute(builder: (context)=>QuotesOnePage(next,random.nextInt(images.length))));
-                      //     },
-                      //     icon: Icon(FontAwesomeIcons.backward,color: Style.Colors.secondary,),
-                      //     iconSize: 0.0722*width,
-                      //   )
-                      // ),
-                      Padding(
-                        padding: EdgeInsets.only(top: 0.0271 * height),
-                        child: Container(
-                          child: IconButton(
-                            icon: Icon(EvaIcons.clipboard,
-                              color: Colors.deepOrange,),
-                            iconSize: 0.0611 * width,
-                            onPressed: () {
-                              FlutterClipboard.copy("${quotes[0]
-                                  .quote}\n\n~${footer1}\n${footer2}");
-                              final snackbar = SnackBar(
-                                padding: EdgeInsets.only(
-                                    bottom: 0.0679 * height),
-                                elevation: 0.0067 * height,
-                                content: Text('Message Copied'),
-                                duration: Duration(seconds: 3),
-                                action: SnackBarAction(
-                                  label: 'Undo',
-                                  onPressed: () {
-                                    FlutterClipboard.paste().then((
-                                        value) {});
-                                  },
-                                ),
-                              );
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                  snackbar);
-                            },
-                            // onPressed: (){
-                            //   FlutterClipboard.copy("${quotes[index].quoteHin}\n\n${quotes[index].quoteEng}");
-                            // },
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(right: 0.034 * width),
-                        child: Container(
-                          padding: EdgeInsets.only(top: 0.0271 * height),
+      return Container(
+        height: height/1.402,
+        child: (genre=="RandomsQuote")
+            ?ListView.builder(
+            itemCount: quotes.length,
+            shrinkWrap: true,
+            itemBuilder: (context, index) {
+              Random random = new Random();
+              int imgno = random.nextInt(images.length);
+              return Container(
+                width: double.infinity,
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.push(context, MaterialPageRoute(
+                        builder: (context) =>
+                            QuotesOnePage(quotes[0].date, imgno)));
+                  },
+                  child: Container(
+                    width: double.infinity,
+                    height: height/1.502,
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        boxShadow: [
+                          BoxShadow(color: Colors.black.withOpacity(0.5),
+                              offset: Offset(0.0055 * width, 0.0055 * width),
+                              blurRadius: 0.0027 * width,
+                              spreadRadius: 0.0055 * width),
+                        ]
+                    ),
+                    margin: EdgeInsets.symmetric(
+                        vertical: 0.0135 * height, horizontal: 0.027 * width),
+                    padding: EdgeInsets.symmetric(
+                        vertical: 0.0135 * height, horizontal: 0.027 * width),
+                    child: Stack(
+                      children: <Widget>[
+                        Positioned(
+                          top: 0.0027 * height,
+                          right: 0.0138 * width,
                           child: Text(
-                            getDate(quotes[0].date),
+                            date(quotes[index].date),
                             style: GoogleFonts.libreBaskerville(
-                              fontSize: 0.0472 * width,
+                              fontSize: 0.0343 * width,
                               color: Style.Colors.secondary,
-                              fontWeight: FontWeight.w400,
+                              fontWeight: FontWeight.bold,
                             ),
                           ),
                         ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(top: 0.0271 * height),
-                        child: Container(
-                          child: InkWell(
-                            child: Padding(
-                              padding: EdgeInsets.all(0.0416 * width),
-                              child: GestureDetector(
-                                onTap: () {
-                                  share(context, "${quotes[0]
-                                      .quote}\n\n~${footer1}\n${footer2}");
-                                },
-                                child: Image(image: AssetImage(
-                                    'images/share-icon.png'),),
+                        Positioned(
+                          top: 0.0027 * height,
+                          left: 0.0138 * width,
+                          child: Text(
+                            quotes[index].day,
+                            style: GoogleFonts.libreBaskerville(
+                              fontSize: 0.0443 * width,
+                              color: Style.Colors.secondary,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                        ),
+                        Positioned(
+                          bottom: 0,
+                          left: 0,
+                          child: Container(
+                            width: 0.326 * width,
+                            height: 0.336 * height,
+                            child: Image(image: AssetImage('images/homequote-bg.jpg'),fit: BoxFit.cover,),
+                          ),
+                        ),
+                        Positioned(
+                          top: 0.044 * height,
+                          left: 0.326 * width,
+                          child: Container(
+                            width: width*0.564,
+                            height: height*0.5,
+                            child: SingleChildScrollView(
+                              child: Column(
+                                children: [
+                                  Text(
+                                    quotes[index].quote,
+                                    style: TextStyle(
+                                      fontSize: 0.0438 * width,
+                                      color: Style.Colors.secondary,
+                                      fontFamily: "Lexend",
+                                    ),
+                                  ),
+                                ],
                               ),
                             ),
                           ),
                         ),
-                      ),
-                      // Padding(
-                      //   padding: EdgeInsets.only(right: 0.027*width,top: 0.0135*height),
-                      //   child: IconButton(
-                      //     onPressed: (){
-                      //       var dt = formatter.format(DateTime.parse(date).add(Duration(days: 1)));
-                      //       String next = "$dt$time";
-                      //       Random random = new Random();
-                      //       Navigator.push(context, MaterialPageRoute(builder: (context)=>QuotesOnePage(next,random.nextInt(images.length))));
-                      //     },
-                      //     icon: Icon(FontAwesomeIcons.forward,color: Style.Colors.secondary,),
-                      //     iconSize: 0.0722*width,
-                      //   ),
-                      // ),
-                    ],
-                  ),
-                  SizedBox(height: 0.0407 * height,),
-                  Container(
-                    width: double.infinity,
-                    height: 0.339 * height,
-                    child: Image(
-                      image: AssetImage("images/baba-pic${imgno + 1}-big.jpg"),
-                      fit: BoxFit.cover,
+                        // Positioned(
+                        //     top: 0.1470 * height,
+                        //     left: 0.416 * width,
+                        //     child: Text("...", style: TextStyle(fontSize: 0.1000 *
+                        //         width, color: Colors.black54,),)
+                        // ),
+                        // Positioned(
+                        //   top: 0.1550 * height,
+                        //   left: 0.490 * width,
+                        //   child: Text("...", style: TextStyle(fontSize: 0.0804 *
+                        //       width, color: Colors.black45,),),
+                        // ),
+                        // Positioned(
+                        //   top: 0.1615 * height,
+                        //   left: 0.550 * width,
+                        //   child: Text("...", style: TextStyle(fontSize: 0.0653 *
+                        //       width, color: Colors.black26,),),
+                        // ),
+                        Positioned(
+                          bottom: -(0.022 * height),
+                          right: 0.0166 * width,
+                          child: Row(
+                            children: [
+                              Container(
+                                child: IconButton(
+                                  icon: Icon(EvaIcons.clipboard,
+                                    color: Colors.deepOrange,),
+                                  iconSize: 0.0611 * width,
+                                  onPressed: () {
+                                    FlutterClipboard.copy("${quotes[index]
+                                        .quote}\n\n~${footer1}\n${footer2}");
+                                    final snackbar = SnackBar(
+                                      padding: EdgeInsets.only(
+                                          bottom: 0.0679 * height),
+                                      elevation: 0.0067 * height,
+                                      content: Text('Message Copied'),
+                                      duration: Duration(seconds: 3),
+                                      action: SnackBarAction(
+                                        label: 'Undo',
+                                        onPressed: () {
+                                          FlutterClipboard.paste().then((
+                                              value) {});
+                                        },
+                                      ),
+                                    );
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                        snackbar);
+                                  },
+                                  // onPressed: (){
+                                  //   FlutterClipboard.copy("${quotes[index].quoteHin}\n\n${quotes[index].quoteEng}");
+                                  // },
+                                ),
+                              ),
+                              Container(
+                                child: InkWell(
+                                  child: Padding(
+                                    padding: EdgeInsets.all(0.0416 * width),
+                                    child: GestureDetector(
+                                      onTap: () {
+                                        share(context, "${quotes[index]
+                                            .quote}\n\n~${footer1}\n${footer2}");
+                                      },
+                                      child: Image(image: AssetImage(
+                                          'images/share-icon.png'),),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
                     ),
                   ),
-                  SizedBox(height: 0.0135 * height,),
-                  Column(
-                    children: [
-                      Container(
-                        width: 0.138 * width,
-                        height: 0.0679 * height,
-                        child: Image(image: AssetImage('images/quotation.png'),
-                          fit: BoxFit.cover,),
-                      ),
-                      SizedBox(height: 0.0135 * height,),
-                      Container(
-                        height: 0.4076 * height,
-                        width: 0.7777*width,
-                        child: Scrollbar(
-                          isAlwaysShown: true,
-                          controller: scrollController,
-                          child: SingleChildScrollView(
-                            controller: scrollController,
-                            child: Column(
-                              children: [
-                                Padding(
-                                  padding: EdgeInsets.only(
-                                      top: 0.0135 * height),
-                                  child: Container(
-                                    width: double.infinity,
-                                    margin: EdgeInsets.symmetric(
-                                        vertical: 0.0135 * height,
-                                        horizontal: 0.0277 * width),
-                                    padding: EdgeInsets.symmetric(
-                                        vertical: 0.0135 * height,
-                                        horizontal: 0.0277 * width),
+                ),
+              );
+            }
+        )
+            :SingleChildScrollView(
+          child: Column(
+            children: [
+              ListView.builder(
+                  itemCount: quotes.length,
+                  shrinkWrap: true,
+                  itemBuilder: (context, index) {
+                    Random random = new Random();
+                    int imgno = random.nextInt(images.length);
+                    return Container(
+                      width: double.infinity,
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.push(context, MaterialPageRoute(
+                              builder: (context) =>
+                                  QuotesOnePage(quotes[0].date, imgno)));
+                        },
+                        child: Container(
+                          width: double.infinity,
+                          height: 0.3317 * height,
+                          decoration: BoxDecoration(
+                              color: Colors.white,
+                              boxShadow: [
+                                BoxShadow(color: Colors.black.withOpacity(0.5),
+                                    offset: Offset(0.0055 * width, 0.0055 * width),
+                                    blurRadius: 0.0027 * width,
+                                    spreadRadius: 0.0055 * width),
+                              ]
+                          ),
+                          margin: EdgeInsets.symmetric(
+                              vertical: 0.0135 * height, horizontal: 0.027 * width),
+                          padding: EdgeInsets.symmetric(
+                              vertical: 0.0135 * height, horizontal: 0.027 * width),
+                          child: Stack(
+                            children: <Widget>[
+                              Positioned(
+                                top: 0.0027 * height,
+                                left: 0.0138 * width,
+                                child: Text(
+                                  quotes[index].day,
+                                  style: GoogleFonts.libreBaskerville(
+                                    fontSize: 0.0403 * width,
+                                    color: Style.Colors.secondary,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                ),
+                              ),
+                              Positioned(
+                                top: 0.0027 * height,
+                                right: 0.0138 * width,
+                                child: Text(
+                                  date(quotes[index].date),
+                                  style: GoogleFonts.libreBaskerville(
+                                    fontSize: 0.0333 * width,
+                                    color: Style.Colors.secondary,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ),
+                              Positioned(
+                                bottom: 0,
+                                left: 0,
+                                child: Container(
+                                  width: 0.236 * width,
+                                  height: 0.236 * height,
+                                  child: Image(image: AssetImage('images/homequote-bg.jpg'),fit: BoxFit.cover,),
+                                ),
+                              ),
+                              Positioned(
+                                top: 0.044 * height,
+                                left: 0.235 * width,
+                                child: Container(
+                                  width: width*0.654,
+                                  height: height*0.21,
+                                  child: SingleChildScrollView(
                                     child: Column(
-                                      children: <Widget>[
-                                        Container(
-                                          // width: 300,
-                                          child: Text(
-                                            quotes[0].quote,
-                                            textAlign: TextAlign.center,
-                                            style: TextStyle(
-                                              fontSize: 0.05 * width,
-                                              color: Style.Colors.secondary,
-                                              fontFamily: "Lexend",
-                                            ),
+                                      children: [
+                                        Text(
+                                          quotes[index].quote,
+                                          style: TextStyle(
+                                            fontSize: 0.0408 * width,
+                                            color: Style.Colors.secondary,
+                                            fontFamily: "Lexend",
                                           ),
                                         ),
                                       ],
                                     ),
                                   ),
                                 ),
-                              ],
-                            ),
+                              ),
+                              // Positioned(
+                              //     top: 0.1470 * height,
+                              //     left: 0.416 * width,
+                              //     child: Text("...", style: TextStyle(fontSize: 0.1000 *
+                              //         width, color: Colors.black54,),)
+                              // ),
+                              // Positioned(
+                              //   top: 0.1550 * height,
+                              //   left: 0.490 * width,
+                              //   child: Text("...", style: TextStyle(fontSize: 0.0804 *
+                              //       width, color: Colors.black45,),),
+                              // ),
+                              // Positioned(
+                              //   top: 0.1615 * height,
+                              //   left: 0.550 * width,
+                              //   child: Text("...", style: TextStyle(fontSize: 0.0653 *
+                              //       width, color: Colors.black26,),),
+                              // ),
+                              Positioned(
+                                bottom: -(0.022 * height),
+                                right: 0.0166 * width,
+                                child: Row(
+                                  children: [
+                                    Container(
+                                      child: IconButton(
+                                        icon: Icon(EvaIcons.clipboard,
+                                          color: Colors.deepOrange,),
+                                        iconSize: 0.0611 * width,
+                                        onPressed: () {
+                                          FlutterClipboard.copy("${quotes[index]
+                                              .quote}\n\n~${footer1}\n${footer2}");
+                                          final snackbar = SnackBar(
+                                            padding: EdgeInsets.only(
+                                                bottom: 0.0679 * height),
+                                            elevation: 0.0067 * height,
+                                            content: Text('Message Copied'),
+                                            duration: Duration(seconds: 3),
+                                            action: SnackBarAction(
+                                              label: 'Undo',
+                                              onPressed: () {
+                                                FlutterClipboard.paste().then((
+                                                    value) {});
+                                              },
+                                            ),
+                                          );
+                                          ScaffoldMessenger.of(context).showSnackBar(
+                                              snackbar);
+                                        },
+                                        // onPressed: (){
+                                        //   FlutterClipboard.copy("${quotes[index].quoteHin}\n\n${quotes[index].quoteEng}");
+                                        // },
+                                      ),
+                                    ),
+                                    Container(
+                                      child: InkWell(
+                                        child: Padding(
+                                          padding: EdgeInsets.all(0.0416 * width),
+                                          child: GestureDetector(
+                                            onTap: () {
+                                              share(context, "${quotes[index]
+                                                  .quote}\n\n~${footer1}\n${footer2}");
+                                            },
+                                            child: Image(image: AssetImage(
+                                                'images/share-icon.png'),),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
                           ),
                         ),
                       ),
-                      SizedBox(height: 0,),
-                      Container(
-                        width: 0.777 * width,
-                        height: 0.2717 * height,
-                        // decoration: BoxDecoration(color: Colors.black),
-                        child: Stack(
+                    );
+                  }
+              ),
+              SizedBox(height: 10,),
+              Container(
+                width: double.infinity,
+                height: 0.256 * height,
+                decoration: BoxDecoration(
+                    color: Color(0xffE2D0C0),
+                    boxShadow: [
+                      BoxShadow(color: Colors.black.withOpacity(0.5),
+                          offset: Offset(0.0055 * width, 0.0055 * width),
+                          blurRadius: 0.0027 * width,
+                          spreadRadius: 0.0055 * width),
+                    ]
+                ),
+                margin: EdgeInsets.symmetric(horizontal: 0.027 * width),
+                // padding: EdgeInsets.symmetric(horizontal: 0.027 * width),
+                child: Stack(
+                  children: <Widget>[
+                    Positioned(
+                      top: 45,
+                      left: 10,
+                      child: Container(
+                        child: Column(
                           children: [
-                            Positioned(
-                              left: 0,
-                              right: 0,
-                              top: 0,
-                              bottom: 0.0271 * height,
-                              child: Container(
-                                // decoration: BoxDecoration(color: Colors.white),
-                                width: 0.277 * width,
-                                height: 0.135 * height,
-                                child: Image(image: AssetImage(
-                                    "images/saidattavikas-foundation.png"),),
+                            Padding(
+                              padding: EdgeInsets.only(right: 90),
+                              child: Text("Sai Mantra",style: GoogleFonts.libreBaskerville(fontSize: 18,fontWeight: FontWeight.w600,color: Style.Colors.secondary,fontStyle: FontStyle.italic),),
+                            ),
+                            SizedBox(height: 7,),
+                            Padding(
+                              padding: EdgeInsets.only(right: 14),
+                              child: Text(
+                                "Om Sai Namo Namah\nShri Sai Namo Namah\nJai Jai Sai Namo Namah\nSatguru Sai Namo Namah",
+                                textAlign: TextAlign.start,
+                                style: TextStyle(
+                                  fontSize: 14,fontFamily: "Lexend",color: Style.Colors.secondary,
+                                ),
                               ),
                             ),
-                            // Positioned(
-                            //   left:0.0138*width,
-                            //   bottom: 0.0407*height,
-                            //   child: GestureDetector(
-                            //     onTap: (){
-                            //       var dt = formatter.format(DateTime.parse(quotes[0].date).subtract(Duration(days: 1)));
-                            //       String next = "$dt$time";
-                            //       Random random = new Random();
-                            //       Navigator.push(context, MaterialPageRoute(builder: (context)=>QuotesOnePage(next,random.nextInt(images.length))));
-                            //     },
-                            //     child: Text(
-                            //       "Previous",
-                            //       style: GoogleFonts.lobster(
-                            //         fontSize: 0.066*width,
-                            //         fontWeight: FontWeight.bold,
-                            //         color: Style.Colors.secondary,
-                            //       ),
-                            //     ),
-                            //   ),
-                            // ),
-                            // Positioned(
-                            //   right: 0.102*width,
-                            //   bottom: 0.0407*height,
-                            //   child: GestureDetector(
-                            //     onTap: (){
-                            //       var dt = formatter.format(DateTime.parse().add(Duration(days: 1)));
-                            //       String next = "$dt$time";
-                            //       Random random = new Random();
-                            //       Navigator.push(context, MaterialPageRoute(builder: (context)=>QuotesOnePage(next,random.nextInt(images.length))));
-                            //     },
-                            //     child: Text(
-                            //       "Next",
-                            //       style: GoogleFonts.lobster(
-                            //         fontSize: 0.066*width,
-                            //         fontWeight: FontWeight.bold,
-                            //         color: Style.Colors.secondary,
-                            //       ),
-                            //     ),
-                            //   ),
-                            // ),
                           ],
                         ),
                       ),
+                    ),
+                    Positioned(
+                      right: 0,
+                      child: Container(
+                        width: 0.4 * width,
+                        height: 0.256 * height,
+                        child: Image(image: AssetImage('images/saibaba-photo.jpg'),fit: BoxFit.cover,),
+                      ),
+                    ),
+
+                  ],
+                ),
+              ),
+              SizedBox(height:20),
+              Padding(
+                padding: EdgeInsets.only(bottom: 15),
+                child: Container(
+                  width: double.infinity,
+                  height: 0.256 * height,
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      boxShadow: [
+                        BoxShadow(color: Colors.black.withOpacity(0.5),
+                            offset: Offset(0.0055 * width, 0.0055 * width),
+                            blurRadius: 0.0027 * width,
+                            spreadRadius: 0.0055 * width),
+                      ]
+                  ),
+                  margin: EdgeInsets.symmetric(horizontal: 0.027 * width),
+                  // padding: EdgeInsets.symmetric(horizontal: 0.027 * width),
+                  child: Stack(
+                    children: <Widget>[
+                      Positioned(
+                        top: 45,
+                        right: 40,
+                        child: Container(
+                          child: Column(
+                            children: [
+                              Padding(
+                                padding: EdgeInsets.only(right:0 ),
+                                child: Text("Explore",style: GoogleFonts.libreBaskerville(fontSize: 18,fontWeight: FontWeight.w600,color: Style.Colors.secondary,fontStyle: FontStyle.italic),),
+                              ),
+                              SizedBox(height: 7,),
+                              Padding(
+                                padding: EdgeInsets.only(right: 0),
+                                child: Text(
+                                  "Sai Dattavikas\nMeditation &\nCharitable Trust",
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    fontSize: 14,fontFamily: "Lexend",color: Style.Colors.secondary,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      Positioned(
+                        left: 0,
+                        child: Container(
+                          width: 0.4 * width,
+                          height: 0.256 * height,
+                          child: Image(image: AssetImage('images/saimandir.jpg'),fit: BoxFit.cover,),
+                        ),
+                      ),
+
                     ],
                   ),
-                ],
+                ),
               ),
             ],
           ),
@@ -1488,172 +1730,89 @@ class _GenreQuotesState extends State<GenreQuotes> {
       //     ),
       //   ],
       // );
-      return Padding(
-        padding: EdgeInsets.only(top: 0.0135 * height),
-        child: Container(
-          width: double.infinity,
-          height: MediaQuery
-              .of(context)
-              .size
-              .height / 1.402,
-          child: ListView(
-            children: [
-              Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      // Padding(
-                      //   padding: EdgeInsets.only(left: 0.0277*width,top: 0.0135*height),
-                      //   child: IconButton(
-                      //     onPressed: (){
-                      //       var dt = formatter.format(DateTime.parse(date).subtract(Duration(days: 1)));
-                      //       String next = "$dt$time";
-                      //       Random random = new Random();
-                      //       Navigator.push(context, MaterialPageRoute(builder: (context)=>QuotesOnePage(next,random.nextInt(images.length))));
-                      //     },
-                      //     icon: Icon(FontAwesomeIcons.backward,color: Style.Colors.secondary,),
-                      //     iconSize: 0.0722*width,
-                      //   )
-                      // ),
-                      Padding(
-                        padding: EdgeInsets.only(top: 0.0271 * height),
-                        child: Container(
-                          child: IconButton(
-                            icon: Icon(EvaIcons.clipboard,
-                              color: Colors.deepOrange,),
-                            iconSize: 0.0611 * width,
-                            onPressed: () {
-                              FlutterClipboard.copy("${quotes[0]
-                                  .quote}\n\n~${footer1}\n${footer2}");
-                              final snackbar = SnackBar(
-                                padding: EdgeInsets.only(
-                                    bottom: 0.0679 * height),
-                                elevation: 0.0067 * height,
-                                content: Text('Message Copied'),
-                                duration: Duration(seconds: 3),
-                                action: SnackBarAction(
-                                  label: 'Undo',
-                                  onPressed: () {
-                                    FlutterClipboard.paste().then((
-                                        value) {});
-                                  },
-                                ),
-                              );
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                  snackbar);
-                            },
-                            // onPressed: (){
-                            //   FlutterClipboard.copy("${quotes[index].quoteHin}\n\n${quotes[index].quoteEng}");
-                            // },
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(right: 0.034 * width),
-                        child: Container(
-                          padding: EdgeInsets.only(top: 0.0271 * height),
-                          child: Text(
-                            getDate(quotes[0].date),
-                            style: GoogleFonts.libreBaskerville(
-                              fontSize: 0.0472 * width,
-                              color: Style.Colors.secondary,
-                              fontWeight: FontWeight.w400,
-                            ),
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(top: 0.0271 * height),
-                        child: Container(
-                          child: InkWell(
-                            child: Padding(
-                              padding: EdgeInsets.all(0.0416 * width),
-                              child: GestureDetector(
-                                onTap: () {
-                                  share(context, "${quotes[0]
-                                      .quote}\n\n~${footer1}\n${footer2}");
-                                },
-                                child: Image(image: AssetImage(
-                                    'images/share-icon.png'),),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                      // Padding(
-                      //   padding: EdgeInsets.only(right: 0.027*width,top: 0.0135*height),
-                      //   child: IconButton(
-                      //     onPressed: (){
-                      //       var dt = formatter.format(DateTime.parse(date).add(Duration(days: 1)));
-                      //       String next = "$dt$time";
-                      //       Random random = new Random();
-                      //       Navigator.push(context, MaterialPageRoute(builder: (context)=>QuotesOnePage(next,random.nextInt(images.length))));
-                      //     },
-                      //     icon: Icon(FontAwesomeIcons.forward,color: Style.Colors.secondary,),
-                      //     iconSize: 0.0722*width,
-                      //   ),
-                      // ),
-                    ],
+      return Container(
+        height: height/1.402,
+        child: (genre=="RandomsQuote")
+          ?ListView.builder(
+          itemCount: quotes.length,
+          shrinkWrap: true,
+          itemBuilder: (context, index) {
+            Random random = new Random();
+            int imgno = random.nextInt(images.length);
+            return Container(
+              width: double.infinity,
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.push(context, MaterialPageRoute(
+                      builder: (context) =>
+                          QuotesOnePage(quotes[0].date, imgno)));
+                },
+                child: Container(
+                  width: double.infinity,
+                  height: height/1.502,
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      boxShadow: [
+                        BoxShadow(color: Colors.black.withOpacity(0.5),
+                            offset: Offset(0.0055 * width, 0.0055 * width),
+                            blurRadius: 0.0027 * width,
+                            spreadRadius: 0.0055 * width),
+                      ]
                   ),
-                  SizedBox(height: 0.0407 * height,),
-                  Container(
-                    width: double.infinity,
-                    height: 0.339 * height,
-                    child: Image(
-                      image: AssetImage("images/baba-pic${imgno + 1}-big.jpg"),
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                  SizedBox(height: 0.0135 * height,),
-                  Column(
-                    children: [
-                      Container(
-                        width: 0.138 * width,
-                        height: 0.0679 * height,
-                        child: Image(
-                          image: AssetImage('images/quotation.png'),
-                          fit: BoxFit.cover,),
+                  margin: EdgeInsets.symmetric(
+                      vertical: 0.0135 * height, horizontal: 0.027 * width),
+                  padding: EdgeInsets.symmetric(
+                      vertical: 0.0135 * height, horizontal: 0.027 * width),
+                  child: Stack(
+                    children: <Widget>[
+                      Positioned(
+                        top: 0.0027 * height,
+                        left: 0.0138 * width,
+                        child: Text(
+                          quotes[index].day,
+                          style: GoogleFonts.libreBaskerville(
+                            fontSize: 0.0343 * width,
+                            color: Style.Colors.secondary,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
                       ),
-                      SizedBox(height: 0.0135 * height,),
-                      Container(
-                        height: 0.4076 * height,
-                        width: 0.7777*width,
-                        child: Scrollbar(
-                          isAlwaysShown: true,
-                          controller: scrollController,
+                      Positioned(
+                        top: 0.0027 * height,
+                        right: 0.0138 * width,
+                        child: Text(
+                          date(quotes[index].date),
+                          style: GoogleFonts.libreBaskerville(
+                            fontSize: 0.0343 * width,
+                            color: Style.Colors.secondary,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                      Positioned(
+                        bottom: 0,
+                        left: 0,
+                        child: Container(
+                          width: 0.326 * width,
+                          height: 0.336 * height,
+                          child: Image(image: AssetImage('images/homequote-bg.jpg'),fit: BoxFit.cover,),
+                        ),
+                      ),
+                      Positioned(
+                        top: 0.044 * height,
+                        left: 0.326 * width,
+                        child: Container(
+                          width: width*0.564,
+                          height: height*0.5,
                           child: SingleChildScrollView(
-                            controller: scrollController,
                             child: Column(
                               children: [
-                                Padding(
-                                  padding: EdgeInsets.only(
-                                      top: 0.0135 * height),
-                                  child: Container(
-                                    width: double.infinity,
-                                    margin: EdgeInsets.symmetric(
-                                        vertical: 0.0135 * height,
-                                        horizontal: 0.0277 * width),
-                                    padding: EdgeInsets.symmetric(
-                                        vertical: 0.0135 * height,
-                                        horizontal: 0.0277 * width),
-                                    child: Column(
-                                      children: <Widget>[
-                                        Container(
-                                          width: 0.833*width,
-                                          child: Text(
-                                            quotes[0].quote,
-                                            textAlign: TextAlign.center,
-                                            style: TextStyle(
-                                              fontSize: 0.0472*width,
-                                              color: Style.Colors.secondary,
-                                              fontFamily: "Lexend",
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
+                                Text(
+                                  quotes[index].quote,
+                                  style: TextStyle(
+                                    fontSize: 0.0438 * width,
+                                    color: Style.Colors.secondary,
+                                    fontFamily: "Lexend",
                                   ),
                                 ),
                               ],
@@ -1661,72 +1820,362 @@ class _GenreQuotesState extends State<GenreQuotes> {
                           ),
                         ),
                       ),
-                      SizedBox(height: 0,),
-                      Container(
-                        width: 0.777 * width,
-                        height: 0.2717 * height,
-                        // decoration: BoxDecoration(color: Colors.black),
-                        child: Stack(
+                      // Positioned(
+                      //     top: 0.1470 * height,
+                      //     left: 0.416 * width,
+                      //     child: Text("...", style: TextStyle(fontSize: 0.1000 *
+                      //         width, color: Colors.black54,),)
+                      // ),
+                      // Positioned(
+                      //   top: 0.1550 * height,
+                      //   left: 0.490 * width,
+                      //   child: Text("...", style: TextStyle(fontSize: 0.0804 *
+                      //       width, color: Colors.black45,),),
+                      // ),
+                      // Positioned(
+                      //   top: 0.1615 * height,
+                      //   left: 0.550 * width,
+                      //   child: Text("...", style: TextStyle(fontSize: 0.0653 *
+                      //       width, color: Colors.black26,),),
+                      // ),
+                      Positioned(
+                        bottom: -(0.022 * height),
+                        right: 0.0166 * width,
+                        child: Row(
                           children: [
-                            Positioned(
-                              left: 0,
-                              right: 0,
-                              top: 0,
-                              bottom: 0.0271 * height,
-                              child: Container(
-                                // decoration: BoxDecoration(color: Colors.white),
-                                width: 0.277 * width,
-                                height: 0.135 * height,
-                                child: Image(image: AssetImage(
-                                    "images/saidattavikas-foundation.png"),),
+                            Container(
+                              child: IconButton(
+                                icon: Icon(EvaIcons.clipboard,
+                                  color: Colors.deepOrange,),
+                                iconSize: 0.0611 * width,
+                                onPressed: () {
+                                  FlutterClipboard.copy("${quotes[index]
+                                      .quote}\n\n~${footer1}\n${footer2}");
+                                  final snackbar = SnackBar(
+                                    padding: EdgeInsets.only(
+                                        bottom: 0.0679 * height),
+                                    elevation: 0.0067 * height,
+                                    content: Text('Message Copied'),
+                                    duration: Duration(seconds: 3),
+                                    action: SnackBarAction(
+                                      label: 'Undo',
+                                      onPressed: () {
+                                        FlutterClipboard.paste().then((
+                                            value) {});
+                                      },
+                                    ),
+                                  );
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                      snackbar);
+                                },
+                                // onPressed: (){
+                                //   FlutterClipboard.copy("${quotes[index].quoteHin}\n\n${quotes[index].quoteEng}");
+                                // },
                               ),
                             ),
-                            // Positioned(
-                            //   left:0.0138*width,
-                            //   bottom: 0.0407*height,
-                            //   child: GestureDetector(
-                            //     onTap: (){
-                            //       var dt = formatter.format(DateTime.parse(quotes[0].date).subtract(Duration(days: 1)));
-                            //       String next = "$dt$time";
-                            //       Random random = new Random();
-                            //       Navigator.push(context, MaterialPageRoute(builder: (context)=>QuotesOnePage(next,random.nextInt(images.length))));
-                            //     },
-                            //     child: Text(
-                            //       "Previous",
-                            //       style: GoogleFonts.lobster(
-                            //         fontSize: 0.066*width,
-                            //         fontWeight: FontWeight.bold,
-                            //         color: Style.Colors.secondary,
-                            //       ),
-                            //     ),
-                            //   ),
-                            // ),
-                            // Positioned(
-                            //   right: 0.102*width,
-                            //   bottom: 0.0407*height,
-                            //   child: GestureDetector(
-                            //     onTap: (){
-                            //       var dt = formatter.format(DateTime.parse().add(Duration(days: 1)));
-                            //       String next = "$dt$time";
-                            //       Random random = new Random();
-                            //       Navigator.push(context, MaterialPageRoute(builder: (context)=>QuotesOnePage(next,random.nextInt(images.length))));
-                            //     },
-                            //     child: Text(
-                            //       "Next",
-                            //       style: GoogleFonts.lobster(
-                            //         fontSize: 0.066*width,
-                            //         fontWeight: FontWeight.bold,
-                            //         color: Style.Colors.secondary,
-                            //       ),
-                            //     ),
-                            //   ),
-                            // ),
+                            Container(
+                              child: InkWell(
+                                child: Padding(
+                                  padding: EdgeInsets.all(0.0416 * width),
+                                  child: GestureDetector(
+                                    onTap: () {
+                                      share(context, "${quotes[index]
+                                          .quote}\n\n~${footer1}\n${footer2}");
+                                    },
+                                    child: Image(image: AssetImage(
+                                        'images/share-icon.png'),),
+                                  ),
+                                ),
+                              ),
+                            ),
                           ],
                         ),
                       ),
                     ],
                   ),
-                ],
+                ),
+              ),
+            );
+          }
+      )
+          :SingleChildScrollView(
+          child: Column(
+            children: [
+              ListView.builder(
+                  itemCount: quotes.length,
+                  shrinkWrap: true,
+                  itemBuilder: (context, index) {
+                    Random random = new Random();
+                    int imgno = random.nextInt(images.length);
+                    return Container(
+                      width: double.infinity,
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.push(context, MaterialPageRoute(
+                              builder: (context) =>
+                                  QuotesOnePage(quotes[0].date, imgno)));
+                        },
+                        child: Container(
+                          width: double.infinity,
+                          height: 0.3317 * height,
+                          decoration: BoxDecoration(
+                              color: Colors.white,
+                              boxShadow: [
+                                BoxShadow(color: Colors.black.withOpacity(0.5),
+                                    offset: Offset(0.0055 * width, 0.0055 * width),
+                                    blurRadius: 0.0027 * width,
+                                    spreadRadius: 0.0055 * width),
+                              ]
+                          ),
+                          margin: EdgeInsets.symmetric(
+                              vertical: 0.0135 * height, horizontal: 0.027 * width),
+                          padding: EdgeInsets.symmetric(
+                              vertical: 0.0135 * height, horizontal: 0.027 * width),
+                          child: Stack(
+                            children: <Widget>[
+                              Positioned(
+                                top: 0.0027 * height,
+                                left: 0.0138 * width,
+                                child: Text(
+                                  quotes[index].day,
+                                  style: GoogleFonts.libreBaskerville(
+                                    fontSize: 0.0343 * width,
+                                    color: Style.Colors.secondary,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                ),
+                              ),
+                              Positioned(
+                                top: 0.0027 * height,
+                                right: 0.0138 * width,
+                                child: Text(
+                                  date(quotes[index].date),
+                                  style: GoogleFonts.libreBaskerville(
+                                    fontSize: 0.0333 * width,
+                                    color: Style.Colors.secondary,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ),
+                              Positioned(
+                                bottom: 0,
+                                left: 0,
+                                child: Container(
+                                  width: 0.236 * width,
+                                  height: 0.236 * height,
+                                  child: Image(image: AssetImage('images/homequote-bg.jpg'),fit: BoxFit.cover,),
+                                ),
+                              ),
+                              Positioned(
+                                top: 0.044 * height,
+                                left: 0.235 * width,
+                                child: Container(
+                                  width: width*0.654,
+                                  height: height*0.21,
+                                  child: SingleChildScrollView(
+                                    child: Column(
+                                      children: [
+                                        Text(
+                                          quotes[index].quote,
+                                          style: TextStyle(
+                                            fontSize: 0.0408 * width,
+                                            color: Style.Colors.secondary,
+                                            fontFamily: "Lexend",
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              // Positioned(
+                              //     top: 0.1470 * height,
+                              //     left: 0.416 * width,
+                              //     child: Text("...", style: TextStyle(fontSize: 0.1000 *
+                              //         width, color: Colors.black54,),)
+                              // ),
+                              // Positioned(
+                              //   top: 0.1550 * height,
+                              //   left: 0.490 * width,
+                              //   child: Text("...", style: TextStyle(fontSize: 0.0804 *
+                              //       width, color: Colors.black45,),),
+                              // ),
+                              // Positioned(
+                              //   top: 0.1615 * height,
+                              //   left: 0.550 * width,
+                              //   child: Text("...", style: TextStyle(fontSize: 0.0653 *
+                              //       width, color: Colors.black26,),),
+                              // ),
+                              Positioned(
+                                bottom: -(0.022 * height),
+                                right: 0.0166 * width,
+                                child: Row(
+                                  children: [
+                                    Container(
+                                      child: IconButton(
+                                        icon: Icon(EvaIcons.clipboard,
+                                          color: Colors.deepOrange,),
+                                        iconSize: 0.0611 * width,
+                                        onPressed: () {
+                                          FlutterClipboard.copy("${quotes[index]
+                                              .quote}\n\n~${footer1}\n${footer2}");
+                                          final snackbar = SnackBar(
+                                            padding: EdgeInsets.only(
+                                                bottom: 0.0679 * height),
+                                            elevation: 0.0067 * height,
+                                            content: Text('Message Copied'),
+                                            duration: Duration(seconds: 3),
+                                            action: SnackBarAction(
+                                              label: 'Undo',
+                                              onPressed: () {
+                                                FlutterClipboard.paste().then((
+                                                    value) {});
+                                              },
+                                            ),
+                                          );
+                                          ScaffoldMessenger.of(context).showSnackBar(
+                                              snackbar);
+                                        },
+                                        // onPressed: (){
+                                        //   FlutterClipboard.copy("${quotes[index].quoteHin}\n\n${quotes[index].quoteEng}");
+                                        // },
+                                      ),
+                                    ),
+                                    Container(
+                                      child: InkWell(
+                                        child: Padding(
+                                          padding: EdgeInsets.all(0.0416 * width),
+                                          child: GestureDetector(
+                                            onTap: () {
+                                              share(context, "${quotes[index]
+                                                  .quote}\n\n~${footer1}\n${footer2}");
+                                            },
+                                            child: Image(image: AssetImage(
+                                                'images/share-icon.png'),),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    );
+                  }
+              ),
+              SizedBox(height: 10,),
+              Container(
+                width: double.infinity,
+                height: 0.256 * height,
+                decoration: BoxDecoration(
+                    color: Color(0xffE2D0C0),
+                    boxShadow: [
+                      BoxShadow(color: Colors.black.withOpacity(0.5),
+                          offset: Offset(0.0055 * width, 0.0055 * width),
+                          blurRadius: 0.0027 * width,
+                          spreadRadius: 0.0055 * width),
+                    ]
+                ),
+                margin: EdgeInsets.symmetric(horizontal: 0.027 * width),
+                // padding: EdgeInsets.symmetric(horizontal: 0.027 * width),
+                child: Stack(
+                  children: <Widget>[
+                    Positioned(
+                      top: 45,
+                      left: 10,
+                      child: Container(
+                        child: Column(
+                          children: [
+                            Padding(
+                              padding: EdgeInsets.only(right: 90),
+                              child: Text("Sai Mantra",style: GoogleFonts.libreBaskerville(fontSize: 18,fontWeight: FontWeight.w600,color: Style.Colors.secondary,fontStyle: FontStyle.italic),),
+                            ),
+                            SizedBox(height: 7,),
+                            Padding(
+                              padding: EdgeInsets.only(right: 14),
+                              child: Text(
+                                "Om Sai Namo Namah\nShri Sai Namo Namah\nJai Jai Sai Namo Namah\nSatguru Sai Namo Namah",
+                                textAlign: TextAlign.start,
+                                style: TextStyle(
+                                  fontSize: 14,fontFamily: "Lexend",color: Style.Colors.secondary,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    Positioned(
+                      right: 0,
+                      child: Container(
+                        width: 0.4 * width,
+                        height: 0.256 * height,
+                        child: Image(image: AssetImage('images/saibaba-photo.jpg'),fit: BoxFit.cover,),
+                      ),
+                    ),
+
+                  ],
+                ),
+              ),
+              SizedBox(height:20),
+              Padding(
+                padding: EdgeInsets.only(bottom: 15),
+                child: Container(
+                  width: double.infinity,
+                  height: 0.256 * height,
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      boxShadow: [
+                        BoxShadow(color: Colors.black.withOpacity(0.5),
+                            offset: Offset(0.0055 * width, 0.0055 * width),
+                            blurRadius: 0.0027 * width,
+                            spreadRadius: 0.0055 * width),
+                      ]
+                  ),
+                  margin: EdgeInsets.symmetric(horizontal: 0.027 * width),
+                  // padding: EdgeInsets.symmetric(horizontal: 0.027 * width),
+                  child: Stack(
+                    children: <Widget>[
+                      Positioned(
+                        top: 45,
+                        right: 40,
+                        child: Container(
+                          child: Column(
+                            children: [
+                              Padding(
+                                padding: EdgeInsets.only(right:0 ),
+                                child: Text("Explore",style: GoogleFonts.libreBaskerville(fontSize: 18,fontWeight: FontWeight.w600,color: Style.Colors.secondary,fontStyle: FontStyle.italic),),
+                              ),
+                              SizedBox(height: 7,),
+                              Padding(
+                                padding: EdgeInsets.only(right: 0),
+                                child: Text(
+                                  "Sai Dattavikas\nMeditation &\nCharitable Trust",
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    fontSize: 14,fontFamily: "Lexend",color: Style.Colors.secondary,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      Positioned(
+                        left: 0,
+                        child: Container(
+                          width: 0.4 * width,
+                          height: 0.256 * height,
+                          child: Image(image: AssetImage('images/saimandir.jpg'),fit: BoxFit.cover,),
+                        ),
+                      ),
+
+                    ],
+                  ),
+                ),
               ),
             ],
           ),
@@ -1769,378 +2218,474 @@ class _GenreQuotesState extends State<GenreQuotes> {
       );
     }
     else {
-      // return Column(
-      //   children: [
-      //     GestureDetector(
-      //       onTap: (){
-      //         Navigator.push(context, MaterialPageRoute(builder: (context)=>QuotesOnePage(quotes[0].date,random.nextInt(images.length))));
-      //       },
-      //       child: Container(
-      //         decoration: BoxDecoration(
-      //             color: Colors.white,
-      //             boxShadow: [
-      //               BoxShadow(color: Colors.black.withOpacity(0.3),offset: Offset(0.0083*width,0.0083*width),blurRadius: 0.0055*width,spreadRadius:0.0083*width),
-      //             ]
-      //         ),
-      //         width: double.infinity,
-      //         height: MediaQuery.of(context).size.height/1.51,
-      //         margin: EdgeInsets.only(top: 0.0135*height,bottom: 0.0135*height,right: 0.0194*width,left:0.0138*width,),
-      //         padding: EdgeInsets.only(right: 0.0277*width,top: 0.0135*height),
-      //         child: Stack(
-      //           children: <Widget>[
-      //             Positioned(
-      //               top: 0.0027*height,
-      //               right: 0.0138*width,
-      //               child: Text(
-      //                 date(quotes[0].date),
-      //                 style: GoogleFonts.libreBaskerville(
-      //                   fontSize: 0.033*width,
-      //                   color: Color(0xFF666666),
-      //                   fontWeight: FontWeight.w400,
-      //                 ),
-      //               ),
-      //             ),
-      //             Positioned(
-      //               bottom: 0,
-      //               left: 0.0055*width,
-      //               child: Container(
-      //                 width: 0.6388*width,
-      //                 height:0.3804*height,
-      //                 child: Image(
-      //                   image: AssetImage('images/homequote-bg.jpg'),
-      //                   fit: BoxFit.cover,
-      //                 ),
-      //               ),
-      //             ),
-      //             Positioned(
-      //               top: 0.054*height,
-      //               left: 0.4166*width,
-      //               child: Column(
-      //                 children: [
-      //                   Container(
-      //                     width: MediaQuery.of(context).size.width/2.3,
-      //                     height: (MediaQuery.of(context).size.width/1)+15,
-      //                     child: SingleChildScrollView(
-      //                       child: Column(
-      //                         children: [
-      //                           Text(
-      //                               quotes[0].quote,
-      //                               style: TextStyle(
-      //                                 fontSize: 0.0472*width,
-      //                                 color: Style.Colors.secondary,
-      //                                 fontFamily: "Lexend",
-      //                               ),
-      //                           ),
-      //                         ],
-      //                       ),
-      //                     ),
-      //                   ),
-      //                 ],
-      //               ),
-      //             ),
-      //             Positioned(
-      //               bottom: -(0.0054*height),
-      //               right: 0.016*width,
-      //               child: Row(
-      //                 children: [
-      //                   Container(
-      //                     child: IconButton(
-      //                       icon: Icon(EvaIcons.clipboard,color: Colors.deepOrange,),
-      //                       iconSize: 0.0611*width,
-      //                       onPressed: (){
-      //                         FlutterClipboard.copy(quotes[0].quote);
-      //                         final snackbar = SnackBar(
-      //                           padding: EdgeInsets.only(bottom: 0.0679*height),
-      //                           elevation: 0.0067*height,
-      //                           content: Text('Message Copied'),
-      //                           duration: Duration(seconds: 3),
-      //                           action: SnackBarAction(
-      //                             label: 'Undo',
-      //                             onPressed: () {
-      //                               FlutterClipboard.paste().then((value) {});
-      //                             },
-      //                           ),
-      //                         );
-      //                         ScaffoldMessenger.of(context).showSnackBar(snackbar);
-      //                       },
-      //                     ),
-      //                   ),
-      //                   Container(
-      //                     child: InkWell(
-      //                       child: Padding(
-      //                         padding: const EdgeInsets.all(15.0),
-      //                         child: GestureDetector(
-      //                           onTap: (){
-      //                             share(context, "${quotes[0].quote}");
-      //                           },
-      //                           child: Image(image: AssetImage('images/share-icon.png'),),
-      //                         ),
-      //                       ),
-      //                     ),
-      //                   ),
-      //                 ],
-      //               ),
-      //             ),
-      //           ],
-      //         ),
-      //       ),
-      //     ),
-      //   ],
-      // );
-      return Padding(
-        padding: EdgeInsets.only(top: 0.0135 * height),
-        child: Container(
-          width: double.infinity,
-          height: MediaQuery
-              .of(context)
-              .size
-              .height / 1.402,
-          child: ListView(
-            children: [
-              Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      // Padding(
-                      //   padding: EdgeInsets.only(left: 0.0277*width,top: 0.0135*height),
-                      //   child: IconButton(
-                      //     onPressed: (){
-                      //       var dt = formatter.format(DateTime.parse(date).subtract(Duration(days: 1)));
-                      //       String next = "$dt$time";
-                      //       Random random = new Random();
-                      //       Navigator.push(context, MaterialPageRoute(builder: (context)=>QuotesOnePage(next,random.nextInt(images.length))));
-                      //     },
-                      //     icon: Icon(FontAwesomeIcons.backward,color: Style.Colors.secondary,),
-                      //     iconSize: 0.0722*width,
-                      //   )
-                      // ),
-                      Padding(
-                        padding: EdgeInsets.only(top: 0.0271 * height),
-                        child: Container(
-                          child: IconButton(
-                            icon: Icon(EvaIcons.clipboard,
-                              color: Colors.deepOrange,),
-                            iconSize: 0.0611 * width,
-                            onPressed: () {
-                              FlutterClipboard.copy("${quotes[0]
-                                  .quoteHin}\n\n${quotes[0]
-                                  .quoteEng}\n\n~${footer1}\n${footer2}");
-                              final snackbar = SnackBar(
-                                padding: EdgeInsets.only(
-                                    bottom: 0.0679 * height),
-                                elevation: 0.0067 * height,
-                                content: Text('Message Copied'),
-                                duration: Duration(seconds: 3),
-                                action: SnackBarAction(
-                                  label: 'Undo',
-                                  onPressed: () {
-                                    FlutterClipboard.paste().then((
-                                        value) {});
-                                  },
-                                ),
-                              );
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                  snackbar);
-                            },
-                            // onPressed: (){
-                            //   FlutterClipboard.copy("${quotes[index].quoteHin}\n\n${quotes[index].quoteEng}");
-                            // },
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(right: 0.034 * width),
-                        child: Container(
-                          padding: EdgeInsets.only(top: 0.0271 * height),
+      return Container(
+        height: height/1.402,
+        child: (genre=="RandomsQuote")
+            ?ListView.builder(
+            itemCount: quotes.length,
+            shrinkWrap: true,
+            itemBuilder: (context, index) {
+              Random random = new Random();
+              int imgno = random.nextInt(images.length);
+              return Container(
+                width: double.infinity,
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.push(context, MaterialPageRoute(
+                        builder: (context) =>
+                            QuotesOnePage(quotes[0].date, imgno)));
+                  },
+                  child: Container(
+                    width: double.infinity,
+                    height: height/1.502,
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        boxShadow: [
+                          BoxShadow(color: Colors.black.withOpacity(0.5),
+                              offset: Offset(0.0055 * width, 0.0055 * width),
+                              blurRadius: 0.0027 * width,
+                              spreadRadius: 0.0055 * width),
+                        ]
+                    ),
+                    margin: EdgeInsets.symmetric(
+                        vertical: 0.0135 * height, horizontal: 0.027 * width),
+                    padding: EdgeInsets.symmetric(
+                        vertical: 0.0135 * height, horizontal: 0.027 * width),
+                    child: Stack(
+                      children: <Widget>[
+                        Positioned(
+                          top: 0.0027 * height,
+                          left: 0.0138 * width,
                           child: Text(
-                            getDate(quotes[0].date),
+                            quotes[index].day,
                             style: GoogleFonts.libreBaskerville(
-                              fontSize: 0.0472 * width,
+                              fontSize: 0.0343 * width,
                               color: Style.Colors.secondary,
-                              fontWeight: FontWeight.w400,
+                              fontWeight: FontWeight.w500,
                             ),
                           ),
                         ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(top: 0.0271 * height),
-                        child: Container(
-                          child: InkWell(
-                            child: Padding(
-                              padding: EdgeInsets.all(0.0416 * width),
-                              child: GestureDetector(
-                                onTap: () {
-                                  share(context, "${quotes[0]
-                                      .quoteHin}\n\n${quotes[0]
-                                      .quoteEng}\n\n~${footer1}\n${footer2}");
-                                },
-                                child: Image(image: AssetImage(
-                                    'images/share-icon.png'),),
+                        Positioned(
+                          top: 0.0027 * height,
+                          right: 0.0138 * width,
+                          child: Text(
+                            date(quotes[index].date),
+                            style: GoogleFonts.libreBaskerville(
+                              fontSize: 0.0343 * width,
+                              color: Style.Colors.secondary,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                        Positioned(
+                          bottom: 0,
+                          left: 0,
+                          child: Container(
+                            width: 0.326 * width,
+                            height: 0.336 * height,
+                            child: Image(image: AssetImage('images/homequote-bg.jpg'),fit: BoxFit.cover,),
+                          ),
+                        ),
+                        Positioned(
+                          top: 0.044 * height,
+                          left: 0.326 * width,
+                          child: Container(
+                            width: width*0.564,
+                            height: height*0.5,
+                            child: SingleChildScrollView(
+                              child: Column(
+                                children: [
+                                  Text(
+                                    quotes[index].quoteHin,
+                                    style: TextStyle(
+                                      fontSize: 0.0438 * width,
+                                      color: Style.Colors.secondary,
+                                      fontFamily: "Lexend",
+                                    ),
+                                  ),
+                                  SizedBox(height: 6,),
+                                  Text(
+                                    quotes[index].quoteEng,
+                                    style: TextStyle(
+                                      fontSize: 0.0438 * width,
+                                      color: Style.Colors.secondary,
+                                      fontFamily: "Lexend",
+                                    ),
+                                  ),
+                                ],
                               ),
                             ),
                           ),
                         ),
-                      ),
-                      // Padding(
-                      //   padding: EdgeInsets.only(right: 0.027*width,top: 0.0135*height),
-                      //   child: IconButton(
-                      //     onPressed: (){
-                      //       var dt = formatter.format(DateTime.parse(date).add(Duration(days: 1)));
-                      //       String next = "$dt$time";
-                      //       Random random = new Random();
-                      //       Navigator.push(context, MaterialPageRoute(builder: (context)=>QuotesOnePage(next,random.nextInt(images.length))));
-                      //     },
-                      //     icon: Icon(FontAwesomeIcons.forward,color: Style.Colors.secondary,),
-                      //     iconSize: 0.0722*width,
-                      //   ),
-                      // ),
-                    ],
-                  ),
-                  SizedBox(height: 0.0407 * height,),
-                  Container(
-                    width: double.infinity,
-                    height: 0.339 * height,
-                    child: Image(
-                      image: AssetImage("images/baba-pic${imgno + 1}-big.jpg"),
-                      fit: BoxFit.cover,
+                        // Positioned(
+                        //     top: 0.1470 * height,
+                        //     left: 0.416 * width,
+                        //     child: Text("...", style: TextStyle(fontSize: 0.1000 *
+                        //         width, color: Colors.black54,),)
+                        // ),
+                        // Positioned(
+                        //   top: 0.1550 * height,
+                        //   left: 0.490 * width,
+                        //   child: Text("...", style: TextStyle(fontSize: 0.0804 *
+                        //       width, color: Colors.black45,),),
+                        // ),
+                        // Positioned(
+                        //   top: 0.1615 * height,
+                        //   left: 0.550 * width,
+                        //   child: Text("...", style: TextStyle(fontSize: 0.0653 *
+                        //       width, color: Colors.black26,),),
+                        // ),
+                        Positioned(
+                          bottom: -(0.022 * height),
+                          right: 0.0166 * width,
+                          child: Row(
+                            children: [
+                              Container(
+                                child: IconButton(
+                                  icon: Icon(EvaIcons.clipboard,
+                                    color: Colors.deepOrange,),
+                                  iconSize: 0.0611 * width,
+                                  onPressed: () {
+                                    FlutterClipboard.copy("${quotes[index]
+                                        .quoteHin}\n\n${quotes[index]
+                                        .quoteEng}~${footer1}\n${footer2}");
+                                    final snackbar = SnackBar(
+                                      padding: EdgeInsets.only(
+                                          bottom: 0.0679 * height),
+                                      elevation: 0.0067 * height,
+                                      content: Text('Message Copied'),
+                                      duration: Duration(seconds: 3),
+                                      action: SnackBarAction(
+                                        label: 'Undo',
+                                        onPressed: () {
+                                          FlutterClipboard.paste().then((
+                                              value) {});
+                                        },
+                                      ),
+                                    );
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                        snackbar);
+                                  },
+                                  // onPressed: (){
+                                  //   FlutterClipboard.copy("${quotes[index].quoteHin}\n\n${quotes[index].quoteEng}");
+                                  // },
+                                ),
+                              ),
+                              Container(
+                                child: InkWell(
+                                  child: Padding(
+                                    padding: EdgeInsets.all(0.0416 * width),
+                                    child: GestureDetector(
+                                      onTap: () {
+                                        share(context, "${quotes[index]
+                                            .quoteHin}\n\n${quotes[index]
+                                            .quoteEng}~${footer1}\n${footer2}");
+                                      },
+                                      child: Image(image: AssetImage(
+                                          'images/share-icon.png'),),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
                     ),
                   ),
-                  SizedBox(height: 0.0135 * height,),
-                  Column(
-                    children: [
-                      Container(
-                        width: 0.138 * width,
-                        height: 0.0679 * height,
-                        child: Image(
-                          image: AssetImage('images/quotation.png'),
-                          fit: BoxFit.cover,),
-                      ),
-                      SizedBox(height: 0.0135 * height,),
-                      Container(
-                        height: 0.4076 * height,
-                        width: 0.7777*width,
-                        child: Scrollbar(
-                          isAlwaysShown: true,
-                          controller: scrollController,
-                          child: SingleChildScrollView(
-                            controller: scrollController,
-                            child: Column(
-                              children: [
-                                Padding(
-                                  padding: EdgeInsets.only(
-                                      top: 0.0135 * height),
-                                  child: Container(
-                                    width: double.infinity,
-                                    margin: EdgeInsets.symmetric(
-                                        vertical: 0.0135 * height,
-                                        horizontal: 0.0277 * width),
-                                    padding: EdgeInsets.symmetric(
-                                        vertical: 0.0135 * height,
-                                        horizontal: 0.0277 * width),
+                ),
+              );
+            }
+        )
+            :SingleChildScrollView(
+          child: Column(
+            children: [
+              ListView.builder(
+                  itemCount: quotes.length,
+                  shrinkWrap: true,
+                  itemBuilder: (context, index) {
+                    Random random = new Random();
+                    int imgno = random.nextInt(images.length);
+                    return Container(
+                      width: double.infinity,
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.push(context, MaterialPageRoute(
+                              builder: (context) =>
+                                  QuotesOnePage(quotes[0].date, imgno)));
+                        },
+                        child: Container(
+                          width: double.infinity,
+                          height: 0.3317 * height,
+                          decoration: BoxDecoration(
+                              color: Colors.white,
+                              boxShadow: [
+                                BoxShadow(color: Colors.black.withOpacity(0.5),
+                                    offset: Offset(0.0055 * width, 0.0055 * width),
+                                    blurRadius: 0.0027 * width,
+                                    spreadRadius: 0.0055 * width),
+                              ]
+                          ),
+                          margin: EdgeInsets.symmetric(
+                              vertical: 0.0135 * height, horizontal: 0.027 * width),
+                          padding: EdgeInsets.symmetric(
+                              vertical: 0.0135 * height, horizontal: 0.027 * width),
+                          child: Stack(
+                            children: <Widget>[
+                              Positioned(
+                                top: 0.0027 * height,
+                                left: 0.0138 * width,
+                                child: Text(
+                                  quotes[index].day,
+                                  style: GoogleFonts.libreBaskerville(
+                                    fontSize: 0.0343 * width,
+                                    color: Style.Colors.secondary,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                ),
+                              ),
+                              Positioned(
+                                top: 0.0027 * height,
+                                right: 0.0138 * width,
+                                child: Text(
+                                  date(quotes[index].date),
+                                  style: GoogleFonts.libreBaskerville(
+                                    fontSize: 0.0333 * width,
+                                    color: Style.Colors.secondary,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ),
+                              Positioned(
+                                bottom: 0,
+                                left: 0,
+                                child: Container(
+                                  width: 0.236 * width,
+                                  height: 0.236 * height,
+                                  child: Image(image: AssetImage('images/homequote-bg.jpg'),fit: BoxFit.cover,),
+                                ),
+                              ),
+                              Positioned(
+                                top: 0.044 * height,
+                                left: 0.235 * width,
+                                child: Container(
+                                  width: width*0.654,
+                                  height: height*0.21,
+                                  child: SingleChildScrollView(
                                     child: Column(
-                                      children: <Widget>[
-                                        Container(
-                                          width: 0.833*width,
-                                          child: Text(
-                                            quotes[0].quoteHin,
-                                            textAlign: TextAlign.center,
-                                            style: TextStyle(
-                                              fontSize: 0.05 * width,
-                                              color: Style.Colors.secondary,
-                                              fontFamily: "Lexend",
-                                            ),
+                                      children: [
+                                        Text(
+                                          quotes[index].quoteHin,
+                                          style: TextStyle(
+                                            fontSize: 0.0408 * width,
+                                            color: Style.Colors.secondary,
+                                            fontFamily: "Lexend",
                                           ),
                                         ),
-                                        SizedBox(height: 0.0081 * height,),
-                                        Container(
-                                          width: 0.833*width,
-                                          child: Text(
-                                            quotes[0].quoteEng,
-                                            textAlign: TextAlign.center,
-                                            style: TextStyle(
-                                              fontSize: 0.0472*width,
-                                              color: Style.Colors.secondary,
-                                              fontFamily: "Lexend",
-                                            ),
+                                        SizedBox(height: 6,),
+                                        Text(
+                                          quotes[index].quoteEng,
+                                          style: TextStyle(
+                                            fontSize: 0.0408 * width,
+                                            color: Style.Colors.secondary,
+                                            fontFamily: "Lexend",
                                           ),
                                         ),
                                       ],
                                     ),
                                   ),
                                 ),
-                              ],
-                            ),
+                              ),
+                              // Positioned(
+                              //     top: 0.1470 * height,
+                              //     left: 0.416 * width,
+                              //     child: Text("...", style: TextStyle(fontSize: 0.1000 *
+                              //         width, color: Colors.black54,),)
+                              // ),
+                              // Positioned(
+                              //   top: 0.1550 * height,
+                              //   left: 0.490 * width,
+                              //   child: Text("...", style: TextStyle(fontSize: 0.0804 *
+                              //       width, color: Colors.black45,),),
+                              // ),
+                              // Positioned(
+                              //   top: 0.1615 * height,
+                              //   left: 0.550 * width,
+                              //   child: Text("...", style: TextStyle(fontSize: 0.0653 *
+                              //       width, color: Colors.black26,),),
+                              // ),
+                              Positioned(
+                                bottom: -(0.022 * height),
+                                right: 0.0166 * width,
+                                child: Row(
+                                  children: [
+                                    Container(
+                                      child: IconButton(
+                                        icon: Icon(EvaIcons.clipboard,
+                                          color: Colors.deepOrange,),
+                                        iconSize: 0.0611 * width,
+                                        onPressed: () {
+                                          FlutterClipboard.copy("${quotes[index]
+                                              .quoteHin}\n\n${quotes[index]
+                                              .quoteEng}~${footer1}\n${footer2}");
+                                          final snackbar = SnackBar(
+                                            padding: EdgeInsets.only(
+                                                bottom: 0.0679 * height),
+                                            elevation: 0.0067 * height,
+                                            content: Text('Message Copied'),
+                                            duration: Duration(seconds: 3),
+                                            action: SnackBarAction(
+                                              label: 'Undo',
+                                              onPressed: () {
+                                                FlutterClipboard.paste().then((
+                                                    value) {});
+                                              },
+                                            ),
+                                          );
+                                          ScaffoldMessenger.of(context).showSnackBar(
+                                              snackbar);
+                                        },
+                                        // onPressed: (){
+                                        //   FlutterClipboard.copy("${quotes[index].quoteHin}\n\n${quotes[index].quoteEng}");
+                                        // },
+                                      ),
+                                    ),
+                                    Container(
+                                      child: InkWell(
+                                        child: Padding(
+                                          padding: EdgeInsets.all(0.0416 * width),
+                                          child: GestureDetector(
+                                            onTap: () {
+                                              share(context, "${quotes[index]
+                                                  .quoteHin}\n\n${quotes[index]
+                                                  .quoteEng}~${footer1}\n${footer2}");
+                                            },
+                                            child: Image(image: AssetImage(
+                                                'images/share-icon.png'),),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
                           ),
                         ),
                       ),
-                      SizedBox(height: 0,),
-                      Container(
-                        width: 0.777 * width,
-                        height: 0.2717 * height,
-                        // decoration: BoxDecoration(color: Colors.black),
-                        child: Stack(
+                    );
+                  }
+              ),
+              SizedBox(height: 10,),
+              Container(
+                width: double.infinity,
+                height: 0.256 * height,
+                decoration: BoxDecoration(
+                    color: Color(0xffE2D0C0),
+                    boxShadow: [
+                      BoxShadow(color: Colors.black.withOpacity(0.5),
+                          offset: Offset(0.0055 * width, 0.0055 * width),
+                          blurRadius: 0.0027 * width,
+                          spreadRadius: 0.0055 * width),
+                    ]
+                ),
+                margin: EdgeInsets.symmetric(horizontal: 0.027 * width),
+                // padding: EdgeInsets.symmetric(horizontal: 0.027 * width),
+                child: Stack(
+                  children: <Widget>[
+                    Positioned(
+                      top: 45,
+                      left: 10,
+                      child: Container(
+                        child: Column(
                           children: [
-                            Positioned(
-                              left: 0,
-                              right: 0,
-                              top: 0,
-                              bottom: 0.0271 * height,
-                              child: Container(
-                                // decoration: BoxDecoration(color: Colors.white),
-                                width: 0.277 * width,
-                                height: 0.135 * height,
-                                child: Image(image: AssetImage(
-                                    "images/saidattavikas-foundation.png"),),
+                            Padding(
+                              padding: EdgeInsets.only(right: 90),
+                              child: Text("Sai Mantra",style: GoogleFonts.libreBaskerville(fontSize: 18,fontWeight: FontWeight.w600,color: Style.Colors.secondary,fontStyle: FontStyle.italic),),
+                            ),
+                            SizedBox(height: 7,),
+                            Padding(
+                              padding: EdgeInsets.only(right: 14),
+                              child: Text(
+                                "Om Sai Namo Namah\nShri Sai Namo Namah\nJai Jai Sai Namo Namah\nSatguru Sai Namo Namah",
+                                textAlign: TextAlign.start,
+                                style: TextStyle(
+                                  fontSize: 14,fontFamily: "Lexend",color: Style.Colors.secondary,
+                                ),
                               ),
                             ),
-                            // Positioned(
-                            //   left:0.0138*width,
-                            //   bottom: 0.0407*height,
-                            //   child: GestureDetector(
-                            //     onTap: (){
-                            //       var dt = formatter.format(DateTime.parse(quotes[0].date).subtract(Duration(days: 1)));
-                            //       String next = "$dt$time";
-                            //       Random random = new Random();
-                            //       Navigator.push(context, MaterialPageRoute(builder: (context)=>QuotesOnePage(next,random.nextInt(images.length))));
-                            //     },
-                            //     child: Text(
-                            //       "Previous",
-                            //       style: GoogleFonts.lobster(
-                            //         fontSize: 0.066*width,
-                            //         fontWeight: FontWeight.bold,
-                            //         color: Style.Colors.secondary,
-                            //       ),
-                            //     ),
-                            //   ),
-                            // ),
-                            // Positioned(
-                            //   right: 0.102*width,
-                            //   bottom: 0.0407*height,
-                            //   child: GestureDetector(
-                            //     onTap: (){
-                            //       var dt = formatter.format(DateTime.parse().add(Duration(days: 1)));
-                            //       String next = "$dt$time";
-                            //       Random random = new Random();
-                            //       Navigator.push(context, MaterialPageRoute(builder: (context)=>QuotesOnePage(next,random.nextInt(images.length))));
-                            //     },
-                            //     child: Text(
-                            //       "Next",
-                            //       style: GoogleFonts.lobster(
-                            //         fontSize: 0.066*width,
-                            //         fontWeight: FontWeight.bold,
-                            //         color: Style.Colors.secondary,
-                            //       ),
-                            //     ),
-                            //   ),
-                            // ),
                           ],
                         ),
                       ),
+                    ),
+                    Positioned(
+                      right: 0,
+                      child: Container(
+                        width: 0.4 * width,
+                        height: 0.256 * height,
+                        child: Image(image: AssetImage('images/saibaba-photo.jpg'),fit: BoxFit.cover,),
+                      ),
+                    ),
+
+                  ],
+                ),
+              ),
+              SizedBox(height:20),
+              Padding(
+                padding: EdgeInsets.only(bottom: 15),
+                child: Container(
+                  width: double.infinity,
+                  height: 0.256 * height,
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      boxShadow: [
+                        BoxShadow(color: Colors.black.withOpacity(0.5),
+                            offset: Offset(0.0055 * width, 0.0055 * width),
+                            blurRadius: 0.0027 * width,
+                            spreadRadius: 0.0055 * width),
+                      ]
+                  ),
+                  margin: EdgeInsets.symmetric(horizontal: 0.027 * width),
+                  // padding: EdgeInsets.symmetric(horizontal: 0.027 * width),
+                  child: Stack(
+                    children: <Widget>[
+                      Positioned(
+                        top: 45,
+                        right: 40,
+                        child: Container(
+                          child: Column(
+                            children: [
+                              Padding(
+                                padding: EdgeInsets.only(right:0 ),
+                                child: Text("Explore",style: GoogleFonts.libreBaskerville(fontSize: 18,fontWeight: FontWeight.w600,color: Style.Colors.secondary,fontStyle: FontStyle.italic),),
+                              ),
+                              SizedBox(height: 7,),
+                              Padding(
+                                padding: EdgeInsets.only(right: 0),
+                                child: Text(
+                                  "Sai Dattavikas\nMeditation &\nCharitable Trust",
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    fontSize: 14,fontFamily: "Lexend",color: Style.Colors.secondary,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      Positioned(
+                        left: 0,
+                        child: Container(
+                          width: 0.4 * width,
+                          height: 0.256 * height,
+                          child: Image(image: AssetImage('images/saimandir.jpg'),fit: BoxFit.cover,),
+                        ),
+                      ),
+
                     ],
                   ),
-                ],
+                ),
               ),
             ],
           ),
