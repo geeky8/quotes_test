@@ -183,7 +183,7 @@ class _QuotesOnePageState extends State<QuotesOnePage>
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
                                 Container(
-                                  height: 0.067*height,
+                                  height: 0.057*height,
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                                     children: [
@@ -298,128 +298,119 @@ class _QuotesOnePageState extends State<QuotesOnePage>
                                     Container(
                                       // height: 0.4076 * height,
                                       width: width,
-                                      child: Scrollbar(
-                                        isAlwaysShown: true,
-                                        thickness: 7,
-                                        radius: Radius.circular(8),
-                                        controller: scrollController,
-                                        child: SingleChildScrollView(
-                                          controller: scrollController,
-                                          child: Padding(
-                                            padding: EdgeInsets.all(0.0114*width),
-                                            child: Column(
-                                              children: [
-                                                if (lang == "hi")
-                                                  Container(
-                                                    width: MediaQuery.of(context)
-                                                        .size
-                                                        .width,
-                                                    child: StreamBuilder<
-                                                            QuoteHindiResponse>(
-                                                        stream: quoteHindiBloc
-                                                            .subject.stream,
-                                                        builder: (context,
-                                                            AsyncSnapshot<
-                                                                    QuoteHindiResponse>
-                                                                snapshot) {
-                                                          if (snapshot.hasData) {
-                                                            // if(snapshot.data.error!=0 && snapshot.data.error.length>0){
-                                                            //   return buildError(snapshot.data.error);
-                                                            // }
-                                                            if (_QuoteBoxHindi(
-                                                                    snapshot
-                                                                        .data) ==
-                                                                null) {
-                                                              return buildLoading();
-                                                            } else {
-                                                              return _QuoteBoxHindi(
-                                                                  snapshot.data);
-                                                            }
-                                                          } else if (snapshot
-                                                              .hasError) {
-                                                            return buildError(
-                                                                snapshot.error);
-                                                          } else {
+                                      child: Padding(
+                                        padding: EdgeInsets.all(0.0114*width),
+                                        child: Column(
+                                          children: [
+                                            if (lang == "hi")
+                                              Container(
+                                                width: MediaQuery.of(context)
+                                                    .size
+                                                    .width,
+                                                child: StreamBuilder<
+                                                        QuoteHindiResponse>(
+                                                    stream: quoteHindiBloc
+                                                        .subject.stream,
+                                                    builder: (context,
+                                                        AsyncSnapshot<
+                                                                QuoteHindiResponse>
+                                                            snapshot) {
+                                                      if (snapshot.hasData) {
+                                                        // if(snapshot.data.error!=0 && snapshot.data.error.length>0){
+                                                        //   return buildError(snapshot.data.error);
+                                                        // }
+                                                        if (_QuoteBoxHindi(
+                                                                snapshot
+                                                                    .data) ==
+                                                            null) {
+                                                          return buildLoading();
+                                                        } else {
+                                                          return _QuoteBoxHindi(
+                                                              snapshot.data);
+                                                        }
+                                                      } else if (snapshot
+                                                          .hasError) {
+                                                        return buildError(
+                                                            snapshot.error);
+                                                      } else {
+                                                        return buildLoading();
+                                                      }
+                                                    }),
+                                              )
+                                            else if (lang == "en")
+                                              Container(
+                                                  width:
+                                                      MediaQuery.of(context)
+                                                          .size
+                                                          .width,
+                                                  child: StreamBuilder<
+                                                          QuoteEnglishResponse>(
+                                                      stream: quoteEnglishBloc
+                                                          .subject.stream,
+                                                      builder: (context,
+                                                          AsyncSnapshot<
+                                                                  QuoteEnglishResponse>
+                                                              snapshot) {
+                                                        if (snapshot
+                                                            .hasData) {
+                                                          // if(snapshot.data.error!=0 && snapshot.data.error.length>0){
+                                                          //   return buildError(snapshot.data.error);
+                                                          // }
+                                                          if (_QuoteBoxEnglish(
+                                                                  snapshot
+                                                                      .data) ==
+                                                              null) {
                                                             return buildLoading();
-                                                          }
-                                                        }),
-                                                  )
-                                                else if (lang == "en")
-                                                  Container(
-                                                      width:
-                                                          MediaQuery.of(context)
-                                                              .size
-                                                              .width,
-                                                      child: StreamBuilder<
-                                                              QuoteEnglishResponse>(
-                                                          stream: quoteEnglishBloc
-                                                              .subject.stream,
-                                                          builder: (context,
-                                                              AsyncSnapshot<
-                                                                      QuoteEnglishResponse>
-                                                                  snapshot) {
-                                                            if (snapshot
-                                                                .hasData) {
-                                                              // if(snapshot.data.error!=0 && snapshot.data.error.length>0){
-                                                              //   return buildError(snapshot.data.error);
-                                                              // }
-                                                              if (_QuoteBoxEnglish(
-                                                                      snapshot
-                                                                          .data) ==
-                                                                  null) {
-                                                                return buildLoading();
-                                                              } else {
-                                                                return _QuoteBoxEnglish(
-                                                                    snapshot
-                                                                        .data);
-                                                              }
-                                                            } else if (snapshot
-                                                                .hasError) {
-                                                              return buildError(
-                                                                  snapshot.error);
-                                                            } else {
-                                                              return buildLoading();
-                                                            }
-                                                          }))
-                                                else
-                                                  Container(
-                                                    width: MediaQuery.of(context)
-                                                        .size
-                                                        .width,
-                                                    // height: 300,
-                                                    child: StreamBuilder<
-                                                            QuoteBothResponse>(
-                                                        stream: quoteBothBloc
-                                                            .subject.stream,
-                                                        builder: (context,
-                                                            AsyncSnapshot<
-                                                                    QuoteBothResponse>
-                                                                snapshot) {
-                                                          if (snapshot.hasData) {
-                                                            // if(snapshot.data.error!=0 && snapshot.data.error.length>0){
-                                                            //   return buildError(snapshot.data.error);
-                                                            // }
-                                                            if (_QuoteBoxBoth(
-                                                                    snapshot
-                                                                        .data) ==
-                                                                null) {
-                                                              return buildLoading();
-                                                            } else {
-                                                              return _QuoteBoxBoth(
-                                                                  snapshot.data);
-                                                            }
-                                                          } else if (snapshot
-                                                              .hasError) {
-                                                            return buildError(
-                                                                snapshot.error);
                                                           } else {
-                                                            return buildLoading();
+                                                            return _QuoteBoxEnglish(
+                                                                snapshot
+                                                                    .data);
                                                           }
-                                                        }),
-                                                  ),
-                                              ],
-                                            ),
-                                          ),
+                                                        } else if (snapshot
+                                                            .hasError) {
+                                                          return buildError(
+                                                              snapshot.error);
+                                                        } else {
+                                                          return buildLoading();
+                                                        }
+                                                      }))
+                                            else
+                                              Container(
+                                                width: MediaQuery.of(context)
+                                                    .size
+                                                    .width,
+                                                // height: 300,
+                                                child: StreamBuilder<
+                                                        QuoteBothResponse>(
+                                                    stream: quoteBothBloc
+                                                        .subject.stream,
+                                                    builder: (context,
+                                                        AsyncSnapshot<
+                                                                QuoteBothResponse>
+                                                            snapshot) {
+                                                      if (snapshot.hasData) {
+                                                        // if(snapshot.data.error!=0 && snapshot.data.error.length>0){
+                                                        //   return buildError(snapshot.data.error);
+                                                        // }
+                                                        if (_QuoteBoxBoth(
+                                                                snapshot
+                                                                    .data) ==
+                                                            null) {
+                                                          return buildLoading();
+                                                        } else {
+                                                          return _QuoteBoxBoth(
+                                                              snapshot.data);
+                                                        }
+                                                      } else if (snapshot
+                                                          .hasError) {
+                                                        return buildError(
+                                                            snapshot.error);
+                                                      } else {
+                                                        return buildLoading();
+                                                      }
+                                                    }),
+                                              ),
+                                          ],
                                         ),
                                       ),
                                     ),
@@ -428,7 +419,7 @@ class _QuotesOnePageState extends State<QuotesOnePage>
                                     ),
                                     Container(
                                       width: 0.777 * width,
-                                      height: 0.2117 * height,
+                                      height: 0.1517 * height,
                                       // decoration: BoxDecoration(color: Colors.black),
                                       child: formatter.format(DateTime.parse(date))==formatter.format(DateTime.now())
                                           ?Stack(
@@ -440,8 +431,8 @@ class _QuotesOnePageState extends State<QuotesOnePage>
                                             bottom: 0.0271 * height,
                                             child: Container(
                                               // decoration: BoxDecoration(color: Colors.white),
-                                              width: 0.277 * width,
-                                              height: 0.135 * height,
+                                              width: 0.227 * width,
+                                              height: 0.105 * height,
                                               child: Image(
                                                 image: AssetImage(
                                                     "images/saidattavikas-foundation.png"),
@@ -449,9 +440,9 @@ class _QuotesOnePageState extends State<QuotesOnePage>
                                             ),
                                           ),
                                           Positioned(
-                                            left: 100,
+                                            left: 0.0555*width,
                                             right: 0,
-                                            bottom: 0.0107 * height,
+                                            bottom: 0.0307 * height,
                                             child: GestureDetector(
                                               onTap: () {
                                                 var dt = formatter.format(
@@ -473,8 +464,8 @@ class _QuotesOnePageState extends State<QuotesOnePage>
                                               child: Text(
                                                 "Previous",
                                                 style: GoogleFonts.libreBaskerville(
-                                                  fontSize: 0.056 * width,
-                                                  fontWeight: FontWeight.w600,
+                                                  fontSize: 0.049 * width,
+                                                  fontWeight: FontWeight.w400,
                                                   fontStyle: FontStyle.italic,
                                                   color: Style.Colors.secondary,
                                                 ),
@@ -522,10 +513,10 @@ class _QuotesOnePageState extends State<QuotesOnePage>
                                             left: 0,
                                             right: 0,
                                             top: 0,
-                                            bottom: 0.0571 * height,
+                                            bottom: 0.0271 * height,
                                             child: Container(
                                               // decoration: BoxDecoration(color: Colors.white),
-                                              width: 0.277 * width,
+                                              width: 0.327 * width,
                                               height: 0.135 * height,
                                               child: Image(
                                                 image: AssetImage(
@@ -536,8 +527,8 @@ class _QuotesOnePageState extends State<QuotesOnePage>
                                           Positioned(
                                             // left: 0.0138 * width,
                                             // bottom: 0.0407 * height,
-                                            left:10,
-                                            bottom: 15,
+                                            left:0.0277*width,
+                                            bottom: 0.0407 * height,
                                             child: GestureDetector(
                                               onTap: () {
                                                 var dt = formatter.format(
@@ -559,8 +550,8 @@ class _QuotesOnePageState extends State<QuotesOnePage>
                                               child: Text(
                                                 "Previous",
                                                 style: GoogleFonts.libreBaskerville(
-                                                  fontSize: 0.056 * width,
-                                                  fontWeight: FontWeight.w600,
+                                                  fontSize: 0.049 * width,
+                                                  fontWeight: FontWeight.w400,
                                                   fontStyle: FontStyle.italic,
                                                   color: Style.Colors.secondary,
                                                 ),
@@ -570,8 +561,8 @@ class _QuotesOnePageState extends State<QuotesOnePage>
                                           Positioned(
                                             // right: 0.102 * width,
                                             // bottom: 0.0407 * height,
-                                            right: 40,
-                                            bottom: 15,
+                                            right: 0.0793*width,
+                                            bottom: 0.0407 * height,
                                             child: GestureDetector(
                                               onTap: () {
                                                 var dt = formatter.format(
@@ -595,8 +586,8 @@ class _QuotesOnePageState extends State<QuotesOnePage>
                                               child: Text(
                                                 "Next",
                                                 style: GoogleFonts.libreBaskerville(
-                                                  fontSize: 0.056 * width,
-                                                  fontWeight: FontWeight.w600,
+                                                  fontSize: 0.049 * width,
+                                                  fontWeight: FontWeight.w400,
                                                   fontStyle: FontStyle.italic,
                                                   color: Style.Colors.secondary,
                                                 ),
@@ -808,9 +799,10 @@ class _QuotesOnePageState extends State<QuotesOnePage>
                       quotes[i].quote,
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                        fontSize: 0.0472 * width,
+                        fontSize: 0.0448 * width,
                         color: Style.Colors.secondary,
-                        fontFamily: "Lexend",
+                        fontFamily: "Merriweather",
+                        fontWeight: FontWeight.w400,
                       ),
                     ),
                   ),

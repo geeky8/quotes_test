@@ -430,7 +430,8 @@ class _GenreQuotesState extends State<GenreQuotes> {
                       left: 0.031 * width,
                       child: Text(
                         quotes[index].day,
-                        style: GoogleFonts.libreBaskerville(
+                        style: TextStyle(
+                          fontFamily: "Merriweather",
                           fontSize: 0.042 * width,
                           color: Color(0xFF666666),
                           fontWeight: FontWeight.w400,
@@ -488,7 +489,7 @@ class _GenreQuotesState extends State<GenreQuotes> {
                           style: TextStyle(
                             fontSize: 0.0458 * width,
                             color: Style.Colors.secondary,
-                            fontFamily: "Lexend",
+                            fontFamily: "Merriweather",
                           ),
                         ),
                       ),
@@ -512,21 +513,21 @@ class _GenreQuotesState extends State<GenreQuotes> {
                         fontSize: 0.0653 * width, color: Colors.black26,),),
                     ),
                     Positioned(
-                      bottom: -4,
-                      right: 6,
+                      bottom: -(0.0054*height),
+                      right: 0.0166*width,
                       child: Row(
                         children: [
                           Container(
                             child: IconButton(
                               icon: Icon(
                                 EvaIcons.clipboard, color: Colors.deepOrange,),
-                              iconSize: 22,
+                              iconSize: 0.0611*width,
                               onPressed: () {
                                 FlutterClipboard.copy(quotes[index].quote +
                                     "\n\n~${footer1}\n${footer2}");
                                 final snackbar = SnackBar(
-                                  padding: EdgeInsets.only(bottom: 50),
-                                  elevation: 5,
+                                  padding: EdgeInsets.only(bottom: 0.0679*height),
+                                  elevation: 0.0067*height,
                                   content: Text('Message Copied'),
                                   duration: Duration(seconds: 3),
                                   action: SnackBarAction(
@@ -544,7 +545,7 @@ class _GenreQuotesState extends State<GenreQuotes> {
                           Container(
                             child: InkWell(
                               child: Padding(
-                                padding: const EdgeInsets.all(15.0),
+                                padding: EdgeInsets.all(0.04166*width),
                                 child: GestureDetector(
                                   onTap: () {
                                     share(context, "${quotes[index]
@@ -620,7 +621,8 @@ class _GenreQuotesState extends State<GenreQuotes> {
                       left: 0.031 * width,
                       child: Text(
                         quotes[index].day,
-                        style: GoogleFonts.libreBaskerville(
+                        style: TextStyle(
+                          fontFamily: "Merriweather",
                           fontSize: 0.035 * width,
                           color: Color(0xFF666666),
                           fontWeight: FontWeight.w400,
@@ -678,7 +680,7 @@ class _GenreQuotesState extends State<GenreQuotes> {
                           style: TextStyle(
                             fontSize: 0.0402 * width,
                             color: Style.Colors.secondary,
-                            fontFamily: "Lexend",
+                            fontFamily: "Merriweather",
                           ),
                         ),
                       ),
@@ -811,7 +813,8 @@ class _GenreQuotesState extends State<GenreQuotes> {
                         left: 0.031 * width,
                         child: Text(
                           quotes[index].day,
-                          style: GoogleFonts.libreBaskerville(
+                          style: TextStyle(
+                            fontFamily: "Merriweather",
                             fontSize: 0.037 * width,
                             color: Color(0xFF666666),
                             fontWeight: FontWeight.w400,
@@ -872,7 +875,7 @@ class _GenreQuotesState extends State<GenreQuotes> {
                                 style: TextStyle(
                                   fontSize: 0.0458 * width,
                                   color: Style.Colors.secondary,
-                                  fontFamily: "Lexend",
+                                  fontFamily: "Merriweather",
                                 ),
                               ),
                               SizedBox(height: 0.0095 * height,),
@@ -882,7 +885,7 @@ class _GenreQuotesState extends State<GenreQuotes> {
                                 style: TextStyle(
                                   fontSize: 0.0402 * width,
                                   color: Style.Colors.secondary,
-                                  fontFamily: "Lexend",
+                                  fontFamily: "Merriweather",
                                 ),
                               ),
                             ],
@@ -1298,6 +1301,7 @@ class _GenreQuotesState extends State<GenreQuotes> {
               ListView.builder(
                   itemCount: quotes.length,
                   shrinkWrap: true,
+                  physics: NeverScrollableScrollPhysics(),
                   itemBuilder: (context, index) {
                     Random random = new Random();
                     int imgno = random.nextInt(images.length);
@@ -1311,7 +1315,7 @@ class _GenreQuotesState extends State<GenreQuotes> {
                         },
                         child: Container(
                           width: double.infinity,
-                          height: 0.3317 * height,
+                          height: 0.5617 * height,
                           decoration: BoxDecoration(
                               color: Colors.white,
                               boxShadow: [
@@ -1323,58 +1327,59 @@ class _GenreQuotesState extends State<GenreQuotes> {
                           ),
                           margin: EdgeInsets.symmetric(
                               vertical: 0.0135 * height, horizontal: 0.027 * width),
-                          padding: EdgeInsets.symmetric(
-                              vertical: 0.0135 * height, horizontal: 0.027 * width),
+                          // padding: EdgeInsets.symmetric(
+                          //     vertical: 0.0135 * height, horizontal: 0.027 * width),
                           child: Stack(
                             children: <Widget>[
                               Positioned(
-                                top: 0.0027 * height,
-                                left: 0.0138 * width,
+                                bottom: 0.0203*height,
+                                left: 0.0238 * width,
                                 child: Text(
                                   quotes[index].day,
-                                  style: GoogleFonts.libreBaskerville(
-                                    fontSize: 0.0403 * width,
-                                    color: Style.Colors.secondary,
-                                    fontWeight: FontWeight.w500,
+                                  style: TextStyle(
+                                    fontFamily: "Merriweather",
+                                    fontSize: 0.0463 * width,
+                                    color: Style.Colors.primary,
+                                    fontWeight: FontWeight.w400,
                                   ),
                                 ),
                               ),
                               Positioned(
-                                top: 0.0027 * height,
-                                right: 0.0138 * width,
+                                top: 0.2337 * height,
+                                right: 0.3472*width,
                                 child: Text(
                                   date(quotes[index].date),
                                   style: GoogleFonts.libreBaskerville(
-                                    fontSize: 0.0333 * width,
-                                    color: Style.Colors.secondary,
+                                    fontSize: 0.0393 * width,
+                                    color: Style.Colors.primary,
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
                               ),
                               Positioned(
-                                bottom: 0,
-                                left: 0,
+                                top: 0,
                                 child: Container(
-                                  width: 0.236 * width,
-                                  height: 0.236 * height,
-                                  child: Image(image: AssetImage('images/homequote-bg.jpg'),fit: BoxFit.cover,),
+                                  width: width,
+                                  height: 0.216 * height,
+                                  child: Image(image: AssetImage('images/vikasji.jpg'),fit: BoxFit.cover,),
                                 ),
                               ),
                               Positioned(
-                                top: 0.044 * height,
-                                left: 0.235 * width,
+                                top: 0.284 * height,
                                 child: Container(
-                                  width: width*0.654,
-                                  height: height*0.21,
+                                  padding: EdgeInsets.only(right: 0.0833*width,left: 0.0138*width),
+                                  width: width,
+                                  height: height*0.20,
                                   child: SingleChildScrollView(
                                     child: Column(
                                       children: [
                                         Text(
                                           quotes[index].quote,
+                                          textAlign: TextAlign.center,
                                           style: TextStyle(
-                                            fontSize: 0.0408 * width,
+                                            fontSize: 0.0468 * width,
                                             color: Style.Colors.secondary,
-                                            fontFamily: "Lexend",
+                                            fontFamily: "Merriweather",
                                           ),
                                         ),
                                       ],
@@ -1401,7 +1406,7 @@ class _GenreQuotesState extends State<GenreQuotes> {
                               //       width, color: Colors.black26,),),
                               // ),
                               Positioned(
-                                bottom: -(0.022 * height),
+                                bottom: 0,
                                 right: 0.0166 * width,
                                 child: Row(
                                   children: [
@@ -1460,7 +1465,7 @@ class _GenreQuotesState extends State<GenreQuotes> {
                     );
                   }
               ),
-              SizedBox(height: 10,),
+              SizedBox(height: 0.0135*height,),
               Container(
                 width: double.infinity,
                 height: 0.256 * height,
@@ -1478,23 +1483,23 @@ class _GenreQuotesState extends State<GenreQuotes> {
                 child: Stack(
                   children: <Widget>[
                     Positioned(
-                      top: 45,
-                      left: 10,
+                      top: 0.0611*height,
+                      left: 0.0277*width,
                       child: Container(
                         child: Column(
                           children: [
                             Padding(
-                              padding: EdgeInsets.only(right: 90),
-                              child: Text("Sai Mantra",style: GoogleFonts.libreBaskerville(fontSize: 18,fontWeight: FontWeight.w600,color: Style.Colors.secondary,fontStyle: FontStyle.italic),),
+                              padding: EdgeInsets.only(right: 0.25*width),
+                              child: Text("Sai Mantra",style: GoogleFonts.libreBaskerville(fontSize: 0.05*width,fontWeight: FontWeight.w600,color: Style.Colors.secondary,fontStyle: FontStyle.italic),),
                             ),
-                            SizedBox(height: 7,),
+                            SizedBox(height: 0.0095*height,),
                             Padding(
-                              padding: EdgeInsets.only(right: 14),
+                              padding: EdgeInsets.only(right: 0.0388*width),
                               child: Text(
                                 "Om Sai Namo Namah\nShri Sai Namo Namah\nJai Jai Sai Namo Namah\nSatguru Sai Namo Namah",
                                 textAlign: TextAlign.start,
                                 style: TextStyle(
-                                  fontSize: 14,fontFamily: "Lexend",color: Style.Colors.secondary,
+                                  fontSize: 0.0388*width,fontFamily: "Lexend",color: Style.Colors.secondary,
                                 ),
                               ),
                             ),
@@ -1514,9 +1519,9 @@ class _GenreQuotesState extends State<GenreQuotes> {
                   ],
                 ),
               ),
-              SizedBox(height:20),
+              SizedBox(height:0.0271*height),
               Padding(
-                padding: EdgeInsets.only(bottom: 15),
+                padding: EdgeInsets.only(bottom: 0.0203*height),
                 child: Container(
                   width: double.infinity,
                   height: 0.256 * height,
@@ -1534,23 +1539,23 @@ class _GenreQuotesState extends State<GenreQuotes> {
                   child: Stack(
                     children: <Widget>[
                       Positioned(
-                        top: 45,
-                        right: 40,
+                        top: 0.0611*height,
+                        right: 0.1111*width,
                         child: Container(
                           child: Column(
                             children: [
                               Padding(
                                 padding: EdgeInsets.only(right:0 ),
-                                child: Text("Explore",style: GoogleFonts.libreBaskerville(fontSize: 18,fontWeight: FontWeight.w600,color: Style.Colors.secondary,fontStyle: FontStyle.italic),),
+                                child: Text("Explore",style: GoogleFonts.libreBaskerville(fontSize: 0.05*width,fontWeight: FontWeight.w600,color: Style.Colors.secondary,fontStyle: FontStyle.italic),),
                               ),
-                              SizedBox(height: 7,),
+                              SizedBox(height: 0.0095*height,),
                               Padding(
                                 padding: EdgeInsets.only(right: 0),
                                 child: Text(
                                   "Sai Dattavikas\nMeditation &\nCharitable Trust",
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
-                                    fontSize: 14,fontFamily: "Lexend",color: Style.Colors.secondary,
+                                    fontSize: 0.0388*width,fontFamily: "Lexend",color: Style.Colors.secondary,
                                   ),
                                 ),
                               ),
@@ -1810,9 +1815,10 @@ class _GenreQuotesState extends State<GenreQuotes> {
                                 Text(
                                   quotes[index].quote,
                                   style: TextStyle(
-                                    fontSize: 0.0438 * width,
+                                    fontSize: 0.0398 * width,
                                     color: Style.Colors.secondary,
-                                    fontFamily: "Lexend",
+                                    fontFamily: "Merriweather",
+                                    fontWeight: FontWeight.w400,
                                   ),
                                 ),
                               ],
@@ -1904,6 +1910,7 @@ class _GenreQuotesState extends State<GenreQuotes> {
               ListView.builder(
                   itemCount: quotes.length,
                   shrinkWrap: true,
+                  physics: NeverScrollableScrollPhysics(),
                   itemBuilder: (context, index) {
                     Random random = new Random();
                     int imgno = random.nextInt(images.length);
@@ -1917,7 +1924,7 @@ class _GenreQuotesState extends State<GenreQuotes> {
                         },
                         child: Container(
                           width: double.infinity,
-                          height: 0.3317 * height,
+                          height: 0.5617 * height,
                           decoration: BoxDecoration(
                               color: Colors.white,
                               boxShadow: [
@@ -1929,58 +1936,59 @@ class _GenreQuotesState extends State<GenreQuotes> {
                           ),
                           margin: EdgeInsets.symmetric(
                               vertical: 0.0135 * height, horizontal: 0.027 * width),
-                          padding: EdgeInsets.symmetric(
-                              vertical: 0.0135 * height, horizontal: 0.027 * width),
+                          // padding: EdgeInsets.symmetric(
+                          //     vertical: 0.0135 * height, horizontal: 0.027 * width),
                           child: Stack(
                             children: <Widget>[
                               Positioned(
-                                top: 0.0027 * height,
-                                left: 0.0138 * width,
+                                bottom: 0.0230*height,
+                                left: 0.0238 * width,
                                 child: Text(
                                   quotes[index].day,
-                                  style: GoogleFonts.libreBaskerville(
-                                    fontSize: 0.0343 * width,
-                                    color: Style.Colors.secondary,
-                                    fontWeight: FontWeight.w500,
+                                  style: TextStyle(
+                                    fontFamily: "Merriweather",
+                                    fontSize: 0.0403 * width,
+                                    color: Style.Colors.primary,
+                                    fontWeight: FontWeight.w400,
                                   ),
                                 ),
                               ),
                               Positioned(
-                                top: 0.0027 * height,
-                                right: 0.0138 * width,
+                                top: 0.2337 * height,
+                                right: 0.3472*width,
                                 child: Text(
                                   date(quotes[index].date),
                                   style: GoogleFonts.libreBaskerville(
-                                    fontSize: 0.0333 * width,
-                                    color: Style.Colors.secondary,
+                                    fontSize: 0.0393 * width,
+                                    color: Style.Colors.primary,
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
                               ),
                               Positioned(
-                                bottom: 0,
-                                left: 0,
+                                top: 0,
                                 child: Container(
-                                  width: 0.236 * width,
-                                  height: 0.236 * height,
-                                  child: Image(image: AssetImage('images/homequote-bg.jpg'),fit: BoxFit.cover,),
+                                  width: width,
+                                  height: 0.216 * height,
+                                  child: Image(image: AssetImage('images/vikasji.jpg'),fit: BoxFit.cover,),
                                 ),
                               ),
                               Positioned(
-                                top: 0.044 * height,
-                                left: 0.235 * width,
+                                top: 0.284 * height,
                                 child: Container(
-                                  width: width*0.654,
-                                  height: height*0.21,
+                                  padding: EdgeInsets.only(right: 0.0833*width,left: 0.0138*width),
+                                  width: width,
+                                  height: height*0.20,
                                   child: SingleChildScrollView(
                                     child: Column(
                                       children: [
                                         Text(
                                           quotes[index].quote,
+                                          textAlign: TextAlign.center,
                                           style: TextStyle(
                                             fontSize: 0.0408 * width,
                                             color: Style.Colors.secondary,
-                                            fontFamily: "Lexend",
+                                            fontFamily: "Merriweather",
                                           ),
                                         ),
                                       ],
@@ -2007,7 +2015,7 @@ class _GenreQuotesState extends State<GenreQuotes> {
                               //       width, color: Colors.black26,),),
                               // ),
                               Positioned(
-                                bottom: -(0.022 * height),
+                                bottom: 0,
                                 right: 0.0166 * width,
                                 child: Row(
                                   children: [
@@ -2066,7 +2074,7 @@ class _GenreQuotesState extends State<GenreQuotes> {
                     );
                   }
               ),
-              SizedBox(height: 10,),
+              SizedBox(height: 0.0135*height,),
               Container(
                 width: double.infinity,
                 height: 0.256 * height,
@@ -2084,23 +2092,23 @@ class _GenreQuotesState extends State<GenreQuotes> {
                 child: Stack(
                   children: <Widget>[
                     Positioned(
-                      top: 45,
-                      left: 10,
+                      top: 0.0611*height,
+                      left: 0.0277*width,
                       child: Container(
                         child: Column(
                           children: [
                             Padding(
-                              padding: EdgeInsets.only(right: 90),
-                              child: Text("Sai Mantra",style: GoogleFonts.libreBaskerville(fontSize: 18,fontWeight: FontWeight.w600,color: Style.Colors.secondary,fontStyle: FontStyle.italic),),
+                              padding: EdgeInsets.only(right: 0.25*width),
+                              child: Text("Sai Mantra",style: GoogleFonts.libreBaskerville(fontSize: 0.05*width,fontWeight: FontWeight.w600,color: Style.Colors.secondary,fontStyle: FontStyle.italic),),
                             ),
-                            SizedBox(height: 7,),
+                            SizedBox(height: 0.0095*height,),
                             Padding(
-                              padding: EdgeInsets.only(right: 14),
+                              padding: EdgeInsets.only(right: 0.0388*width),
                               child: Text(
                                 "Om Sai Namo Namah\nShri Sai Namo Namah\nJai Jai Sai Namo Namah\nSatguru Sai Namo Namah",
                                 textAlign: TextAlign.start,
                                 style: TextStyle(
-                                  fontSize: 14,fontFamily: "Lexend",color: Style.Colors.secondary,
+                                  fontSize: 0.0388*width,fontFamily: "Lexend",color: Style.Colors.secondary,
                                 ),
                               ),
                             ),
@@ -2120,9 +2128,9 @@ class _GenreQuotesState extends State<GenreQuotes> {
                   ],
                 ),
               ),
-              SizedBox(height:20),
+              SizedBox(height:0.0271*height),
               Padding(
-                padding: EdgeInsets.only(bottom: 15),
+                padding: EdgeInsets.only(bottom: 0.0203*height),
                 child: Container(
                   width: double.infinity,
                   height: 0.256 * height,
@@ -2140,23 +2148,23 @@ class _GenreQuotesState extends State<GenreQuotes> {
                   child: Stack(
                     children: <Widget>[
                       Positioned(
-                        top: 45,
-                        right: 40,
+                        top: 0.0611*height,
+                        right: 0.1111*width,
                         child: Container(
                           child: Column(
                             children: [
                               Padding(
                                 padding: EdgeInsets.only(right:0 ),
-                                child: Text("Explore",style: GoogleFonts.libreBaskerville(fontSize: 18,fontWeight: FontWeight.w600,color: Style.Colors.secondary,fontStyle: FontStyle.italic),),
+                                child: Text("Explore",style: GoogleFonts.libreBaskerville(fontSize: 0.05*width,fontWeight: FontWeight.w600,color: Style.Colors.secondary,fontStyle: FontStyle.italic),),
                               ),
-                              SizedBox(height: 7,),
+                              SizedBox(height: 0.0095*height,),
                               Padding(
                                 padding: EdgeInsets.only(right: 0),
                                 child: Text(
                                   "Sai Dattavikas\nMeditation &\nCharitable Trust",
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
-                                    fontSize: 14,fontFamily: "Lexend",color: Style.Colors.secondary,
+                                    fontSize: 0.0388*width,fontFamily: "Lexend",color: Style.Colors.secondary,
                                   ),
                                 ),
                               ),
@@ -2403,6 +2411,7 @@ class _GenreQuotesState extends State<GenreQuotes> {
               ListView.builder(
                   itemCount: quotes.length,
                   shrinkWrap: true,
+                  physics: NeverScrollableScrollPhysics(),
                   itemBuilder: (context, index) {
                     Random random = new Random();
                     int imgno = random.nextInt(images.length);
@@ -2416,7 +2425,7 @@ class _GenreQuotesState extends State<GenreQuotes> {
                         },
                         child: Container(
                           width: double.infinity,
-                          height: 0.3317 * height,
+                          height: 0.5617 * height,
                           decoration: BoxDecoration(
                               color: Colors.white,
                               boxShadow: [
@@ -2428,67 +2437,69 @@ class _GenreQuotesState extends State<GenreQuotes> {
                           ),
                           margin: EdgeInsets.symmetric(
                               vertical: 0.0135 * height, horizontal: 0.027 * width),
-                          padding: EdgeInsets.symmetric(
-                              vertical: 0.0135 * height, horizontal: 0.027 * width),
+                          // padding: EdgeInsets.symmetric(
+                          //     vertical: 0.0135 * height, horizontal: 0.027 * width),
                           child: Stack(
                             children: <Widget>[
                               Positioned(
-                                top: 0.0027 * height,
-                                left: 0.0138 * width,
+                                bottom: 0.0203*height,
+                                left: 0.0238 * width,
                                 child: Text(
                                   quotes[index].day,
-                                  style: GoogleFonts.libreBaskerville(
-                                    fontSize: 0.0343 * width,
-                                    color: Style.Colors.secondary,
-                                    fontWeight: FontWeight.w500,
+                                  style: TextStyle(
+                                    fontFamily: "Merriweather",
+                                    fontSize: 0.0403 * width,
+                                    color: Style.Colors.primary,
+                                    fontWeight: FontWeight.w400,
                                   ),
                                 ),
                               ),
                               Positioned(
-                                top: 0.0027 * height,
-                                right: 0.0138 * width,
+                                top: 0.2337 * height,
+                                right: 0.3472*width,
                                 child: Text(
                                   date(quotes[index].date),
                                   style: GoogleFonts.libreBaskerville(
-                                    fontSize: 0.0333 * width,
-                                    color: Style.Colors.secondary,
+                                    fontSize: 0.0393 * width,
+                                    color: Style.Colors.primary,
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
                               ),
                               Positioned(
-                                bottom: 0,
-                                left: 0,
+                                top: 0,
                                 child: Container(
-                                  width: 0.236 * width,
-                                  height: 0.236 * height,
-                                  child: Image(image: AssetImage('images/homequote-bg.jpg'),fit: BoxFit.cover,),
+                                  width: width,
+                                  height: 0.216 * height,
+                                  child: Image(image: AssetImage('images/vikasji.jpg'),fit: BoxFit.cover,),
                                 ),
                               ),
                               Positioned(
-                                top: 0.044 * height,
-                                left: 0.235 * width,
+                                top: 0.284 * height,
                                 child: Container(
-                                  width: width*0.654,
-                                  height: height*0.21,
+                                  padding: EdgeInsets.only(right: 0.0833*width,left: 0.0138*width),
+                                  width: width,
+                                  height: height*0.20,
                                   child: SingleChildScrollView(
                                     child: Column(
                                       children: [
                                         Text(
                                           quotes[index].quoteHin,
+                                          textAlign: TextAlign.center,
                                           style: TextStyle(
-                                            fontSize: 0.0408 * width,
+                                            fontSize: 0.0468 * width,
                                             color: Style.Colors.secondary,
-                                            fontFamily: "Lexend",
+                                            fontFamily: "Merriweather",
                                           ),
                                         ),
-                                        SizedBox(height: 6,),
+                                        SizedBox(height: 0.0095*height,),
                                         Text(
                                           quotes[index].quoteEng,
+                                          textAlign: TextAlign.center,
                                           style: TextStyle(
-                                            fontSize: 0.0408 * width,
+                                            fontSize: 0.0388 * width,
                                             color: Style.Colors.secondary,
-                                            fontFamily: "Lexend",
+                                            fontFamily: "Merriweather",
                                           ),
                                         ),
                                       ],
@@ -2515,7 +2526,7 @@ class _GenreQuotesState extends State<GenreQuotes> {
                               //       width, color: Colors.black26,),),
                               // ),
                               Positioned(
-                                bottom: -(0.022 * height),
+                                bottom: 0,
                                 right: 0.0166 * width,
                                 child: Row(
                                   children: [
@@ -2527,7 +2538,7 @@ class _GenreQuotesState extends State<GenreQuotes> {
                                         onPressed: () {
                                           FlutterClipboard.copy("${quotes[index]
                                               .quoteHin}\n\n${quotes[index]
-                                              .quoteEng}~${footer1}\n${footer2}");
+                                              .quoteHin}\n\n~${footer1}\n${footer2}");
                                           final snackbar = SnackBar(
                                             padding: EdgeInsets.only(
                                                 bottom: 0.0679 * height),
@@ -2558,7 +2569,7 @@ class _GenreQuotesState extends State<GenreQuotes> {
                                             onTap: () {
                                               share(context, "${quotes[index]
                                                   .quoteHin}\n\n${quotes[index]
-                                                  .quoteEng}~${footer1}\n${footer2}");
+                                                  .quoteHin}\n\n~${footer1}\n${footer2}");
                                             },
                                             child: Image(image: AssetImage(
                                                 'images/share-icon.png'),),
@@ -2576,7 +2587,7 @@ class _GenreQuotesState extends State<GenreQuotes> {
                     );
                   }
               ),
-              SizedBox(height: 10,),
+              SizedBox(height: 0.0135*height,),
               Container(
                 width: double.infinity,
                 height: 0.256 * height,
@@ -2594,23 +2605,23 @@ class _GenreQuotesState extends State<GenreQuotes> {
                 child: Stack(
                   children: <Widget>[
                     Positioned(
-                      top: 45,
-                      left: 10,
+                      top: 0.0611*height,
+                      left: 0.0277*width,
                       child: Container(
                         child: Column(
                           children: [
                             Padding(
-                              padding: EdgeInsets.only(right: 90),
-                              child: Text("Sai Mantra",style: GoogleFonts.libreBaskerville(fontSize: 18,fontWeight: FontWeight.w600,color: Style.Colors.secondary,fontStyle: FontStyle.italic),),
+                              padding: EdgeInsets.only(right: 0.25*width),
+                              child: Text("Sai Mantra",style: GoogleFonts.libreBaskerville(fontSize: 0.05*width,fontWeight: FontWeight.w600,color: Style.Colors.secondary,fontStyle: FontStyle.italic),),
                             ),
-                            SizedBox(height: 7,),
+                            SizedBox(height: 0.0095*height,),
                             Padding(
-                              padding: EdgeInsets.only(right: 14),
+                              padding: EdgeInsets.only(right: 0.038*width),
                               child: Text(
                                 "Om Sai Namo Namah\nShri Sai Namo Namah\nJai Jai Sai Namo Namah\nSatguru Sai Namo Namah",
                                 textAlign: TextAlign.start,
                                 style: TextStyle(
-                                  fontSize: 14,fontFamily: "Lexend",color: Style.Colors.secondary,
+                                  fontSize: 0.038*width,fontFamily: "Lexend",color: Style.Colors.secondary,
                                 ),
                               ),
                             ),
@@ -2630,9 +2641,9 @@ class _GenreQuotesState extends State<GenreQuotes> {
                   ],
                 ),
               ),
-              SizedBox(height:20),
+              SizedBox(height:0.0271*height),
               Padding(
-                padding: EdgeInsets.only(bottom: 15),
+                padding: EdgeInsets.only(bottom: 0.0203*height),
                 child: Container(
                   width: double.infinity,
                   height: 0.256 * height,
@@ -2650,23 +2661,23 @@ class _GenreQuotesState extends State<GenreQuotes> {
                   child: Stack(
                     children: <Widget>[
                       Positioned(
-                        top: 45,
-                        right: 40,
+                        top: 0.0611*height,
+                        right: 0.1111*width,
                         child: Container(
                           child: Column(
                             children: [
                               Padding(
                                 padding: EdgeInsets.only(right:0 ),
-                                child: Text("Explore",style: GoogleFonts.libreBaskerville(fontSize: 18,fontWeight: FontWeight.w600,color: Style.Colors.secondary,fontStyle: FontStyle.italic),),
+                                child: Text("Explore",style: GoogleFonts.libreBaskerville(fontSize: 0.05*width,fontWeight: FontWeight.w600,color: Style.Colors.secondary,fontStyle: FontStyle.italic),),
                               ),
-                              SizedBox(height: 7,),
+                              SizedBox(height: 0.0095*height,),
                               Padding(
                                 padding: EdgeInsets.only(right: 0),
                                 child: Text(
                                   "Sai Dattavikas\nMeditation &\nCharitable Trust",
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
-                                    fontSize: 14,fontFamily: "Lexend",color: Style.Colors.secondary,
+                                    fontSize: 0.038*width,fontFamily: "Lexend",color: Style.Colors.secondary,
                                   ),
                                 ),
                               ),

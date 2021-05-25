@@ -55,7 +55,7 @@ class _ContactState extends State<Contact> {
                       image: AssetImage('images/vikasrunwalquotes.png'),
                     )),
                 backgroundColor: Style.Colors.primary,
-                elevation: 5,
+                elevation: 0.0067*height,
                 leading: Padding(
                   padding: EdgeInsets.only(
                     top: 0.0235 * height,
@@ -85,11 +85,11 @@ class _ContactState extends State<Contact> {
                     children: [
                       Padding(
                         padding: EdgeInsets.only(
-                            top: 15, bottom: 12, right: 10, left: 10),
+                            top: 0.0203*height, bottom: 0.0163*height, right: 0.0277*width, left: 0.0277*width),
                         child: Text(
                           "Contact Us",
                           style: GoogleFonts.libreBaskerville(
-                              fontSize: 20,
+                              fontSize: 0.0555*width,
                               fontWeight: FontWeight.w500,
                               color: Style.Colors.primary),
                         ),
@@ -130,27 +130,27 @@ class _ContactState extends State<Contact> {
                             "Sai Datta Vikas Meditation & \nCharitable Trust",
                             textAlign: TextAlign.center,
                             style: GoogleFonts.libreBaskerville(
-                                fontSize: 17,
+                                fontSize: 0.04722*width,
                                 fontWeight: FontWeight.w500,
                                 color: Style.Colors.primary),
                           )),
                         ],
                       ),
-                      SizedBox(height: 25,),
+                      SizedBox(height: 0.0339*height,),
                       Column(
                         children: [
-                          Text("Address",style: TextStyle(fontFamily: "Lexend",fontSize: 16,fontWeight: FontWeight.bold),),
-                          SizedBox(height: 10,),
+                          Text("Address",style: TextStyle(fontFamily: "Lexend",fontSize: 0.044*width,fontWeight: FontWeight.bold),),
+                          SizedBox(height: 0.0135*height,),
                           Text("410/1, Lane No. 5B, South Main Road,\nNext to Iris Hotel, Koregoan Park,\nPune 411001",textAlign:TextAlign.center,style: TextStyle(fontFamily: "Lexend",fontSize: 14,fontWeight: FontWeight.w400),),
-                          SizedBox(height: 15,),
-                          Container(width: width,height: 1.5,decoration: BoxDecoration(color: Colors.black26),),
+                          SizedBox(height: 0.0203*height,),
+                          Container(width: width,height: 0.0020*height,decoration: BoxDecoration(color: Colors.black26),),
                         ],
                       ),
-                      SizedBox(height: 25,),
+                      SizedBox(height: 0.0339*height,),
                       Column(
                         children: [
-                          Text("Email",style: TextStyle(fontFamily: "Lexend",fontSize: 16,fontWeight: FontWeight.bold),),
-                          SizedBox(height: 10,),
+                          Text("Email",style: TextStyle(fontFamily: "Lexend",fontSize: 0.044*width,fontWeight: FontWeight.bold),),
+                          SizedBox(height: 0.0135*height,),
                           InkWell(
                               child: Text(
                                 "Saidattavikas@hotmail.com",
@@ -164,15 +164,15 @@ class _ContactState extends State<Contact> {
                               onTap: () {
                                 launchMailto();
                               }),
-                          SizedBox(height: 15,),
-                          Container(width: width,height: 1.5,decoration: BoxDecoration(color: Colors.black26),),
+                          SizedBox(height: 0.0203*height,),
+                          Container(width: width,height: 0.0020*height,decoration: BoxDecoration(color: Colors.black26),),
                         ],
                       ),
-                      SizedBox(height: 25,),
+                      SizedBox(height: 0.0339*height,),
                       Column(
                         children: [
-                          Text("Call",style: TextStyle(fontFamily: "Lexend",fontSize: 16,fontWeight: FontWeight.bold),),
-                          SizedBox(height: 15,),
+                          Text("Call",style: TextStyle(fontFamily: "Lexend",fontSize: 0.0444*width,fontWeight: FontWeight.bold),),
+                          SizedBox(height: 0.0203*height,),
                           InkWell(
                               child: Text(
                                 "+91 9823020329",
@@ -186,7 +186,7 @@ class _ContactState extends State<Contact> {
                               onTap: () async{
                                 await launch("tel://9823020329");
                               }),
-                          SizedBox(height: 3,),
+                          SizedBox(height: 0.0040*height,),
                           InkWell(
                               child: Text(
                                 "+91 9890000707",
@@ -200,15 +200,15 @@ class _ContactState extends State<Contact> {
                               onTap: () async{
                                 await launch("tel://9890000707");
                               }),
-                          SizedBox(height: 15,),
-                          Container(width: width,height: 1.5,decoration: BoxDecoration(color: Colors.black26),),
+                          SizedBox(height: 0.0203*height,),
+                          Container(width: width,height: 0.0020*height,decoration: BoxDecoration(color: Colors.black26),),
                         ],
                       ),
-                      SizedBox(height: 25,),
+                      SizedBox(height: 0.0339*height,),
                       Column(
                         children: [
-                          Text("Follow Us",style: TextStyle(fontFamily: "Lexend",fontSize: 16,fontWeight: FontWeight.bold),),
-                          SizedBox(height: 20,),
+                          Text("Follow Us",style: TextStyle(fontFamily: "Lexend",fontSize: 0.044*width,fontWeight: FontWeight.bold),),
+                          SizedBox(height: 0.0271*height,),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
@@ -217,7 +217,7 @@ class _ContactState extends State<Contact> {
                                   onTap: () async{
                                     await launch("https://www.facebook.com/");
                                   }),
-                              SizedBox(width: 3,),
+                              SizedBox(width: 0.0083*width,),
                               InkWell(
                                   child: Image(image: AssetImage("images/instagram-icon.png"),),
                                   onTap: () async{
@@ -225,11 +225,11 @@ class _ContactState extends State<Contact> {
                                   }),
                             ],
                           ),
-                          SizedBox(height: 15,),
-                          Container(width: width,height: 1.5,decoration: BoxDecoration(color: Colors.black26),),
+                          SizedBox(height: 0.0203*height,),
+                          Container(width: width,height: 0.0020*height,decoration: BoxDecoration(color: Colors.black26),),
                         ],
                       ),
-                      SizedBox(height: 10,),
+                      SizedBox(height: 0.0135*height,),
                     ],
                   ),
                 ),
@@ -262,7 +262,7 @@ class _ContactState extends State<Contact> {
                             Icon(FontAwesomeIcons.infoCircle,color: Colors.white,size: 0.0674*width,),
                             SizedBox(width: 0.0085*width,),
                             Padding(
-                              padding: EdgeInsets.only(top: 2),
+                              padding: EdgeInsets.only(top: 0.0027*height),
                               child: Text("ABOUT",style: TextStyle(color: Colors.white,fontWeight: FontWeight.w500,fontSize: 0.0355*width),),
                             )
                           ],
@@ -280,7 +280,7 @@ class _ContactState extends State<Contact> {
                             Icon(FontAwesomeIcons.phoneSquareAlt,color: Colors.white,size: 0.0674*width,),
                             SizedBox(width: 0.0085*width,),
                             Padding(
-                              padding: EdgeInsets.only(top: 2),
+                              padding: EdgeInsets.only(top: 0.0027*height),
                               child: Text("CONTACT",style: TextStyle(color: Colors.white,fontWeight: FontWeight.w500,fontSize: 0.0355*width),),
                             )
                           ],
@@ -302,7 +302,7 @@ class _ContactState extends State<Contact> {
                             Icon(Icons.home,color: Colors.white,size: 0.0674*width,),
                             SizedBox(width: 0.0085*width,),
                             Padding(
-                              padding: EdgeInsets.only(top: 2),
+                              padding: EdgeInsets.only(top: 0.0027*height),
                               child: Text("HOME",style: TextStyle(color: Colors.white,fontWeight: FontWeight.w500,fontSize: 0.0355*width)),
                             ),
                           ],
@@ -325,7 +325,7 @@ class _ContactState extends State<Contact> {
                               Icon(EvaIcons.search,color: Colors.white,size: 0.0674*width,),
                               SizedBox(width: 0.0085*width,),
                               Padding(
-                                padding: EdgeInsets.only(top: 2),
+                                padding: EdgeInsets.only(top: 0.0027*height),
                                 child: Text("SEARCH",style: TextStyle(color: Colors.white,fontWeight: FontWeight.w500,fontSize:  0.0355*width),),
                               )
                             ],

@@ -1,11 +1,9 @@
 import 'dart:math';
-
 import 'package:clipboard/clipboard.dart';
 import 'package:intl/intl.dart';
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_clean_calendar/flutter_clean_calendar.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:quotes/bloc/get_english_quotes_bloc.dart';
 import 'package:quotes/bloc/get_hindi_english_quotes_bloc.dart';
@@ -23,7 +21,6 @@ import 'package:quotes/screens/home_screen.dart';
 import 'package:quotes/screens/quote_screen.dart';
 import 'package:quotes/style/theme.dart' as Style;
 import 'package:share/share.dart';
-
 import '../main.dart';
 
 class CalendarScreen extends StatefulWidget {
@@ -332,7 +329,8 @@ class _CalendarScreenState extends State<CalendarScreen> {
                       left: 0.031 * width,
                       child: Text(
                         quotes[i].day,
-                        style: GoogleFonts.libreBaskerville(
+                        style: TextStyle(
+                          fontFamily: "Merriweather",
                           fontSize: 0.042 * width,
                           color: Color(0xFF666666),
                           fontWeight: FontWeight.w400,
@@ -390,7 +388,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
                           style: TextStyle(
                             fontSize: 0.0458 * width,
                             color: Style.Colors.secondary,
-                            fontFamily: "Lexend",
+                            fontFamily: "Merriweather",
                           ),
                         ),
                       ),
@@ -414,21 +412,21 @@ class _CalendarScreenState extends State<CalendarScreen> {
                         fontSize: 0.0653 * width, color: Colors.black26,),),
                     ),
                     Positioned(
-                      bottom: -4,
-                      right: 6,
+                      bottom: -(0.0054*height),
+                      right: 0.0166*width,
                       child: Row(
                         children: [
                           Container(
                             child: IconButton(
                               icon: Icon(
                                 EvaIcons.clipboard, color: Colors.deepOrange,),
-                              iconSize: 22,
+                              iconSize: 0.0611*width,
                               onPressed: () {
                                 FlutterClipboard.copy(quotes[i].quote +
                                     "\n\n~${footer1}\n${footer2}");
                                 final snackbar = SnackBar(
-                                  padding: EdgeInsets.only(bottom: 50),
-                                  elevation: 5,
+                                  padding: EdgeInsets.only(bottom: 0.0679*height),
+                                  elevation: 0.0067*height,
                                   content: Text('Message Copied'),
                                   duration: Duration(seconds: 3),
                                   action: SnackBarAction(
@@ -446,7 +444,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
                           Container(
                             child: InkWell(
                               child: Padding(
-                                padding: const EdgeInsets.all(15.0),
+                                padding: EdgeInsets.all(0.04166*width),
                                 child: GestureDetector(
                                   onTap: () {
                                     share(context, "${quotes[i]
@@ -521,7 +519,8 @@ class _CalendarScreenState extends State<CalendarScreen> {
                       left: 0.031 * width,
                       child: Text(
                         quotes[i].day,
-                        style: GoogleFonts.libreBaskerville(
+                        style: TextStyle(
+                          fontFamily: "Merriweather",
                           fontSize: 0.035 * width,
                           color: Color(0xFF666666),
                           fontWeight: FontWeight.w400,
@@ -579,7 +578,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
                           style: TextStyle(
                             fontSize: 0.0402 * width,
                             color: Style.Colors.secondary,
-                            fontFamily: "Lexend",
+                            fontFamily: "Merriweather",
                           ),
                         ),
                       ),
@@ -712,7 +711,8 @@ class _CalendarScreenState extends State<CalendarScreen> {
                       left: 0.031 * width,
                       child: Text(
                         quotes[i].day,
-                        style: GoogleFonts.libreBaskerville(
+                        style: TextStyle(
+                          fontFamily: "Merriweather",
                           fontSize: 0.037 * width,
                           color: Color(0xFF666666),
                           fontWeight: FontWeight.w400,
@@ -773,7 +773,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
                               style: TextStyle(
                                 fontSize: 0.0458 * width,
                                 color: Style.Colors.secondary,
-                                fontFamily: "Lexend",
+                                fontFamily: "Merriweather",
                               ),
                             ),
                             SizedBox(height: 0.0095 * height,),
@@ -783,7 +783,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
                               style: TextStyle(
                                 fontSize: 0.0402 * width,
                                 color: Style.Colors.secondary,
-                                fontFamily: "Lexend",
+                                fontFamily: "Merriweather",
                               ),
                             ),
                           ],

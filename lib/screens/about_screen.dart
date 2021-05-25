@@ -51,7 +51,7 @@ class _AboutState extends State<About> {
                 child: AppBar(
                   title: Padding(padding:EdgeInsets.only(left:0.100*width,top: 0.018*height,),child: Image(image: AssetImage('images/vikasrunwalquotes.png'),)),
                   backgroundColor: Style.Colors.primary,
-                  elevation: 5,
+                  elevation: 0.0067*height,
                   leading: Padding(
                     padding: EdgeInsets.only(top: 0.0235*height,),
                     child: IconButton(
@@ -77,8 +77,8 @@ class _AboutState extends State<About> {
                   child: Column(
                     children: [
                       Padding(
-                        padding: EdgeInsets.only(top: 15,bottom: 15,right: 10,left: 20),
-                        child: Text("Sai Datta Vikas Foundation",style: GoogleFonts.libreBaskerville(fontSize: 20,fontWeight:FontWeight.w500,color: Style.Colors.primary),),
+                        padding: EdgeInsets.only(top: 0.0203*height,bottom: 0.0203*height,right: 0.0277*width,left: 0.0555*width),
+                        child: Text("Sai Datta Vikas Foundation",style: GoogleFonts.libreBaskerville(fontSize: 0.0555*width,fontWeight:FontWeight.w500,color: Style.Colors.primary),),
                       ),
                       SizedBox(height: 0.0108*height,),
                       Container(
@@ -88,7 +88,7 @@ class _AboutState extends State<About> {
                       ),
                       SizedBox(height: 0.0067*height,),
                       Padding(
-                        padding: EdgeInsets.all(16.0),
+                        padding: EdgeInsets.all(0.0444*width),
                         child: Column(
                           children: [
                             Container(
@@ -142,7 +142,7 @@ class _AboutState extends State<About> {
                             Icon(FontAwesomeIcons.infoCircle,color: Colors.white,size: 0.0674*width,),
                             SizedBox(width: 0.0085*width,),
                             Padding(
-                              padding: EdgeInsets.only(top: 2),
+                              padding: EdgeInsets.only(top: 0.0027*height),
                               child: Text("ABOUT",style: TextStyle(color: Colors.white,fontWeight: FontWeight.w500,fontSize: 0.0355*width),),
                             )
                           ],
@@ -160,7 +160,7 @@ class _AboutState extends State<About> {
                             Icon(FontAwesomeIcons.phoneSquareAlt,color: Colors.white,size: 0.0674*width,),
                             SizedBox(width: 0.0085*width,),
                             Padding(
-                              padding: EdgeInsets.only(top: 2),
+                              padding: EdgeInsets.only(top: 0.0027*height),
                               child: Text("CONTACT",style: TextStyle(color: Colors.white,fontWeight: FontWeight.w500,fontSize: 0.0355*width),),
                             )
                           ],
@@ -205,7 +205,7 @@ class _AboutState extends State<About> {
                               Icon(EvaIcons.search,color: Colors.white,size: 0.0674*width,),
                               SizedBox(width: 0.0085*width,),
                               Padding(
-                                padding: EdgeInsets.only(top: 2),
+                                padding: EdgeInsets.only(top: 0.0027*height),
                                 child: Text("SEARCH",style: TextStyle(color: Colors.white,fontWeight: FontWeight.w500,fontSize:  0.0355*width),),
                               )
                             ],

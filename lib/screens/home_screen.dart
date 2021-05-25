@@ -294,29 +294,29 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
                           },
                           child: Row(
                             children: [
-                              Icon(FontAwesomeIcons.infoCircle,color: Colors.white,size: 0.0674*width,),
+                              Image(image: AssetImage("images/about-icon.png"),width: 0.0694*width,),
                               SizedBox(width: 0.0085*width,),
                               Padding(
                                 padding: EdgeInsets.only(top: 2),
-                                child: Text("ABOUT",style: TextStyle(color: Colors.white,fontWeight: FontWeight.w500,fontSize: 0.0355*width),),
+                                child: Text("ABOUT",style: TextStyle(color: Colors.white,fontWeight: FontWeight.w500,fontSize: 0.0295*width),),
                               )
                             ],
                           ),
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsets.only(left: 0.01566*width),
+                        padding: EdgeInsets.only(left: 0.01266*width),
                         child: GestureDetector(
                           onTap: (){
                             Navigator.push(context, MaterialPageRoute(builder: (context)=>Contact()));
                           },
                           child: Row(
                             children: [
-                              Icon(FontAwesomeIcons.phoneSquareAlt,color: Colors.white,size: 0.0674*width,),
+                              Image(image: AssetImage("images/call-icon.png"),width: 0.0684*width,),
                               SizedBox(width: 0.0085*width,),
                               Padding(
                                 padding: EdgeInsets.only(top: 2),
-                                child: Text("CONTACT",style: TextStyle(color: Colors.white,fontWeight: FontWeight.w500,fontSize: 0.0355*width),),
+                                child: Text("CONTACT",style: TextStyle(color: Colors.white,fontWeight: FontWeight.w500,fontSize: 0.0295*width),),
                               )
                             ],
                           ),
@@ -334,11 +334,11 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
                           },
                           child: Row(
                             children: [
-                              Icon(Icons.home,color: Colors.white,size: 0.0674*width,),
+                              Icon(Icons.home,color: Colors.white,size: 0.0684*width,),
                               SizedBox(width: 0.0085*width,),
                               Padding(
                                 padding: EdgeInsets.only(top: 2),
-                                child: Text("HOME",style: TextStyle(color: Colors.white,fontWeight: FontWeight.w500,fontSize: 0.0355*width)),
+                                child: Text("HOME",style: TextStyle(color: Colors.white,fontWeight: FontWeight.w500,fontSize: 0.0295*width)),
                               ),
                             ],
                           ),
@@ -357,11 +357,11 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
                             padding: EdgeInsets.only(right: 0.0222*width),
                             child: Row(
                               children: [
-                                Icon(EvaIcons.search,color: Colors.white,size: 0.0674*width,),
+                                Icon(EvaIcons.search,color: Colors.white,size: 0.0684*width,),
                                 SizedBox(width: 0.0085*width,),
                                 Padding(
                                   padding: EdgeInsets.only(top: 2),
-                                  child: Text("SEARCH",style: TextStyle(color: Colors.white,fontWeight: FontWeight.w500,fontSize:  0.0355*width),),
+                                  child: Text("SEARCH",style: TextStyle(color: Colors.white,fontWeight: FontWeight.w500,fontSize:  0.0295*width),),
                                 )
                               ],
                             ),
