@@ -33,7 +33,6 @@ class _GenreQuotesState extends State<GenreQuotes> {
   bool onCLicked = false;
 
   void share(BuildContext context, String text) {
-    // final RenderBox box = context.findRenderObject();
     Share.share(text, sharePositionOrigin: Rect.fromLTWH(0, 0, 0, 0));
   }
 
@@ -941,9 +940,6 @@ class _GenreQuotesState extends State<GenreQuotes> {
                                   ScaffoldMessenger.of(context).showSnackBar(
                                       snackbar);
                                 },
-                                // onPressed: (){
-                                //   FlutterClipboard.copy("${quotes[index].quoteHin}\n\n${quotes[index].quoteEng}");
-                                // },
                               ),
                             ),
                             Container(
@@ -1009,124 +1005,6 @@ class _GenreQuotesState extends State<GenreQuotes> {
       );
     }
     else {
-      // return Column(
-      //   children: [
-      //     GestureDetector(
-      //       onTap: (){
-      //         Navigator.push(context, MaterialPageRoute(builder: (context)=>QuotesOnePage(quotes[0].date,random.nextInt(images.length))));
-      //       },
-      //       child: Container(
-      //         decoration: BoxDecoration(
-      //             color: Colors.white,
-      //             boxShadow: [
-      //               BoxShadow(color: Colors.black.withOpacity(0.3),offset: Offset(0.0083*width,0.0083*width),blurRadius: 0.0055*width,spreadRadius:0.0083*width),
-      //             ]
-      //         ),
-      //         width: double.infinity,
-      //         height: MediaQuery.of(context).size.height/1.51,
-      //         margin: EdgeInsets.only(top: 0.0135*height,bottom: 0.0135*height,right: 0.0194*width,left:0.0138*width,),
-      //         padding: EdgeInsets.only(right: 0.0277*width,top: 0.0135*height),
-      //         child: Stack(
-      //           children: <Widget>[
-      //             Positioned(
-      //               top: 0.0027*height,
-      //               right: 0.0138*width,
-      //               child: Text(
-      //                 date(quotes[0].date),
-      //                 style: GoogleFonts.libreBaskerville(
-      //                   fontSize: 0.033*width,
-      //                   color: Color(0xFF666666),
-      //                   fontWeight: FontWeight.w400,
-      //                 ),
-      //               ),
-      //             ),
-      //             Positioned(
-      //               bottom: 0,
-      //               left: 0.0055*width,
-      //               child: Container(
-      //                 width: 0.6388*width,
-      //                 height:0.3804*height,
-      //                 child: Image(
-      //                   image: AssetImage('images/homequote-bg.jpg'),
-      //                   fit: BoxFit.cover,
-      //                 ),
-      //               ),
-      //             ),
-      //             Positioned(
-      //               top: 0.054*height,
-      //               left: 0.4166*width,
-      //               child: Column(
-      //                 children: [
-      //                   Container(
-      //                     width: MediaQuery.of(context).size.width/2.3,
-      //                     height: (MediaQuery.of(context).size.width/1)+15,
-      //                     child: SingleChildScrollView(
-      //                       child: Column(
-      //                         children: [
-      //                           Text(
-      //                               quotes[0].quote,
-      //                               style: TextStyle(
-      //                                 fontSize: 0.0472*width,
-      //                                 color: Style.Colors.secondary,
-      //                                 fontFamily: "Lexend",
-      //                               ),
-      //                           ),
-      //                         ],
-      //                       ),
-      //                     ),
-      //                   ),
-      //                 ],
-      //               ),
-      //             ),
-      //             Positioned(
-      //               bottom: -(0.0054*height),
-      //               right: 0.016*width,
-      //               child: Row(
-      //                 children: [
-      //                   Container(
-      //                     child: IconButton(
-      //                       icon: Icon(EvaIcons.clipboard,color: Colors.deepOrange,),
-      //                       iconSize: 0.0611*width,
-      //                       onPressed: (){
-      //                         FlutterClipboard.copy(quotes[0].quote);
-      //                         final snackbar = SnackBar(
-      //                           padding: EdgeInsets.only(bottom: 0.0679*height),
-      //                           elevation: 0.0067*height,
-      //                           content: Text('Message Copied'),
-      //                           duration: Duration(seconds: 3),
-      //                           action: SnackBarAction(
-      //                             label: 'Undo',
-      //                             onPressed: () {
-      //                               FlutterClipboard.paste().then((value) {});
-      //                             },
-      //                           ),
-      //                         );
-      //                         ScaffoldMessenger.of(context).showSnackBar(snackbar);
-      //                       },
-      //                     ),
-      //                   ),
-      //                   Container(
-      //                     child: InkWell(
-      //                       child: Padding(
-      //                         padding: const EdgeInsets.all(15.0),
-      //                         child: GestureDetector(
-      //                           onTap: (){
-      //                             share(context, "${quotes[0].quote}");
-      //                           },
-      //                           child: Image(image: AssetImage('images/share-icon.png'),),
-      //                         ),
-      //                       ),
-      //                     ),
-      //                   ),
-      //                 ],
-      //               ),
-      //             ),
-      //           ],
-      //         ),
-      //       ),
-      //     ),
-      //   ],
-      // );
       return Container(
         height: height/1.402,
         child: (genre=="RandomsQuote")
@@ -1208,7 +1086,7 @@ class _GenreQuotesState extends State<GenreQuotes> {
                                     quotes[index].quote,
                                     style: TextStyle(
                                       fontSize: 0.0438 * width,
-                                      color: Style.Colors.secondary,
+                                      color: Colors.black,
                                       fontFamily: "Lexend",
                                     ),
                                   ),
@@ -1217,24 +1095,6 @@ class _GenreQuotesState extends State<GenreQuotes> {
                             ),
                           ),
                         ),
-                        // Positioned(
-                        //     top: 0.1470 * height,
-                        //     left: 0.416 * width,
-                        //     child: Text("...", style: TextStyle(fontSize: 0.1000 *
-                        //         width, color: Colors.black54,),)
-                        // ),
-                        // Positioned(
-                        //   top: 0.1550 * height,
-                        //   left: 0.490 * width,
-                        //   child: Text("...", style: TextStyle(fontSize: 0.0804 *
-                        //       width, color: Colors.black45,),),
-                        // ),
-                        // Positioned(
-                        //   top: 0.1615 * height,
-                        //   left: 0.550 * width,
-                        //   child: Text("...", style: TextStyle(fontSize: 0.0653 *
-                        //       width, color: Colors.black26,),),
-                        // ),
                         Positioned(
                           bottom: -(0.022 * height),
                           right: 0.0166 * width,
@@ -1265,9 +1125,6 @@ class _GenreQuotesState extends State<GenreQuotes> {
                                     ScaffoldMessenger.of(context).showSnackBar(
                                         snackbar);
                                   },
-                                  // onPressed: (){
-                                  //   FlutterClipboard.copy("${quotes[index].quoteHin}\n\n${quotes[index].quoteEng}");
-                                  // },
                                 ),
                               ),
                               Container(
@@ -1387,24 +1244,6 @@ class _GenreQuotesState extends State<GenreQuotes> {
                                   ),
                                 ),
                               ),
-                              // Positioned(
-                              //     top: 0.1470 * height,
-                              //     left: 0.416 * width,
-                              //     child: Text("...", style: TextStyle(fontSize: 0.1000 *
-                              //         width, color: Colors.black54,),)
-                              // ),
-                              // Positioned(
-                              //   top: 0.1550 * height,
-                              //   left: 0.490 * width,
-                              //   child: Text("...", style: TextStyle(fontSize: 0.0804 *
-                              //       width, color: Colors.black45,),),
-                              // ),
-                              // Positioned(
-                              //   top: 0.1615 * height,
-                              //   left: 0.550 * width,
-                              //   child: Text("...", style: TextStyle(fontSize: 0.0653 *
-                              //       width, color: Colors.black26,),),
-                              // ),
                               Positioned(
                                 bottom: 0,
                                 right: 0.0166 * width,
@@ -1435,9 +1274,6 @@ class _GenreQuotesState extends State<GenreQuotes> {
                                           ScaffoldMessenger.of(context).showSnackBar(
                                               snackbar);
                                         },
-                                        // onPressed: (){
-                                        //   FlutterClipboard.copy("${quotes[index].quoteHin}\n\n${quotes[index].quoteEng}");
-                                        // },
                                       ),
                                     ),
                                     Container(
@@ -1479,7 +1315,6 @@ class _GenreQuotesState extends State<GenreQuotes> {
                     ]
                 ),
                 margin: EdgeInsets.symmetric(horizontal: 0.027 * width),
-                // padding: EdgeInsets.symmetric(horizontal: 0.027 * width),
                 child: Stack(
                   children: <Widget>[
                     Positioned(
@@ -1535,7 +1370,6 @@ class _GenreQuotesState extends State<GenreQuotes> {
                       ]
                   ),
                   margin: EdgeInsets.symmetric(horizontal: 0.027 * width),
-                  // padding: EdgeInsets.symmetric(horizontal: 0.027 * width),
                   child: Stack(
                     children: <Widget>[
                       Positioned(
@@ -1617,124 +1451,6 @@ class _GenreQuotesState extends State<GenreQuotes> {
       );
     }
     else {
-      // return Column(
-      //   children: [
-      //     GestureDetector(
-      //       onTap: (){
-      //         Navigator.push(context, MaterialPageRoute(builder: (context)=>QuotesOnePage(quotes[0].date,random.nextInt(images.length))));
-      //       },
-      //       child: Container(
-      //         decoration: BoxDecoration(
-      //             color: Colors.white,
-      //             boxShadow: [
-      //               BoxShadow(color: Colors.black.withOpacity(0.3),offset: Offset(0.0083*width,0.0083*width),blurRadius: 0.0055*width,spreadRadius:0.0083*width),
-      //             ]
-      //         ),
-      //         width: double.infinity,
-      //         height: MediaQuery.of(context).size.height/1.51,
-      //         margin: EdgeInsets.only(top: 0.0135*height,bottom: 0.0135*height,right: 0.0194*width,left:0.0138*width,),
-      //         padding: EdgeInsets.only(right: 0.0277*width,top: 0.0135*height),
-      //         child: Stack(
-      //           children: <Widget>[
-      //             Positioned(
-      //               top: 0.0027*height,
-      //               right: 0.0138*width,
-      //               child: Text(
-      //                 date(quotes[0].date),
-      //                 style: GoogleFonts.libreBaskerville(
-      //                   fontSize: 0.033*width,
-      //                   color: Color(0xFF666666),
-      //                   fontWeight: FontWeight.w400,
-      //                 ),
-      //               ),
-      //             ),
-      //             Positioned(
-      //               bottom: 0,
-      //               left: 0.0055*width,
-      //               child: Container(
-      //                 width: 0.6388*width,
-      //                 height:0.3804*height,
-      //                 child: Image(
-      //                   image: AssetImage('images/homequote-bg.jpg'),
-      //                   fit: BoxFit.cover,
-      //                 ),
-      //               ),
-      //             ),
-      //             Positioned(
-      //               top: 0.054*height,
-      //               left: 0.4166*width,
-      //               child: Column(
-      //                 children: [
-      //                   Container(
-      //                     width: MediaQuery.of(context).size.width/2.3,
-      //                     height: (MediaQuery.of(context).size.width/1)+15,
-      //                     child: SingleChildScrollView(
-      //                       child: Column(
-      //                         children: [
-      //                           Text(
-      //                               quotes[0].quote,
-      //                               style: TextStyle(
-      //                                 fontSize: 0.0472*width,
-      //                                 color: Style.Colors.secondary,
-      //                                 fontFamily: "Lexend",
-      //                               ),
-      //                           ),
-      //                         ],
-      //                       ),
-      //                     ),
-      //                   ),
-      //                 ],
-      //               ),
-      //             ),
-      //             Positioned(
-      //               bottom: -(0.0054*height),
-      //               right: 0.016*width,
-      //               child: Row(
-      //                 children: [
-      //                   Container(
-      //                     child: IconButton(
-      //                       icon: Icon(EvaIcons.clipboard,color: Colors.deepOrange,),
-      //                       iconSize: 0.0611*width,
-      //                       onPressed: (){
-      //                         FlutterClipboard.copy(quotes[0].quote);
-      //                         final snackbar = SnackBar(
-      //                           padding: EdgeInsets.only(bottom: 0.0679*height),
-      //                           elevation: 0.0067*height,
-      //                           content: Text('Message Copied'),
-      //                           duration: Duration(seconds: 3),
-      //                           action: SnackBarAction(
-      //                             label: 'Undo',
-      //                             onPressed: () {
-      //                               FlutterClipboard.paste().then((value) {});
-      //                             },
-      //                           ),
-      //                         );
-      //                         ScaffoldMessenger.of(context).showSnackBar(snackbar);
-      //                       },
-      //                     ),
-      //                   ),
-      //                   Container(
-      //                     child: InkWell(
-      //                       child: Padding(
-      //                         padding: const EdgeInsets.all(15.0),
-      //                         child: GestureDetector(
-      //                           onTap: (){
-      //                             share(context, "${quotes[0].quote}");
-      //                           },
-      //                           child: Image(image: AssetImage('images/share-icon.png'),),
-      //                         ),
-      //                       ),
-      //                     ),
-      //                   ),
-      //                 ],
-      //               ),
-      //             ),
-      //           ],
-      //         ),
-      //       ),
-      //     ),
-      //   ],
-      // );
       return Container(
         height: height/1.402,
         child: (genre=="RandomsQuote")
@@ -1826,24 +1542,6 @@ class _GenreQuotesState extends State<GenreQuotes> {
                           ),
                         ),
                       ),
-                      // Positioned(
-                      //     top: 0.1470 * height,
-                      //     left: 0.416 * width,
-                      //     child: Text("...", style: TextStyle(fontSize: 0.1000 *
-                      //         width, color: Colors.black54,),)
-                      // ),
-                      // Positioned(
-                      //   top: 0.1550 * height,
-                      //   left: 0.490 * width,
-                      //   child: Text("...", style: TextStyle(fontSize: 0.0804 *
-                      //       width, color: Colors.black45,),),
-                      // ),
-                      // Positioned(
-                      //   top: 0.1615 * height,
-                      //   left: 0.550 * width,
-                      //   child: Text("...", style: TextStyle(fontSize: 0.0653 *
-                      //       width, color: Colors.black26,),),
-                      // ),
                       Positioned(
                         bottom: -(0.022 * height),
                         right: 0.0166 * width,
@@ -1874,9 +1572,6 @@ class _GenreQuotesState extends State<GenreQuotes> {
                                   ScaffoldMessenger.of(context).showSnackBar(
                                       snackbar);
                                 },
-                                // onPressed: (){
-                                //   FlutterClipboard.copy("${quotes[index].quoteHin}\n\n${quotes[index].quoteEng}");
-                                // },
                               ),
                             ),
                             Container(
@@ -1996,24 +1691,6 @@ class _GenreQuotesState extends State<GenreQuotes> {
                                   ),
                                 ),
                               ),
-                              // Positioned(
-                              //     top: 0.1470 * height,
-                              //     left: 0.416 * width,
-                              //     child: Text("...", style: TextStyle(fontSize: 0.1000 *
-                              //         width, color: Colors.black54,),)
-                              // ),
-                              // Positioned(
-                              //   top: 0.1550 * height,
-                              //   left: 0.490 * width,
-                              //   child: Text("...", style: TextStyle(fontSize: 0.0804 *
-                              //       width, color: Colors.black45,),),
-                              // ),
-                              // Positioned(
-                              //   top: 0.1615 * height,
-                              //   left: 0.550 * width,
-                              //   child: Text("...", style: TextStyle(fontSize: 0.0653 *
-                              //       width, color: Colors.black26,),),
-                              // ),
                               Positioned(
                                 bottom: 0,
                                 right: 0.0166 * width,
@@ -2044,9 +1721,6 @@ class _GenreQuotesState extends State<GenreQuotes> {
                                           ScaffoldMessenger.of(context).showSnackBar(
                                               snackbar);
                                         },
-                                        // onPressed: (){
-                                        //   FlutterClipboard.copy("${quotes[index].quoteHin}\n\n${quotes[index].quoteEng}");
-                                        // },
                                       ),
                                     ),
                                     Container(
@@ -2088,7 +1762,6 @@ class _GenreQuotesState extends State<GenreQuotes> {
                     ]
                 ),
                 margin: EdgeInsets.symmetric(horizontal: 0.027 * width),
-                // padding: EdgeInsets.symmetric(horizontal: 0.027 * width),
                 child: Stack(
                   children: <Widget>[
                     Positioned(
@@ -2325,24 +1998,6 @@ class _GenreQuotesState extends State<GenreQuotes> {
                             ),
                           ),
                         ),
-                        // Positioned(
-                        //     top: 0.1470 * height,
-                        //     left: 0.416 * width,
-                        //     child: Text("...", style: TextStyle(fontSize: 0.1000 *
-                        //         width, color: Colors.black54,),)
-                        // ),
-                        // Positioned(
-                        //   top: 0.1550 * height,
-                        //   left: 0.490 * width,
-                        //   child: Text("...", style: TextStyle(fontSize: 0.0804 *
-                        //       width, color: Colors.black45,),),
-                        // ),
-                        // Positioned(
-                        //   top: 0.1615 * height,
-                        //   left: 0.550 * width,
-                        //   child: Text("...", style: TextStyle(fontSize: 0.0653 *
-                        //       width, color: Colors.black26,),),
-                        // ),
                         Positioned(
                           bottom: -(0.022 * height),
                           right: 0.0166 * width,
@@ -2374,9 +2029,6 @@ class _GenreQuotesState extends State<GenreQuotes> {
                                     ScaffoldMessenger.of(context).showSnackBar(
                                         snackbar);
                                   },
-                                  // onPressed: (){
-                                  //   FlutterClipboard.copy("${quotes[index].quoteHin}\n\n${quotes[index].quoteEng}");
-                                  // },
                                 ),
                               ),
                               Container(
@@ -2437,8 +2089,6 @@ class _GenreQuotesState extends State<GenreQuotes> {
                           ),
                           margin: EdgeInsets.symmetric(
                               vertical: 0.0135 * height, horizontal: 0.027 * width),
-                          // padding: EdgeInsets.symmetric(
-                          //     vertical: 0.0135 * height, horizontal: 0.027 * width),
                           child: Stack(
                             children: <Widget>[
                               Positioned(
@@ -2507,24 +2157,6 @@ class _GenreQuotesState extends State<GenreQuotes> {
                                   ),
                                 ),
                               ),
-                              // Positioned(
-                              //     top: 0.1470 * height,
-                              //     left: 0.416 * width,
-                              //     child: Text("...", style: TextStyle(fontSize: 0.1000 *
-                              //         width, color: Colors.black54,),)
-                              // ),
-                              // Positioned(
-                              //   top: 0.1550 * height,
-                              //   left: 0.490 * width,
-                              //   child: Text("...", style: TextStyle(fontSize: 0.0804 *
-                              //       width, color: Colors.black45,),),
-                              // ),
-                              // Positioned(
-                              //   top: 0.1615 * height,
-                              //   left: 0.550 * width,
-                              //   child: Text("...", style: TextStyle(fontSize: 0.0653 *
-                              //       width, color: Colors.black26,),),
-                              // ),
                               Positioned(
                                 bottom: 0,
                                 right: 0.0166 * width,
@@ -2556,9 +2188,6 @@ class _GenreQuotesState extends State<GenreQuotes> {
                                           ScaffoldMessenger.of(context).showSnackBar(
                                               snackbar);
                                         },
-                                        // onPressed: (){
-                                        //   FlutterClipboard.copy("${quotes[index].quoteHin}\n\n${quotes[index].quoteEng}");
-                                        // },
                                       ),
                                     ),
                                     Container(
@@ -2601,7 +2230,6 @@ class _GenreQuotesState extends State<GenreQuotes> {
                     ]
                 ),
                 margin: EdgeInsets.symmetric(horizontal: 0.027 * width),
-                // padding: EdgeInsets.symmetric(horizontal: 0.027 * width),
                 child: Stack(
                   children: <Widget>[
                     Positioned(
@@ -2657,7 +2285,6 @@ class _GenreQuotesState extends State<GenreQuotes> {
                       ]
                   ),
                   margin: EdgeInsets.symmetric(horizontal: 0.027 * width),
-                  // padding: EdgeInsets.symmetric(horizontal: 0.027 * width),
                   child: Stack(
                     children: <Widget>[
                       Positioned(

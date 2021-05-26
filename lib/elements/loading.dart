@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quotes/main.dart';
 
 Widget buildLoading() {
   return Center(
@@ -6,12 +7,12 @@ Widget buildLoading() {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           SizedBox(
-            height: 25.0,
-            width: 25.0,
+            height: 0.0339*height,
+            width: 0.06944*width,
             child: CircularProgressIndicator(
               valueColor:
               new AlwaysStoppedAnimation<Color>(Colors.white),
-              strokeWidth: 4.0,
+              strokeWidth: 0.0111*width,
             ),
           )
         ],

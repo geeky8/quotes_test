@@ -24,34 +24,19 @@ import 'package:share/share.dart';
 import '../main.dart';
 
 class CalendarScreen extends StatefulWidget {
-  final String lang;
-  CalendarScreen(this.lang);
   @override
-  _CalendarScreenState createState() => _CalendarScreenState(lang);
+  _CalendarScreenState createState() => _CalendarScreenState();
 }
 
 class _CalendarScreenState extends State<CalendarScreen> {
-  final String lang;
-
-  _CalendarScreenState(this.lang);
-
   DateTime selectedDay;
   DateTime today;
   List selectedEvent;
   DateFormat formatter = DateFormat('yyyy-MM-dd');
+  DateFormat yearFormat = DateFormat('y');
   int quote;
 
   final Map<DateTime, List> events = {
-    DateTime(2020, 12, 12): [
-      {'Name': 'Your event Name', 'isDone': true},
-      {'Name': 'Your event Name 2', 'isDone': true},
-      {'Name': 'Your event Name 3', 'isDone': false},
-    ],
-    DateTime(2020, 12, 2): [
-      {'Name': 'Your event Name', 'isDone': false},
-      {'Name': 'Your event Name 2', 'isDone': true},
-      {'Name': 'Your event Name 3', 'isDone': false},
-    ]
   };
 
   void _handleData(date) {
@@ -65,7 +50,6 @@ class _CalendarScreenState extends State<CalendarScreen> {
   }
 
   void share(BuildContext context, String text) {
-    // final RenderBox box = context.findRenderObject();
     Share.share(text, sharePositionOrigin: Rect.fromLTWH(0, 0, 0, 0));
   }
 
@@ -73,19 +57,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
   void initState() {
     today = DateTime.now();
     // TODO: implement initState
-    if (lang == "en") {
-      quoteHindiBloc..dispose();
-      quoteBothBloc..dispose();
-      quoteEnglishBloc..getQuotes(lang, "ThisYear");
-    } else if (lang == "hi") {
-      quoteEnglishBloc..dispose();
-      quoteBothBloc..dispose();
-      quoteHindiBloc..getQuotes(lang, "ThisYear");
-    } else {
-      quoteHindiBloc..dispose();
-      quoteEnglishBloc..dispose();
-      quoteBothBloc..getQuotes(lang, "ThisYear");
-    }
+    setQuote();
     selectedEvent = events[selectedDay] ?? [];
     super.initState();
   }
@@ -100,6 +72,8 @@ class _CalendarScreenState extends State<CalendarScreen> {
     setState(() {
       genre = "TodaysQuote";
       ind = 0;
+      year = 2021;
+      cal = 0;
     });
     setQuote();
     Navigator.of(context).pop(true);
@@ -135,6 +109,8 @@ class _CalendarScreenState extends State<CalendarScreen> {
                 setState(() {
                   genre = "TodaysQuote";
                   ind = 0;
+                  year = 2021;
+                  cal = 0;
                 });
                 setQuote();
                 Navigator.of(context).pop(true);
@@ -164,8 +140,13 @@ class _CalendarScreenState extends State<CalendarScreen> {
                     },
                     initialDate: today,
                     onDateSelected: (date) {
+                      var yr = int.parse(yearFormat.format(date));
                       setState(() {
                         today = date;
+                        if(yr!=year){
+                          year = yr;
+                          setQuote();
+                        }
                       });
                       return _handleData(date);
                     },
@@ -201,9 +182,6 @@ class _CalendarScreenState extends State<CalendarScreen> {
                           builder: (context,
                               AsyncSnapshot<QuoteHindiResponse> snapshot) {
                             if (snapshot.hasData) {
-                              // if(snapshot.data.error!=0 && snapshot.data.error.length>0){
-                              //   return buildError(snapshot.data.error);
-                              // }
                               if (_QuoteBoxHindi(snapshot.data) == null) {
                                 return Container(
                                   width: 0.1388*width,
@@ -228,9 +206,6 @@ class _CalendarScreenState extends State<CalendarScreen> {
                             builder: (context,
                                 AsyncSnapshot<QuoteEnglishResponse> snapshot) {
                               if (snapshot.hasData) {
-                                // if(snapshot.data.error!=0 && snapshot.data.error.length>0){
-                                //   return buildError(snapshot.data.error);
-                                // }
                                 if (_QuoteBoxEnglish(snapshot.data) == null) {
                                   return Container(
                                     width: 50,
@@ -254,9 +229,6 @@ class _CalendarScreenState extends State<CalendarScreen> {
                           builder: (context,
                               AsyncSnapshot<QuoteBothResponse> snapshot) {
                             if (snapshot.hasData) {
-                              // if(snapshot.data.error!=0 && snapshot.data.error.length>0){
-                              //   return buildError(snapshot.data.error);
-                              // }
                               if (_QuoteBoxBoth(snapshot.data) == null) {
                                 return Container(
                                   width: 0.1388*width,

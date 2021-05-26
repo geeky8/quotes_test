@@ -1,6 +1,5 @@
 import 'dart:math';
 import 'package:clipboard/clipboard.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/cupertino.dart';
@@ -82,13 +81,18 @@ class _QuotesOnePageState extends State<QuotesOnePage>
   }
 
   Future<bool> _willpop() {
-    setState(() {
-      genre = quotesDay[ind]["title"];
-    });
-    setQuote();
-    Navigator.of(context).pop(true);
-    Navigator.push(
-        context, MaterialPageRoute(builder: (context) => HomeScreen()));
+    if(cal!=1){
+      setState(() {
+        genre = quotesDay[ind]["title"];
+      });
+      setQuote();
+      Navigator.of(context).pop(true);
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => HomeScreen()));
+    }
+    else{
+      Navigator.of(context).pop(true);
+    }
   }
 
   @override
@@ -632,29 +636,29 @@ class _QuotesOnePageState extends State<QuotesOnePage>
                           },
                           child: Row(
                             children: [
-                              Icon(FontAwesomeIcons.infoCircle,color: Colors.white,size: 0.0674*width,),
+                              Image(image: AssetImage("images/about-icon.png"),width: 0.0694*width,),
                               SizedBox(width: 0.0085*width,),
                               Padding(
-                                padding: EdgeInsets.only(top: 2),
-                                child: Text("ABOUT",style: TextStyle(color: Colors.white,fontWeight: FontWeight.w500,fontSize: 0.0355*width),),
+                                padding: EdgeInsets.only(top: 0.0027*height),
+                                child: Text("ABOUT",style: TextStyle(color: Colors.white,fontWeight: FontWeight.w500,fontSize: 0.0295*width),),
                               )
                             ],
                           ),
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsets.only(left: 0.01566*width),
+                        padding: EdgeInsets.only(left: 0.01266*width),
                         child: GestureDetector(
                           onTap: (){
                             Navigator.push(context, MaterialPageRoute(builder: (context)=>Contact()));
                           },
                           child: Row(
                             children: [
-                              Icon(FontAwesomeIcons.phoneSquareAlt,color: Colors.white,size: 0.0674*width,),
+                              Image(image: AssetImage("images/call-icon.png"),width: 0.0684*width,),
                               SizedBox(width: 0.0085*width,),
                               Padding(
-                                padding: EdgeInsets.only(top: 2),
-                                child: Text("CONTACT",style: TextStyle(color: Colors.white,fontWeight: FontWeight.w500,fontSize: 0.0355*width),),
+                                padding: EdgeInsets.only(top: 0.0027*height),
+                                child: Text("CONTACT",style: TextStyle(color: Colors.white,fontWeight: FontWeight.w500,fontSize: 0.0295*width),),
                               )
                             ],
                           ),
@@ -672,11 +676,11 @@ class _QuotesOnePageState extends State<QuotesOnePage>
                           },
                           child: Row(
                             children: [
-                              Icon(Icons.home,color: Colors.white,size: 0.0674*width,),
+                              Icon(Icons.home,color: Colors.white,size: 0.0684*width,),
                               SizedBox(width: 0.0085*width,),
                               Padding(
-                                padding: EdgeInsets.only(top: 2),
-                                child: Text("HOME",style: TextStyle(color: Colors.white,fontWeight: FontWeight.w500,fontSize: 0.0355*width)),
+                                padding: EdgeInsets.only(top: 0.0027*height),
+                                child: Text("HOME",style: TextStyle(color: Colors.white,fontWeight: FontWeight.w500,fontSize: 0.0295*width)),
                               ),
                             ],
                           ),
@@ -695,11 +699,11 @@ class _QuotesOnePageState extends State<QuotesOnePage>
                             padding: EdgeInsets.only(right: 0.0222*width),
                             child: Row(
                               children: [
-                                Icon(EvaIcons.search,color: Colors.white,size: 0.0674*width,),
+                                Icon(EvaIcons.search,color: Colors.white,size: 0.0684*width,),
                                 SizedBox(width: 0.0085*width,),
                                 Padding(
-                                  padding: EdgeInsets.only(top: 2),
-                                  child: Text("SEARCH",style: TextStyle(color: Colors.white,fontWeight: FontWeight.w500,fontSize:  0.0355*width),),
+                                  padding: EdgeInsets.only(top: 0.0027*height),
+                                  child: Text("SEARCH",style: TextStyle(color: Colors.white,fontWeight: FontWeight.w500,fontSize:  0.0295*width),),
                                 )
                               ],
                             ),
@@ -757,9 +761,6 @@ class _QuotesOnePageState extends State<QuotesOnePage>
             ),
           );
         } else {
-          // print(quotes[i].date);
-          // print((formatter.format(today)).runtimeType);
-          // Text("Not Found",style: TextStyle(fontSize: 20),);
           continue;
         }
       }
@@ -811,9 +812,6 @@ class _QuotesOnePageState extends State<QuotesOnePage>
             ),
           );
         } else {
-          // print(quotes[i].date);
-          // print((formatter.format(today)).runtimeType);
-          // Text("Not Found",style: TextStyle(fontSize: 20),);
           continue;
         }
       }
@@ -875,9 +873,6 @@ class _QuotesOnePageState extends State<QuotesOnePage>
             ),
           );
         } else {
-          // print(quotes[i].date);
-          // print((formatter.format(today)).runtimeType);
-          // Text("Not Found",style: TextStyle(fontSize: 20),);
           continue;
         }
       }
@@ -885,202 +880,3 @@ class _QuotesOnePageState extends State<QuotesOnePage>
   }
 }
 
-// class Controls extends StatelessWidget {
-//   final IconData icon;
-//
-//   Controls({this.icon});
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return GestureDetector(
-//       onTap: (){},
-//       child: Container(
-//         child: Stack(
-//           children: [
-//             Center(
-//               child: Container(
-//                 margin: EdgeInsets.all(6),
-//                 decoration: BoxDecoration(
-//                   shape: BoxShape.circle,
-//                   color: Colors.black,
-//                   // boxShadow: [
-//                   //   BoxShadow(
-//                   //     color: Colors.orange.withOpacity(0.5),
-//                   //     offset: Offset(5, 10),
-//                   //     spreadRadius: 3.0,
-//                   //     blurRadius: 10.0,
-//                   //   ),
-//                   //   BoxShadow(
-//                   //     color: Colors.white,
-//                   //     offset: Offset(-3, -4),
-//                   //     spreadRadius: -2,
-//                   //     blurRadius: 20,
-//                   //   ),
-//                   // ],
-//                 ),
-//               ),
-//             ),
-//             Center(
-//               child: Container(
-//                 margin: EdgeInsets.all(10),
-//                 child: Center(
-//                     child: Icon(
-//                       icon,
-//                       size: 20,
-//                       color: Colors.orange,
-//                     )),
-//                 decoration:
-//                 BoxDecoration(shape: BoxShape.circle, color: Colors.white),
-//               ),
-//             ),
-//           ],
-//         ),
-//         height: 60,
-//         width: 60,
-//         decoration: BoxDecoration(
-//           shape: BoxShape.circle,
-//           // boxShadow: [
-//           //   BoxShadow(
-//           //     color: Colors.orange.withOpacity(0.5),
-//           //     offset: Offset(5, 10),
-//           //     spreadRadius: 3.0,
-//           //     blurRadius: 10.0,
-//           //   ),
-//           //   BoxShadow(
-//           //     color: Colors.white,
-//           //     offset: Offset(-3, -4),
-//           //     spreadRadius: -2,
-//           //     blurRadius: 20,
-//           //   ),
-//           // ],
-//           color: Colors.white,
-//         ),
-//       ),
-//     );
-//   }
-// }
-//
-// class Play extends StatelessWidget {
-//   final IconData icon;
-//
-//   Play({this.icon});
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return GestureDetector(
-//       onTap: (){
-//       },
-//       child: Container(
-//         height: 80,
-//         width: 80,
-//         child: Stack(
-//           children: [
-//             Center(
-//               child: Container(
-//                 margin: EdgeInsets.all(6),
-//                 decoration: BoxDecoration(
-//                   shape: BoxShape.circle,
-//                   color: Colors.black,
-//                   // boxShadow: [
-//                   //   BoxShadow(
-//                   //     color: Colors.orange.withOpacity(0.5),
-//                   //     offset: Offset(5, 10),
-//                   //     spreadRadius: 3.0,
-//                   //     blurRadius: 10.0,
-//                   //   ),
-//                   //   BoxShadow(
-//                   //     color: Colors.white,
-//                   //     offset: Offset(-3, -4),
-//                   //     spreadRadius: -2,
-//                   //     blurRadius: 20,
-//                   //   ),
-//                   // ],
-//                 ),
-//               ),
-//             ),
-//             Center(
-//               child: Container(
-//                 margin: EdgeInsets.all(12),
-//                 child: Center(
-//                     child: Icon(
-//                       EvaIcons.home,
-//                       size: 30,
-//                       color: Colors.orange,
-//                     )),
-//                 decoration:
-//                 BoxDecoration(shape: BoxShape.circle, color: Colors.white),
-//               ),
-//             ),
-//           ],
-//         ),
-//         decoration: BoxDecoration(
-//           shape: BoxShape.circle,
-//           // boxShadow: [
-//           //   BoxShadow(
-//           //     color: Colors.orange.withOpacity(0.5),
-//           //     offset: Offset(5, 10),
-//           //     spreadRadius: 3.0,
-//           //     blurRadius: 10.0,
-//           //   ),
-//           //   BoxShadow(
-//           //     color: Colors.white,
-//           //     offset: Offset(-3, -4),
-//           //     spreadRadius: -2,
-//           //     blurRadius: 20,
-//           //   ),
-//           // ],
-//           color: Colors.white,
-//         ),
-//       ),
-//     );
-//   }
-// //  DefaultTabController(
-// //                       length: quotesDay.length,
-// //                       child: Scaffold(
-// //                         backgroundColor: Colors.transparent,
-// //                         appBar: PreferredSize(
-// //                           preferredSize: Size.fromHeight(50),
-// //                           child: AppBar(
-// //                             backgroundColor: Style.Colors.secondary,
-// //                             elevation: 0,
-// //                             bottom: TabBar(
-// //                               controller: _controller,
-// //                               indicatorColor: Colors.white,
-// //                               indicatorSize: TabBarIndicatorSize.tab,
-// //                               indicatorWeight: 3,
-// //                               unselectedLabelColor: Colors.white.withOpacity(0.7),
-// //                               labelColor: Colors.white,
-// //                               isScrollable: true,
-// //                               tabs: quotesDay.map((item){
-// //                                 return Container(
-// //                                   padding: EdgeInsets.only(top: 10,bottom: 15,left: 15,right: 7),
-// //                                   child: Text(
-// //                                     item['title1'],
-// //                                     style: GoogleFonts.portLligatSans(
-// //                                       textStyle: Theme.of(context).textTheme.display1,
-// //                                       fontSize: 14,
-// //                                       fontWeight: FontWeight.w700,
-// //                                       color: Colors.white,
-// //                                     ),
-// //                                   ),
-// //                                 );
-// //                               }).toList(),
-// //                               onTap: (int){
-// //                                 setState(() {
-// //                                   genre = quotesDay[int]["title"];
-// //                                 });
-// //                                 setQuote();
-// //                               },
-// //                             ),
-// //                           ),
-// //                         ),
-// //                         body: TabBarView(
-// //                           controller: _controller,
-// //                           physics: NeverScrollableScrollPhysics(),
-// //                           children: quotesDay.map((item){
-// //                             return Container();
-// //                           }).toList(),
-// //                         ),
-// //                       ),
-// //                     ),
-// }

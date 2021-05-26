@@ -63,7 +63,11 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
                   leading: Padding(
                     padding: EdgeInsets.only(top: 0.010*height),
                     child: IconButton(icon: Icon(FontAwesomeIcons.calendarAlt,color: Colors.white,),iconSize: 0.083*width, onPressed: (){
-                      Navigator.push(context, MaterialPageRoute(builder: (context)=>CalendarScreen(lang)));
+                      setState(() {
+                        genre = 'YearQuote';
+                        cal = 1;
+                      });
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=>CalendarScreen()));
                     }),
                   ),
                   actions: [
@@ -151,7 +155,7 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
                     ),
                   ],
                   backgroundColor: Style.Colors.primary,
-                  elevation: 5,
+                  elevation: 0.0067*height,
                 ),
               ),
               body: InteractiveViewer(
@@ -217,59 +221,6 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
                   ),
                 ),
               ),
-              // bottomNavigationBar: Container(
-              //   decoration: BoxDecoration(
-              //     color: Style.Colors.secondColor,
-              //     borderRadius: BorderRadius.only(topRight: Radius.circular(30),topLeft: Radius.circular(30),),
-              //     boxShadow: [
-              //       BoxShadow(color: Colors.grey[100],spreadRadius: 0,blurRadius: 10),
-              //     ],
-              //   ),
-              //   child: ClipRRect(
-              //     borderRadius: BorderRadius.only(topLeft: Radius.circular(30),topRight: Radius.circular(30),),
-              //     child: BottomNavigationBar(
-              //       backgroundColor: Style.Colors.secondColor,
-              //       iconSize: 20,
-              //       unselectedItemColor: Colors.grey[400],
-              //       selectedFontSize: 9.5,
-              //       unselectedFontSize: 9.5,
-              //       type: BottomNavigationBarType.fixed,
-              //       currentIndex: index,
-              //       onTap: (value){},
-              //       items: [
-              //         BottomNavigationBarItem(
-              //           title: Padding(
-              //             padding: EdgeInsets.only(top: 5,),
-              //             child: Text('Home',style: TextStyle(color: Colors.white,),),
-              //           ),
-              //           icon: Icon(EvaIcons.homeOutline),
-              //           activeIcon: Icon(EvaIcons.home,color: Colors.white,),
-              //         ),
-              //         BottomNavigationBarItem(
-              //           title: Padding(
-              //             padding: EdgeInsets.only(top: 5,),
-              //             child: Text('Sources'),
-              //           ),
-              //           icon: Icon(EvaIcons.gridOutline,),
-              //           activeIcon: Icon(EvaIcons.grid,color: Colors.white,),
-              //         ),
-              //         BottomNavigationBarItem(
-              //           title: Padding(
-              //             padding: EdgeInsets.only(top: 5,),
-              //             child: Text('Search'),
-              //           ),
-              //           icon: GestureDetector(
-              //             child: Icon(EvaIcons.searchOutline),
-              //             onTap: (){
-              //               Navigator.push(context, MaterialPageRoute(builder: (context)=>SearchScreen()));
-              //             },
-              //           ),
-              //           activeIcon: Icon(EvaIcons.search,color: Colors.white,),
-              //         ),
-              //       ],
-              //     ),
-              //   ),
-              // ),
             ),
           ),
           Positioned(
@@ -297,7 +248,7 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
                               Image(image: AssetImage("images/about-icon.png"),width: 0.0694*width,),
                               SizedBox(width: 0.0085*width,),
                               Padding(
-                                padding: EdgeInsets.only(top: 2),
+                                padding: EdgeInsets.only(top: 0.0027*height),
                                 child: Text("ABOUT",style: TextStyle(color: Colors.white,fontWeight: FontWeight.w500,fontSize: 0.0295*width),),
                               )
                             ],
@@ -315,7 +266,7 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
                               Image(image: AssetImage("images/call-icon.png"),width: 0.0684*width,),
                               SizedBox(width: 0.0085*width,),
                               Padding(
-                                padding: EdgeInsets.only(top: 2),
+                                padding: EdgeInsets.only(top: 0.0027*height),
                                 child: Text("CONTACT",style: TextStyle(color: Colors.white,fontWeight: FontWeight.w500,fontSize: 0.0295*width),),
                               )
                             ],
@@ -337,7 +288,7 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
                               Icon(Icons.home,color: Colors.white,size: 0.0684*width,),
                               SizedBox(width: 0.0085*width,),
                               Padding(
-                                padding: EdgeInsets.only(top: 2),
+                                padding: EdgeInsets.only(top: 0.0027*height),
                                 child: Text("HOME",style: TextStyle(color: Colors.white,fontWeight: FontWeight.w500,fontSize: 0.0295*width)),
                               ),
                             ],
@@ -360,7 +311,7 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
                                 Icon(EvaIcons.search,color: Colors.white,size: 0.0684*width,),
                                 SizedBox(width: 0.0085*width,),
                                 Padding(
-                                  padding: EdgeInsets.only(top: 2),
+                                  padding: EdgeInsets.only(top: 0.0027*height),
                                   child: Text("SEARCH",style: TextStyle(color: Colors.white,fontWeight: FontWeight.w500,fontSize:  0.0295*width),),
                                 )
                               ],

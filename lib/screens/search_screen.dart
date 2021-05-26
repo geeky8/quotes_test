@@ -163,9 +163,6 @@ class _SearchScreenState extends State<SearchScreen> {
                               builder: (context,
                                   AsyncSnapshot<QuoteHindiResponse> snapshot) {
                                 if (snapshot.hasData) {
-                                  // if(snapshot.data.error!=0 && snapshot.data.error.length>0){
-                                  //   return buildError(snapshot.data.error);
-                                  // }
                                   if (_QuoteBoxHindi(snapshot.data) == null || _searchController.text==null) {
                                     return Center(
                                       child: Container(
@@ -193,9 +190,6 @@ class _SearchScreenState extends State<SearchScreen> {
                                 builder: (context,
                                     AsyncSnapshot<QuoteEnglishResponse> snapshot) {
                                   if (snapshot.hasData) {
-                                    // if(snapshot.data.error!=0 && snapshot.data.error.length>0){
-                                    //   return buildError(snapshot.data.error);
-                                    // }
                                     if (_QuoteBoxEnglish(snapshot.data) == null || _searchController.text==null) {
                                       return Center(
                                         child: Container(
@@ -222,9 +216,6 @@ class _SearchScreenState extends State<SearchScreen> {
                               builder: (context,
                                   AsyncSnapshot<QuoteBothResponse> snapshot) {
                                 if (snapshot.hasData) {
-                                  // if(snapshot.data.error!=0 && snapshot.data.error.length>0){
-                                  //   return buildError(snapshot.data.error);
-                                  // }
                                   if (_QuoteBoxBoth(snapshot.data) == null || _searchController.text==null) {
                                     return Container(
                                       width: 0.1388*width,

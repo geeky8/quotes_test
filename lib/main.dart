@@ -8,7 +8,6 @@ import 'package:quotes/bloc/search_both_quotes_bloc.dart';
 import 'package:quotes/bloc/search_english_quotes_bloc.dart';
 import 'package:quotes/bloc/search_hindi_quotes_bloc.dart';
 import 'package:quotes/screens/splash_screen.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 
 String lang = "en";
@@ -21,6 +20,7 @@ String footer1 = "SAI DATTA VIKAS\nMEDITATION AND CHARTITABLE TRUST";
 String footer2 = "By Vikas Runwal";
 String number = "+91";
 bool validate = false;
+int cal=0;
 
 void setQuote(){
   if(lang=="en" ){

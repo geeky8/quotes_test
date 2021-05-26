@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:quotes/models/quote_hindi_response.dart';
 import 'package:quotes/models/quotes_english_response.dart';
 import 'package:quotes/repository/repository.dart';
 import 'package:rxdart/rxdart.dart';

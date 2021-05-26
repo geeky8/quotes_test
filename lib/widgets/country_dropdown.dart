@@ -3,6 +3,7 @@ import 'package:country_state_city_picker/model/select_status_model.dart' as Sta
 import 'package:dropdownfield/dropdownfield.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:quotes/main.dart';
 
 class Country extends StatefulWidget {
 
@@ -63,7 +64,7 @@ class _CountryState extends State<Country> {
           value: widget.country,
           required: false,
           hintText: 'Choose a country',
-          hintStyle: TextStyle(color: Colors.black26,fontSize: 15,fontWeight: FontWeight.bold),
+          hintStyle: TextStyle(color: Colors.black26,fontSize: 0.04166*width,fontWeight: FontWeight.bold),
           items: _country,
         ),
       ],

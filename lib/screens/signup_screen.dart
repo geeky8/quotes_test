@@ -253,36 +253,6 @@ class _SignupState extends State<Signup> {
             ],
           ),
         ),
-        // InternationalPhoneNumberInput(
-        //   onInputChanged: (PhoneNumber value) {
-        //     setState(() {
-        //       number = value;
-        //     });
-        //   },
-        //   initialValue: number,
-        //   textFieldController: phone,
-        //   keyboardType:
-        //       TextInputType.number,
-        //   hintText: "Enter Number",
-        //   selectorConfig: SelectorConfig(
-        //     selectorType: PhoneInputSelectorType.BOTTOM_SHEET,
-        //   ),
-        //   selectorTextStyle: TextStyle(color: Colors.black),
-        //   autoValidateMode: AutovalidateMode.always,
-        //   keyboardAction: TextInputAction.done,
-        //   o
-        //   formatInput: false,
-        //   inputBorder: OutlineInputBorder(
-        //     borderRadius: BorderRadius.all(Radius.circular(12)),
-        //     borderSide: BorderSide(color: Colors.black,width: 1.1,style: BorderStyle.solid),
-        //   ),
-        //   spaceBetweenSelectorAndTextField: 0.0444*width,
-        //   searchBoxDecoration: InputDecoration(
-        //     focusColor: Color(0xffe46b10),
-        //   ),
-        //   inputDecoration: InputDecoration(focusColor:Color(0xffe46b10) ),
-        // )
-
       ],
     );
   }

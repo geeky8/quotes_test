@@ -24,7 +24,6 @@ class QuoteRepository{
       await _dio.get("$mainUrl/$genre", queryParameters: params,options: Options(headers: {
         "X-API-Key": "asQwe89Example@345TokenKey14587"
       },));
-      // print(response.extra);
       List map1 = json.decode(response.data);
       return QuoteHindiResponse.fromJSON(map1);
     } catch (error, stacktrace) {
@@ -46,7 +45,6 @@ class QuoteRepository{
       await _dio.get("$mainUrl/$genre", queryParameters: params,options:Options(headers: {
         "X-API-Key": "asQwe89Example@345TokenKey14587"
       },));
-      // print(response.extra);
       List map1 = json.decode(response.data);
       return QuoteEnglishResponse.fromJSON(map1);
     } catch (error, stacktrace) {
@@ -69,7 +67,6 @@ class QuoteRepository{
       await _dio.get("$mainUrl/$genre", queryParameters: params,options: Options(headers: {
         "X-API-Key": "asQwe89Example@345TokenKey14587"
       },));
-      // print(response.extra);
       List map1 = json.decode(response.data);
       return QuoteBothResponse.fromJSON(map1);
     } catch (error, stacktrace) {
@@ -89,7 +86,6 @@ class QuoteRepository{
       await _dio.get("$mainUrl/$genre", queryParameters: params,options: Options(headers: {
         "X-API-Key": "asQwe89Example@345TokenKey14587"
       },));
-      // print(response.extra);
       List map1 = json.decode(response.data);
       return QuoteHindiResponse.fromJSON(map1);
     } catch (error, stacktrace) {
@@ -109,7 +105,6 @@ class QuoteRepository{
       await _dio.get("$mainUrl/$genre", queryParameters: params,options: Options(headers: {
         "X-API-Key": "asQwe89Example@345TokenKey14587"
       },));
-      // print(response.extra);
       List map1 = json.decode(response.data);
       return QuoteEnglishResponse.fromJSON(map1);
     } catch (error, stacktrace) {
@@ -129,7 +124,6 @@ class QuoteRepository{
       await _dio.get("$mainUrl/$genre", queryParameters: params,options: Options(headers: {
         "X-API-Key": "asQwe89Example@345TokenKey14587"
       },));
-      // print(response.extra);
       List map1 = json.decode(response.data);
       return QuoteBothResponse.fromJSON(map1);
     } catch (error, stacktrace) {
